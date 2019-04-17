@@ -10,6 +10,7 @@ public class Burger {
     }
 
     private Burger(Builder builder) {
+
         this.desc = builder.desc;
         this.qty = builder.qty;
         this.price = builder.price;
@@ -28,7 +29,7 @@ public class Burger {
         return price;
     }
 
-    public static class Builder {
+    public static class Builder  {
         private String desc;
         private int qty;
         private double price;

@@ -11,7 +11,7 @@ public class Item {
     private int qty;
     private double price;
 
-
+private Item(){}
 
     private Item(Builder builder)
     {

@@ -39,7 +39,29 @@ when delivered to kitchen staff.
 
 5. The System should allow managers to generate a report.
 
+****Order****   
+A waiter can take as many orders from the guest.
 
+****Item****   
+A order can contain many items and items may have many orders.
+
+****OrderLine****   
+This will be the bridging entity in between Order and Item.
+
+****Book****   
+A booking can be made by many guest.
+
+****Reservation****
+Reservation will act as the bridging entity between Book and Guest
+
+****Guest****
+A guest may make many bookings.
+
+****Bill****
+A bill will have one order.
+
+****Receipt****
+One receipt will be associated with a bill.
 
 
 
