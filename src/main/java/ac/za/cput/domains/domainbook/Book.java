@@ -1,18 +1,20 @@
 package ac.za.cput.domains.domainbook;
 
 
+import java.util.Date;
+import java.util.Objects;
 
 public class Book {
 
 
     private String bookingID;
-    private String dte;
+    private Date dte;
     private String tme;
 
 
     private Book(){}
 
-    public Book(Builder builder) {
+    private Book(Builder builder) {
         this.bookingID = builder.bookingID;
         this.dte = builder.dte;
         this.tme = builder.tme;
@@ -23,7 +25,7 @@ public class Book {
         return bookingID;
     }
 
-    public String getDte() {
+    public Date getDte() {
         return dte;
     }
 
@@ -35,7 +37,8 @@ public class Book {
     public static class Builder{
 
 
-        private String bookingID, dte, tme;
+        private String bookingID, tme;
+        private Date dte;
 
 
         public Builder bookingID(String bookingID)
@@ -44,9 +47,9 @@ public class Book {
             return this;
         }
 
-        public Builder dte(String dte)
+        public Builder dte(Date dte)
         {
-            this.dte = dte;
+            this.dte = new Date(dte.getTime());
             return this;
         }
 
@@ -73,6 +76,19 @@ public class Book {
                 ", dte='" + dte + '\'' +
                 ", tme='" + tme + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Book)) return false;
+        Book book = (Book) o;
+        return Objects.equals(getBookingID(), book.getBookingID());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getBookingID());
     }
 }
 

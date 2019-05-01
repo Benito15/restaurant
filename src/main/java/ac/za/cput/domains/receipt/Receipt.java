@@ -1,10 +1,14 @@
 package ac.za.cput.domains.receipt;
 
-import org.apache.maven.model.Build;
+
+
+import java.util.Date;
+import java.util.Objects;
 
 public class Receipt {
 
-    private String recID, dte, desc;
+    private String recID,  desc;
+    private Date dte;
     private double total;
 
     private Receipt(){}
@@ -22,7 +26,7 @@ public class Receipt {
         return recID;
     }
 
-    public String getDte() {
+    public Date getDte() {
         return dte;
     }
 
@@ -36,7 +40,8 @@ public class Receipt {
 
     public static class Builder
     {
-        private String recID, dte, desc;
+        private String recID, desc;
+        private Date dte;
         private double total;
 
 
@@ -47,7 +52,7 @@ public class Receipt {
 
         }
 
-        public Builder dte(String dte)
+        public Builder dte(Date dte)
         {
             this.dte = dte;
             return this;
@@ -77,10 +82,23 @@ public class Receipt {
     @Override
     public String toString() {
         return "receipt{" +
-                "recID='" + recID + '\'' +
-                ", dte='" + dte + '\'' +
-                ", desc='" + desc + '\'' +
-                ", total=" + total +
+                "ReceiptID='" + recID + '\'' +
+                ", Date='" + dte + '\'' +
+                ", Description='" + desc + '\'' +
+                ", Total=" + total +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Receipt)) return false;
+        Receipt receipt = (Receipt) o;
+        return Objects.equals(recID, receipt.recID);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(recID);
     }
 }

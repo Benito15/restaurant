@@ -1,61 +1,50 @@
 package ac.za.cput.domains.item;
 
-public class Burger {
+public class Burger extends Item {
 
-    private String desc;
-    private int qty;
-    private double price;
+   private String type;
 
-    private Burger() {
+
+    public Burger() {
     }
 
-    private Burger(Builder builder) {
+    public Burger(Builder builder) {
 
-        this.desc = builder.desc;
-        this.qty = builder.qty;
-        this.price = builder.price;
+       super(builder);
+        type = "";
 
     }
 
-    public String getDesc() {
-        return desc;
+    public String getType() {
+        return type;
     }
 
-    public int getQty() {
-        return qty;
-    }
+    public static class Builder  extends Item.Builder{
 
-    public double getPrice() {
-        return price;
-    }
+        String type;
 
-    public static class Builder  {
-        private String desc;
-        private int qty;
-        private double price;
-
-        public Builder desc(String desc) {
-            this.desc = desc;
+        public Builder type(String type)
+        {
+            this.type = type;
             return this;
-
         }
 
-        public Builder qty(int qty) {
-            this.qty = qty;
-            return this;
-
-        }
-
-        public Builder price(double price) {
-            this.price = price;
-            return this;
-
-        }
 
         public Burger build() {
             return new Burger(this);
         }
 
+    }
+
+    @Override
+    public String toString() {
+        return "Burger{" +
+                ", itemID='" + itemID + '\'' +
+                ", desc='" + desc + '\'' +
+                ", qty=" + qty +
+                ", type='" + type + '\'' +
+                ", price=" + price +
+                '}';
     }
 }
 

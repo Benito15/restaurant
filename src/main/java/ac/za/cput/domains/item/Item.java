@@ -1,19 +1,19 @@
 package ac.za.cput.domains.item;
 
-import org.apache.maven.model.Build;
+
 
 public class Item {
   /////////////////////
 
-   private String itemID;
-    private String desc;
+   protected String itemID;
+    protected String desc;
 
-    private int qty;
-    private double price;
+    protected int qty;
+    protected double price;
 
-private Item(){}
+public Item(){}
 
-    private Item(Builder builder)
+    public Item(Builder builder)
     {
         this.itemID = builder.itemID;
         this.desc = builder.desc;

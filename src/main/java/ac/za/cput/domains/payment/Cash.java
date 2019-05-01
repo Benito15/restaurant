@@ -1,6 +1,6 @@
 package ac.za.cput.domains.payment;
 
-import org.apache.maven.model.Build;
+
 
 public class Cash implements Payment {
     private double amount;

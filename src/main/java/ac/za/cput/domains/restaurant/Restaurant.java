@@ -1,5 +1,7 @@
 package ac.za.cput.domains.restaurant;
 
+import java.util.Objects;
+
 public class Restaurant {
 
     private String resID,name;
@@ -69,5 +71,18 @@ public class Restaurant {
                 ", name='" + name + '\'' +
                 ", totEmployees=" + totEmployees +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Restaurant)) return false;
+        Restaurant that = (Restaurant) o;
+        return Objects.equals(getResID(), that.getResID());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getResID());
     }
 }

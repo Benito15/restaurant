@@ -1,5 +1,7 @@
 package ac.za.cput.domains.inventory;
 
+import java.util.Objects;
+
 public class Inventory {
     private String invID;
     private String desc;
@@ -73,5 +75,18 @@ public class Inventory {
                 ", desc='" + desc + '\'' +
                 ", qty=" + qty +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Inventory)) return false;
+        Inventory inventory = (Inventory) o;
+        return Objects.equals(getInvID(), inventory.getInvID());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getInvID());
     }
 }

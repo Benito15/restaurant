@@ -1,5 +1,7 @@
 package ac.za.cput.domains.supplier;
 
+import java.util.Objects;
+
 public class Supplier {
 
     private String  supID;
@@ -54,8 +56,30 @@ public class Supplier {
         }
 
 
+
  public Supplier build(){return new Supplier(this);}
 
     }
 
+    @Override
+    public String toString() {
+        return "Supplier{" +
+                "supplier ID='" + supID + '\'' +
+                ", Name='" + name + '\'' +
+                ", Address='" + address + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Supplier)) return false;
+        Supplier supplier = (Supplier) o;
+        return Objects.equals(getSupID(), supplier.getSupID());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getSupID());
+    }
 }

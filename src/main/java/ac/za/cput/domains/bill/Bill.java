@@ -1,9 +1,13 @@
 package ac.za.cput.domains.bill;
 
+import java.util.Date;
+import java.util.Objects;
+
 public class Bill {
 
 
-    private String billID, dte, desc;
+    private String billID, desc;
+    private Date dte;
     private double total;
 
     private Bill(){}
@@ -21,7 +25,7 @@ public class Bill {
         return billID;
     }
 
-    public String getDte() {
+    public Date getDte() {
         return dte;
     }
 
@@ -36,7 +40,8 @@ public class Bill {
 
     public static class Builder
     {
-        private String billID, dte, desc;
+        private String billID,  desc;
+        private Date dte;
         private double total;
 
 
@@ -47,7 +52,7 @@ public class Bill {
 
         }
 
-        public Builder dte(String dte)
+        public Builder dte(Date dte)
         {
             this.dte = dte;
             return this;
@@ -76,10 +81,23 @@ public class Bill {
     @Override
     public String toString() {
         return "Bill{" +
-                "billID='" + billID + '\'' +
-                ", dte='" + dte + '\'' +
-                ", desc='" + desc + '\'' +
-                ", total=" + total +
+                " BillID='" + billID + '\'' +
+                ", Date='" + dte + '\'' +
+                ", Description='" + desc + '\'' +
+                ", Total=" + total +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Bill)) return false;
+        Bill bill = (Bill) o;
+        return Objects.equals(getBillID(), bill.getBillID());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getBillID());
     }
 }

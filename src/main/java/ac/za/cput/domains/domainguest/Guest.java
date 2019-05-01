@@ -1,8 +1,12 @@
 package ac.za.cput.domains.domainguest;
 
+import java.util.Objects;
+import java.util.Set;
+
 public class Guest {
     private String guestId, guestName, guestSurname;
     private int age;
+   // private Set<Guest> guest;
 
     private Guest(){}
 
@@ -74,6 +78,18 @@ public class Guest {
 
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Guest)) return false;
+        Guest guest = (Guest) o;
+        return Objects.equals(getGuestId(), guest.getGuestId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getGuestId());
+    }
 
     @Override
     public String toString() {

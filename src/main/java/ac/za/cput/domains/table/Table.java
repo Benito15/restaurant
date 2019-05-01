@@ -1,5 +1,7 @@
 package ac.za.cput.domains.table;
 
+import java.util.Objects;
+
 public class Table {
 
     private String tableID;
@@ -62,4 +64,16 @@ private Table(){}
     }
 
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Table)) return false;
+        Table table = (Table) o;
+        return Objects.equals(getTableID(), table.getTableID());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getTableID());
+    }
 }

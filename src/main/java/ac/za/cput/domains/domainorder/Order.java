@@ -1,9 +1,12 @@
 package ac.za.cput.domains.domainorder;
 
+import java.util.Date;
+import java.util.Objects;
+
 public class Order {
 ///empi
     private String orderID;
-    private String dte;
+    private Date dte;
     private double total;
 
     private Order(){}
@@ -19,7 +22,7 @@ public class Order {
         return orderID;
     }
 
-    public String getDte() {
+    public Date getDte() {
         return dte;
     }
 
@@ -29,7 +32,8 @@ public class Order {
 
     public static class Builder
     {
-        private String orderID, dte;
+        private String orderID;
+        private Date dte;
         private double total;
 
 
@@ -40,7 +44,7 @@ public class Order {
 
         }
 
-        public Builder dte(String dte)
+        public Builder dte(Date dte)
         {
 
              this.dte = dte;
@@ -66,8 +70,21 @@ public class Order {
     public String toString() {
         return "ord{" +
                 "orderID='" + orderID + '\'' +
-                ", dte='" + dte + '\'' +
+                ", Date='" + dte + '\'' +
                 ", total=" + total +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Order)) return false;
+        Order order = (Order) o;
+        return Objects.equals(getOrderID(), order.getOrderID());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getOrderID());
     }
 }

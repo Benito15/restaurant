@@ -4,12 +4,12 @@ import ac.za.cput.domains.domainguest.Guest;
 
 public class Employee {
 
-    private String empid, name, surname;
-    private double salary;
+    protected String empid, name, surname;
+    protected double salary;
 
-    private Employee(){}
+    public Employee(){}
 
-    private Employee(Builder builder)
+    public Employee(Builder builder)
     {
         this.empid = builder.empid;
         this.name= builder.name;

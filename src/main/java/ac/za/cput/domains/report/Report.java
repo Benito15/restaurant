@@ -1,8 +1,11 @@
 package ac.za.cput.domains.report;
 
+import java.util.Date;
+
 public class Report {
 
-    private String repID,dte, empID;
+    private String repID, empID;
+    private Date dte;
 
     private Report(){}
 
@@ -18,7 +21,7 @@ public class Report {
         return repID;
     }
 
-    public String getDte() {
+    public Date getDte() {
         return dte;
     }
 
@@ -28,7 +31,8 @@ public class Report {
 
     public static class Builder
     {
-        private String repID,dte, empID;
+        private String repID, empID;
+        private Date dte;
 
         public Builder repID(String repID)
         {
@@ -44,7 +48,7 @@ public class Report {
 
         }
 
-        public Builder dte(String dte)
+        public Builder dte(Date dte)
         {
             this.dte = dte;
             return this;
