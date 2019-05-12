@@ -1,5 +1,8 @@
 package ac.za.cput.domains.payment;
 
+import java.util.Date;
+import java.util.Objects;
+
 public class Check implements Payment {
 
  private String bankID, name;
@@ -25,8 +28,8 @@ public class Check implements Payment {
 
 
     @Override
-    public String dte() {
-        return null;
+    public Date dte() {
+        return dte();
     }
 
     @Override
@@ -58,6 +61,19 @@ public class Check implements Payment {
 
         public Check build() {return new Check(this);}
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Check)) return false;
+        Check check = (Check) o;
+        return Objects.equals(getBankID(), check.getBankID());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getBankID());
     }
 
     @Override

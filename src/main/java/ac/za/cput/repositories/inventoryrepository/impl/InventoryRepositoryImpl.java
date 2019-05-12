@@ -39,6 +39,12 @@ public class InventoryRepositoryImpl implements InventoryRepository {
 
     @Override
     public Inventory update(Inventory inventory) {
+        Inventory updateInv = findID(inventory.getInvID());
+        if(updateInv != null)
+        {
+            this.inventories.remove(updateInv);
+            return create(inventory);
+        }
         return null;
     }
 
@@ -60,6 +66,6 @@ public class InventoryRepositoryImpl implements InventoryRepository {
     public Inventory findID(String s)
     {
         return inventories.stream().filter(p -> p.getInvID().equals(s))
-                .findFirst().orElse(null);
+                .findAny().orElse(null);
     }
 }

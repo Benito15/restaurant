@@ -3,6 +3,7 @@ package ac.za.cput.repositories.billrepository.impl;
 import ac.za.cput.domains.bill.Bill;
 import ac.za.cput.repositories.billrepository.BillRepository;
 
+import java.util.HashSet;
 import java.util.Set;
 
 
@@ -10,6 +11,19 @@ public class BillRepositoryImpl implements BillRepository {
 
     private static BillRepositoryImpl repository = null;
     private Set<Bill> bills;
+
+    private BillRepositoryImpl()
+    {
+        this.bills = new HashSet<>();
+
+    }
+
+    public static BillRepositoryImpl getRepository()
+    {
+        if(repository == null) repository = new BillRepositoryImpl();
+        return repository;
+
+    }
 
     @Override
     public Set<Bill> getAll() {
@@ -24,6 +38,13 @@ public class BillRepositoryImpl implements BillRepository {
 
     @Override
     public Bill update(Bill bill) {
+        Bill updateBill = findID(bill.getBillID());
+        if(updateBill != null)
+        {
+            this.bills.remove(updateBill);
+            return create(bill);
+
+        }
         return null;
     }
 
@@ -38,7 +59,7 @@ public class BillRepositoryImpl implements BillRepository {
         Bill bill = findID(s);
         if(bills.equals(s))
             return bill;
-        return null;
+        else return null;
     }
 
     public Bill findID(String s)

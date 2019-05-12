@@ -32,7 +32,19 @@ public class Inventory {
         return qty;
     }
 
-   public static class Builder
+    public void setInvID(String invID) {
+        this.invID = invID;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    public void setQty(int qty) {
+        this.qty = qty;
+    }
+
+    public static class Builder
    {
        private String invID;
        private String desc;
@@ -71,8 +83,8 @@ public class Inventory {
     @Override
     public String toString() {
         return "Inventory{" +
-                "invID='" + invID + '\'' +
-                ", desc='" + desc + '\'' +
+                "invID='" + invID + "\n" +
+                ", desc='" + desc + "\n" +
                 ", qty=" + qty +
                 '}';
     }

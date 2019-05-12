@@ -1,5 +1,8 @@
 package ac.za.cput.domains.payment;
 
+import java.util.Date;
+import java.util.Random;
+
 public class Credit implements Payment {
 
     private String cardID;
@@ -42,9 +45,11 @@ public class Credit implements Payment {
     }
 
 
+
+
     @Override
-    public String dte() {
-        return null;
+    public Date dte() {
+        return dte();
     }
 
     @Override

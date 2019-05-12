@@ -5,10 +5,10 @@ public class Reservation {
     private String resID;
     private int totGuest;
 
-    public Reservation()
+    private Reservation()
     {}
 
-    public Reservation(Builder build)
+    private Reservation(Builder build)
     {
 
         this.resID= build.resID;
