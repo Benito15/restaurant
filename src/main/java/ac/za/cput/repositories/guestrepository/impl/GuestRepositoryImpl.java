@@ -1,20 +1,18 @@
 package ac.za.cput.repositories.guestrepository.impl;
 
-import ac.za.cput.domains.domainguest.Guest;
+import ac.za.cput.domains.guest.Guest;
 import ac.za.cput.repositories.guestrepository.GuestRepository;
 
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.*;
 
 public class GuestRepositoryImpl implements GuestRepository {
 
     private static GuestRepositoryImpl repository = null;
-    private Set<Guest> guests;
+    private Map<String,Guest> guests;
 
     private GuestRepositoryImpl()
     {
-        this.guests = new HashSet<>();
+        this.guests = new HashMap<>();
 
     }
 
@@ -27,19 +25,24 @@ public class GuestRepositoryImpl implements GuestRepository {
 
     @Override
     public Guest create(Guest guest) {
-        this.guests.add(guest);
+        this.guests.put(guest.getGuestId(),guest);
         return guest;
     }
 
     @Override
     public Guest update(Guest guest) {
 
-        Guest toUpdate =  findID(guest.getGuestId());
-        if(toUpdate != null) {
-            this.guests.remove(toUpdate);
-            return create(guest);
-        }
-        return null;
+//        Guest toUpdate =  findID(guest.getGuestId());
+//        if(toUpdate != null) {
+//            this.guests.remove(toUpdate);
+//            return create(guest);
+//        }
+//        return null;
+
+        this.guests.replace(guest.getGuestId(), guest);
+        return this.guests.get(guest.getGuestId());
+
+
 
 //        if(guests.contains(guest))
 //        {
@@ -56,8 +59,7 @@ public class GuestRepositoryImpl implements GuestRepository {
     ///////
     @Override
     public void delete(String s) {
-       Guest guest = findID(s);
-       if(guest != null)this.guests.remove(guest) ;
+      this.guests.remove(s);
 
     }
 
@@ -76,18 +78,9 @@ public class GuestRepositoryImpl implements GuestRepository {
 //        }
 
 
-    Guest guests = findID(s);
-    if(guests.equals(s))
-    {
-        return guests;
-    }else
-        {
-            return null;
-        }
-//        return guests.stream().filter(p -> p.getGuestId().equals(s))
-//                .findFirst().orElse(null);
-//        return guests.stream().filter(t-> t.getGuestId()
-//                .equals(s)).findFirst().orElse(null);
+        return this.guests.get(s);
+
+
 //        Guest guest = null;
 //        for (Guest readGuest: guests)
 //            if(readGuest.getGuestName().equals(s))
@@ -98,16 +91,19 @@ public class GuestRepositoryImpl implements GuestRepository {
 //        return guest;
     }
 
-    public Guest findID(String s)
-    {
-        return guests.stream().filter(guest -> guest.getGuestId().trim().equals(s))
-        .findAny().orElse(null);
-
-
-    }
+//    public Guest findID(String s)
+//    {
+//        return guests.stream().filter(guest -> guest.getGuestId().trim().equals(s))
+//        .findAny().orElse(null);
+//
+//
+//    }
 
     @Override
     public Set<Guest> getAll() {
-        return this.guests;
+        Collection<Guest> guests = this.guests.values();
+        Set<Guest> set = new HashSet<>();
+        set.addAll(guests);
+        return set;
     }
 }

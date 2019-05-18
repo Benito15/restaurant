@@ -3,18 +3,17 @@ package ac.za.cput.repositories.billrepository.impl;
 import ac.za.cput.domains.bill.Bill;
 import ac.za.cput.repositories.billrepository.BillRepository;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 
 public class BillRepositoryImpl implements BillRepository {
 
     private static BillRepositoryImpl repository = null;
-    private Set<Bill> bills;
+    private Map<String,Bill> bills;
 
     private BillRepositoryImpl()
     {
-        this.bills = new HashSet<>();
+        this.bills = new HashMap<>();
 
     }
 
@@ -26,48 +25,37 @@ public class BillRepositoryImpl implements BillRepository {
     }
 
     @Override
-    public Set<Bill> getAll() {
-        return this.bills;
+    public Set<Bill> getAll()
+    {
+        Collection<Bill>bills = this.bills.values();
+        Set<Bill>set = new HashSet<>();
+        set.addAll(bills);
+        return set;
     }
 
     @Override
     public Bill create(Bill bill) {
-        this.bills.add(bill);
+        this.bills.put(bill.getBillID(),bill);
         return bill;
     }
 
     @Override
     public Bill update(Bill bill) {
-        Bill updateBill = findID(bill.getBillID());
-        if(updateBill != null)
-        {
-            this.bills.remove(updateBill);
-            return create(bill);
+       this.bills.replace(bill.getBillID(),bill);
+       return this.bills.get(bill.getBillID());
 
-        }
-        return null;
     }
 
     @Override
     public void delete(String s) {
-        Bill bills = findID(s);
+
         this.bills.remove(s);
     }
 
     @Override
     public Bill read(String s) {
-        Bill bill = findID(s);
-        if(bills.equals(s))
-            return bill;
-        else return null;
+      return this.bills.get(s);
     }
 
-    public Bill findID(String s)
-    {
-        return bills.stream().filter(p -> p.getBillID().equals(s))
-                .findFirst().orElse(null);
-
-
-    }
 
 }

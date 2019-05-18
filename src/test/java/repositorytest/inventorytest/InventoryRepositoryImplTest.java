@@ -57,22 +57,47 @@ public class InventoryRepositoryImplTest {
     }
 
     @Test
-    public void delete() {
-        Inventory inventory = InventoryFactory.getInventory("Inventory",1);
-        this.repository.create(inventory);
-        this.repository.delete(inventory.getInvID());
+public void delete() {
         System.out.println(this.repository.getAll().size());
-        Assert.assertNotNull(this.repository.getAll());
+        System.out.println("--------------------------------");
+    Inventory inventory = InventoryFactory.getInventory("Inventory",1);
+    Inventory inventory1 = InventoryFactory.getInventory("Inventory",2);
+
+    this.repository.create(inventory);
+    this.repository.create(inventory1);
+
+    System.out.println(this.repository.getAll().size());
+
+    this.repository.delete(inventory.getInvID());
+
+        System.out.println("--------------");
+        System.out.println("After Delete");
+        System.out.println(this.repository.getAll().size());
+
+        Assert.assertNotNull(this.repository);
+
+
 
     }
 
     @Test
     public void read() {
         Inventory inventory = InventoryFactory.getInventory("Inventory",1);
+        Inventory inventory1 = InventoryFactory.getInventory("Inventory2",2);
         this.repository.create(inventory);
+        this.repository.create(inventory1);
+        System.out.println("Size after creating Objects->");
+        System.out.println(this.repository.getAll().size());
+        System.out.println("-------------------------------");
         Inventory readInventory = this.repository.read(inventory.getInvID());
-        System.out.println(readInventory);
+        System.out.println("Reading Object into new Object of type Inventory");
+        System.out.println(readInventory.getInvID());
+        System.out.println("--------------------------------------------");
 
+        Assert.assertNotEquals(inventory1.getInvID(),readInventory.getInvID());
+
+
+        // System.out.println(readInventory)
     }
 
 

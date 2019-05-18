@@ -1,22 +1,21 @@
-package repositorytest.restaurantrepository.impl;
+package ac.za.cput.repositories.restaurantrepository.impl;
 
 import ac.za.cput.domains.restaurant.Restaurant;
 import repositorytest.restaurantrepository.RestaurantRepository;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class RestaurantRepositoryImpl implements RestaurantRepository {
 
     private static RestaurantRepositoryImpl repository = null;
-    private Set<Restaurant> restaurants;
+    private Map<String,Restaurant> restaurants;
 
     private RestaurantRepositoryImpl()
     {
-        this.restaurants = new HashSet<>();
+        this.restaurants = new HashMap<>();
     }
 
-    public static RestaurantRepository getRepository()
+    public static RestaurantRepositoryImpl getRepository()
     {
         if(repository == null) repository = new RestaurantRepositoryImpl();
         return repository;
@@ -24,40 +23,42 @@ public class RestaurantRepositoryImpl implements RestaurantRepository {
 
     @Override
     public Set<Restaurant> getAll() {
-        return this.restaurants;
+        Collection<Restaurant> restaurants = this.restaurants.values();
+        Set<Restaurant> set = new HashSet<>();
+        set.addAll(restaurants);
+        return set;
     }
 
     @Override
     public Restaurant create(Restaurant restaurant) {
-        this.restaurants.add(restaurant);
+        this.restaurants.put(restaurant.getResID(), restaurant);
         return restaurant;
     }
 
     @Override
     public Restaurant update(Restaurant restaurant) {
-        return null;
+        this.restaurants.replace(restaurant.getResID(), restaurant);
+        return this.restaurants.get(restaurant.getResID());
     }
 
     @Override
     public void delete(String s) {
-        Restaurant restaurant = findID(s);
-        restaurants.remove(restaurant);
+
+        restaurants.remove(s);
 
     }
 
     @Override
     public Restaurant read(String s) {
-        Restaurant restaurant = findID(s);
-        if (restaurants.equals(s))
-            return restaurant;
-        return null;
-    }
-
-    public Restaurant findID(String s)
-    {
-        return restaurants.stream().filter(p -> p.getResID().equals(s))
-                .findFirst().orElse(null);
-
+        return this.restaurants.get(s);
 
     }
+
+//    public Restaurant findID(String s)
+//    {
+//        return restaurants.stream().filter(restaurant-> restaurant.getResID().equals(s))
+//                .findAny().orElse(null);
+//
+//
+//    }
 }

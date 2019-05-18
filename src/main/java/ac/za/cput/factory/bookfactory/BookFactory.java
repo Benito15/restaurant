@@ -1,6 +1,6 @@
 package ac.za.cput.factory.bookfactory;
 
-import ac.za.cput.domains.domainbook.Book;
+import ac.za.cput.domains.book.Book;
 import ac.za.cput.util.Misc;
 
 import java.util.Date;

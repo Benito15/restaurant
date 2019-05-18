@@ -7,15 +7,13 @@ import java.util.Date;
 
 public class ReceiptFactory {
 
-    private String recID,  desc;
-    private Date dte;
-    private double total;
 
     public static Receipt getReceipt(Date dte, String desc, double total)
     {
         return new Receipt.Builder().dte(dte)
                 .desc(desc)
                 .total(total)
+                .billID(Misc.generateId())
                 .recID(Misc.generateId())
                 .build();
 

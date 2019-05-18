@@ -5,9 +5,7 @@ import ac.za.cput.util.Misc;
 
 public class TableFactory {
 
-    private String tableID;
-    private int capacity;
-    private boolean isavailable;
+
 
     public static Table getGuest(int capacity,boolean isavailable)
     {

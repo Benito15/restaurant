@@ -3,22 +3,21 @@ package ac.za.cput.repositories.reportrepository.impl;
 import ac.za.cput.domains.report.Report;
 import ac.za.cput.repositories.reportrepository.ReportRepository;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class ReportRepositoryImpl implements ReportRepository {
 
     private static ReportRepositoryImpl repository = null;
-    private Set<Report> reports;
+    private Map<String,Report> reports;
 
 
     private ReportRepositoryImpl()
     {
-        this.reports = new HashSet<>();
+        this.reports = new HashMap<>();
 
     }
 
-    public static ReportRepository getRepository()
+    public static ReportRepositoryImpl getRepository()
     {
         if(repository == null) repository = new ReportRepositoryImpl();
         return repository;
@@ -28,44 +27,40 @@ public class ReportRepositoryImpl implements ReportRepository {
 
     @Override
     public Set<Report> getAll() {
-        return this.reports;
+        Collection<Report> reports = this.reports.values();
+        Set<Report> set = new HashSet<>();
+        set.addAll(reports);
+        return set;
     }
 
     @Override
     public Report create(Report report) {
-        this.reports.add(report);
+        this.reports.put(report.getRepID(), report);
         return report;
     }
 
     //// implementation still needs to be done!!
     @Override
     public Report update(Report report) {
-        return null;
+        this.reports.replace(report.getRepID(), report);
+        return this.reports.get(report.getRepID());
     }
 
     @Override
     public void delete(String s) {
-        Report report = findID(s);
-        reports.remove(report);
+
+        reports.remove(s);
     }
 
     @Override
     public Report read(String s) {
-        Report report = findID(s);
-        if (report.equals(s))
-            return report;
-        return null;
+        return this.reports.get(s);
     }
 
-    public Report findID(String s)
-    {
-        return reports.stream().filter(p -> p.getEmpID().equals(s))
-                .findFirst().orElse(null);
-
-
-    }
-
-
-
+//    public Report findID(String s)
+//    {
+//        return reports.stream().filter(report -> report.getRepID().equals(s))
+//                .findAny().orElse(null);
+//    }
 
 }

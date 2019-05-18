@@ -1,58 +1,65 @@
 package ac.za.cput.repositories.orderrepository.impl;
 
-import ac.za.cput.domains.domainorder.Order;
+import ac.za.cput.domains.order.Order;
 import ac.za.cput.repositories.orderrepository.OrderRepository;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class OrderRepositoryImpl implements OrderRepository {
 
     private static OrderRepositoryImpl repository = null;
-    private Set<Order> orders;
+    private Map<String, Order> orders;
 
     private OrderRepositoryImpl()
     {
-        this.orders = new HashSet<>();
+        this.orders = new HashMap<>();
     }
 
+    public static OrderRepositoryImpl getRepository()
+    {
+        if(repository == null) repository = new OrderRepositoryImpl();
+        return repository;
+    }
 
     @Override
     public Order create(Order order) {
-        this.orders.add(order);
+        this.orders.put(order.getOrderID(), order);
         return order;
     }
 
     @Override
-    public Order update(Order order) {
-        return null;
+    public Order update(Order order)
+    {
+        this.orders.replace(order.getOrderID(), order);
+        return this.orders.get(order.getOrderID());
     }
 
     @Override
     public void delete(String s) {
-        Order order = findID(s);
-        this.orders.remove(order);
+
+        this.orders.remove(s);
     }
 
     @Override
     public Order read(String s) {
-        Order order = findID(s);
-        if(orders.equals(s))
-            return order;
-        return null;
+        return this.orders.get(s);
+
     }
 
     @Override
     public Set<Order> getAll() {
-        return this.orders;
+        Collection<Order> orders = this.orders.values();
+        Set<Order> set = new HashSet<>();
+        set.addAll(orders);
+        return set;
     }
 
-    public Order findID(String o)
-    {
-        return orders.stream().filter(p -> p.getOrderID().equals(o))
-                .findFirst().orElse(null);
-
-
-    }
+//    public Order findID(String o)
+//    {
+//        return orders.stream().filter(p -> p.getOrderID().equals(o))
+//                .findAny().orElse(null);
+//
+//
+//    }
 
 }

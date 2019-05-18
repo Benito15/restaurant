@@ -18,6 +18,18 @@ public class Supplier {
 
     }
 
+    public void setSupID(String supID) {
+        this.supID = supID;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public String getSupID() {
         return supID;
     }
@@ -48,7 +60,7 @@ public class Supplier {
 
         }
 
-         public Builder address(String name)
+         public Builder address(String address)
         {
             this.address = address;
             return this;
@@ -64,10 +76,9 @@ public class Supplier {
     @Override
     public String toString() {
         return "Supplier{" +
-                "supplier ID='" + supID + '\'' +
-                ", Name='" + name + '\'' +
-                ", Address='" + address + '\'' +
-                '}';
+                "supplier ID='" + supID + "\n" +
+                ", Name='" + name + "\n" +
+                ", Address='" + address + "\n";
     }
 
     @Override

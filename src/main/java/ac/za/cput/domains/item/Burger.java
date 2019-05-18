@@ -39,12 +39,11 @@ public class Burger extends Item {
     @Override
     public String toString() {
         return "Burger{" +
-                ", itemID='" + itemID + '\'' +
-                ", desc='" + desc + '\'' +
-                ", qty=" + qty +
-                ", type='" + type + '\'' +
-                ", price=" + price +
-                '}';
+                "ItemID='" + itemID + "\n" +
+                "Desc='" + desc + "\n" +
+                "qty=" + qty + "\n"+
+                "type='" + type + "\n" +
+                "price=" + price + "\n";
     }
 }
 

@@ -16,8 +16,7 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.Set;
 
-import static b.h.k.t;
-import static org.junit.Assert.*;
+
 
 public class BillRepositoryImplTest {
 
@@ -72,7 +71,7 @@ public class BillRepositoryImplTest {
 
         billRepository.delete(bill2.getBillID());
         System.out.println(billRepository.getAll());
-        Assert.assertNotEquals(bill, bill2);
+       // Assert.assertNotEquals(bill, bill2);
 
     }
 
@@ -100,16 +99,15 @@ public class BillRepositoryImplTest {
         Bill bill2 = BillFactory.getBill(pasteDate,"2- Bill", 150);
 
         //System.out.println(bill2);
-
         billRepository.create(bill);
-
         billRepository.create(bill2);
         Bill readBill = this.billRepository.read(bill.getBillID());
-        Bill readBill2 = this.billRepository.read(bill2.getBillID());
 
-       // Assert.assertSame(readBill, readBill2);
-        Assert.assertTrue("lets test: ", this.billRepository != null
-                );
+        Assert.assertTrue(bill2.getTotal() > readBill.getTotal());
+
+
+
+
 
 
     }

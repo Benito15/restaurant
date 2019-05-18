@@ -1,6 +1,6 @@
 package repositorytest.guesttest;
 
-import ac.za.cput.domains.domainguest.Guest;
+import ac.za.cput.domains.guest.Guest;
 import ac.za.cput.factory.guestfactory.GuestFactory;
 import ac.za.cput.repositories.guestrepository.GuestRepository;
 import ac.za.cput.repositories.guestrepository.impl.GuestRepositoryImpl;
@@ -99,7 +99,7 @@ public void update() {
         repository.create(newguest);
 
         Guest readGuest = this.repository.read(guest.getGuestId());
-        Assert.assertEquals(null,readGuest);
+        Assert.assertNotEquals(newguest,readGuest);
       //  Assert.assertNotEquals(guest, newguest);
 
     }

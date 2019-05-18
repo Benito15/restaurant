@@ -1,6 +1,6 @@
 package ac.za.cput.factory.guestfactory;
 
-import ac.za.cput.domains.domainguest.Guest;
+import ac.za.cput.domains.guest.Guest;
 import ac.za.cput.util.Misc;
 
 public class GuestFactory {

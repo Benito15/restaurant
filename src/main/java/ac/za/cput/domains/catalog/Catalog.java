@@ -4,22 +4,41 @@ public class Catalog {
 
     private String itemID;
     private String supID;
+    private String description;
 
     private Catalog(){}
 
     private Catalog (Builder builder)
     {
-        this.itemID = itemID;
-        this.supID = supID;
+        this.itemID = builder.itemID;
+        this.supID = builder.supID;
+        this.description = builder.description;
 
     }
+
 
     public String getItemID() {
         return itemID;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
     public String getSupID() {
         return supID;
+    }
+
+    public void setItemID(String itemID) {
+        this.itemID = itemID;
+    }
+
+    public void setSupID(String supID) {
+        this.supID = supID;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public static class Builder
@@ -27,6 +46,7 @@ public class Catalog {
 
         private String itemID;
         private String supID;
+        private String description;
 
         public Builder itemID(String itemID)
         {
@@ -42,15 +62,21 @@ public class Catalog {
 
         }
 
+        public Builder description(String description)
+        {
+            this.description = description;
+            return this;
+        }
+
         public Catalog build() {return new Catalog (this);}
 
     }
 
     @Override
     public String toString() {
-        return "Catalog{" +
-                "itemID='" + itemID + '\'' +
-                ", supID='" + supID + '\'' +
-                '}';
+        return "\n Catalog" +
+                "ItemID='" + itemID + "\n" +
+                "supID='" + supID + "\n" +
+                "Description = " + description+ "\n" ;
     }
 }

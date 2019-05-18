@@ -39,10 +39,9 @@ public class Dessert extends Item {
 
     @Override
     public String toString() {
-        return "Dessert{" +
-                "desc='" + desc + '\'' +
-                ", qty=" + qty +
-                ", price=" + price +
-                '}';
+        return "\n Dessert{" +
+                "Desc='" + desc + "\n"+
+                "qty=" + qty + "\n" +
+                "Price=" + price + "\n";
     }
 }

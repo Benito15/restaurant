@@ -3,35 +3,42 @@ package ac.za.cput.repositories.inventoryrepository.impl;
 import ac.za.cput.domains.inventory.Inventory;
 import ac.za.cput.repositories.inventoryrepository.InventoryRepository;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class InventoryRepositoryImpl implements InventoryRepository {
 
     private static InventoryRepositoryImpl repository = null;
-    private Set<Inventory> inventories;
+    private Map<String,Inventory> inventories;
 
-    private InventoryRepositoryImpl()
+    public InventoryRepositoryImpl()
     {
-        this.inventories = new HashSet<>();
+        this.inventories = new HashMap<>();
     }
 
-    public static InventoryRepository getRepository()
+    public static InventoryRepositoryImpl getRepository()
     {
         if(repository == null) repository = new InventoryRepositoryImpl();
         return repository;
     }
 
+//    public Inventory findID(String s)
+//    {
+//        return inventories.stream().filter(p -> p.getInvID().trim().equals(s))
+//                .findAny().orElse(null);
+//    }
 
     @Override
     public Set<Inventory> getAll() {
-        return this.inventories;
+        Collection<Inventory> inventories = this.inventories.values();
+        Set<Inventory> set = new HashSet<>();
+        set.addAll(inventories);
+        return set;
 
     }
 
     @Override
     public Inventory create(Inventory inventory) {
-        this.inventories.add(inventory);
+        this.inventories.put(inventory.getInvID(), inventory);
         return inventory;
     }
 
@@ -39,33 +46,24 @@ public class InventoryRepositoryImpl implements InventoryRepository {
 
     @Override
     public Inventory update(Inventory inventory) {
-        Inventory updateInv = findID(inventory.getInvID());
-        if(updateInv != null)
-        {
-            this.inventories.remove(updateInv);
-            return create(inventory);
-        }
-        return null;
+        this.inventories.replace(inventory.getInvID(), inventory);
+        return this.inventories.get(inventory.getInvID());
+
     }
 
     @Override
     public void delete(String s) {
-        Inventory inventory = findID(s);
-        this.inventories.remove(inventory);
+
+        this.inventories.remove(s);
     }
 
     @Override
     public Inventory read(String s) {
-        Inventory inventory = findID(s);
-        if(inventory.equals(s))
-            return inventory;
-        return null;
+        return this.inventories.get(s);
+
     }
 
 
-    public Inventory findID(String s)
-    {
-        return inventories.stream().filter(p -> p.getInvID().equals(s))
-                .findAny().orElse(null);
-    }
+
+
 }

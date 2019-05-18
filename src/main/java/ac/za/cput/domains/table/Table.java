@@ -8,12 +8,24 @@ public class Table {
     private int capacity;
     private boolean isavailable;
 
-private Table(){}
+    private Table(){}
 
     private Table(Builder builder)
     {
+        this.tableID = builder.tableID;
+        this.capacity = builder.capacity;
+        this.isavailable = builder.isavailable;
+    }
+
+    public void setTableID(String tableID) {
         this.tableID = tableID;
+    }
+
+    public void setCapacity(int capacity) {
         this.capacity = capacity;
+    }
+
+    public void setIsavailable(boolean isavailable) {
         this.isavailable = isavailable;
     }
 
@@ -75,5 +87,14 @@ private Table(){}
     @Override
     public int hashCode() {
         return Objects.hash(getTableID());
+    }
+
+    @Override
+    public String toString() {
+        return "Table{" +
+                "tableID= " + tableID + "\n" +
+                "capacity= " + capacity + "\n" +
+                "isavailable= " + isavailable +
+                "\n" ;
     }
 }

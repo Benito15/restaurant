@@ -4,17 +4,16 @@ import ac.za.cput.domains.payment.Credit;
 import ac.za.cput.repositories.billrepository.BillRepository;
 import ac.za.cput.repositories.paymentrepositories.CreditRepository;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class CreditRepositoryImpl implements CreditRepository {
 
     private static CreditRepositoryImpl repository = null;
-    private Set<Credit>credits;
+    private Map<String, Credit> credits;
 
     private CreditRepositoryImpl()
     {
-        credits = new HashSet<>();
+        credits = new HashMap();
     }
 
     public static CreditRepository getRepository()
@@ -25,40 +24,42 @@ public class CreditRepositoryImpl implements CreditRepository {
 
     @Override
     public Set<Credit> getAll() {
-        return this.credits;
+        Collection<Credit> credits = this.credits.values();
+        Set<Credit> set = new HashSet<>();
+        set.addAll(credits);
+        return set;
     }
 
     @Override
     public Credit create(Credit credit) {
-        this.credits.add(credit);
+        this.credits.put(credit.getCardID(), credit);
         return credit;
     }
 
     @Override
     public Credit update(Credit credit) {
-        return null;
+        this.credits.replace(credit.getCardID(), credit);
+        return this.credits.get(credit.getCardID());
     }
 
     @Override
     public void delete(String s) {
-        Credit credit = findID(s);
+
         this.credits.remove(s);
 
     }
 
     @Override
     public Credit read(String s) {
-        Credit credit = findID(s);
-        if(credit.equals(s))
-            return credit;
-        else return null;
-    }
-
-
-    public Credit findID(String s)
-    {
-        return credits.stream().filter(credit -> credit.getCardID().equals(s))
-                .findAny().orElse(null);
+        return this.credits.get(s);
 
     }
+
+
+//    public Credit findID(String s)
+//    {
+//        return credits.stream().filter(credit -> credit.getCardID().equals(s))
+//                .findAny().orElse(null);
+//
+//    }
 }

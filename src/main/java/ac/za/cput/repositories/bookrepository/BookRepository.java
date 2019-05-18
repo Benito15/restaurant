@@ -1,6 +1,6 @@
 package ac.za.cput.repositories.bookrepository;
 
-import ac.za.cput.domains.domainbook.Book;
+import ac.za.cput.domains.book.Book;
 import ac.za.cput.repositories.IRepository;
 
 import java.util.Set;

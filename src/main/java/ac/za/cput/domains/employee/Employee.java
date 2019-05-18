@@ -1,6 +1,6 @@
 package ac.za.cput.domains.employee;
 
-import ac.za.cput.domains.domainguest.Guest;
+import java.util.Objects;
 
 public class Employee {
 
@@ -16,6 +16,22 @@ public class Employee {
         this.surname = builder.surname ;
         this.salary = builder.salary;
 
+    }
+
+    public void setEmpid(String empid) {
+        this.empid = empid;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
     }
 
     public String getEmpid() {
@@ -81,5 +97,18 @@ public class Employee {
                 ", surname='" + surname + '\'' +
                 ", salary=" + salary +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Employee)) return false;
+        Employee employee = (Employee) o;
+        return Objects.equals(getEmpid(), employee.getEmpid());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getEmpid());
     }
 }

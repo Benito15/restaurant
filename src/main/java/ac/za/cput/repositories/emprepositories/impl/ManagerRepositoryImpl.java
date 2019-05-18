@@ -3,17 +3,16 @@ package ac.za.cput.repositories.emprepositories.impl;
 import ac.za.cput.domains.employee.Manager;
 import ac.za.cput.repositories.emprepositories.ManagerRepository;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class ManagerRepositoryImpl implements ManagerRepository {
 
    private static ManagerRepositoryImpl repository = null;
-   private Set<Manager> managers;
+   private Map<String,Manager> managers;
 
    private ManagerRepositoryImpl()
    {
-       this.managers = new HashSet<>();
+       this.managers = new HashMap<>();
 
    }
 
@@ -26,38 +25,36 @@ public class ManagerRepositoryImpl implements ManagerRepository {
 
     @Override
     public Set<Manager> getAll() {
-        return this.managers;
+        Collection<Manager> managers = this.managers.values();
+        Set<Manager> set = new HashSet<>();
+        set.addAll(managers);
+        return set;
+
     }
 
     @Override
     public Manager create(Manager manager) {
-        this.managers.add(manager);
+        this.managers.put(manager.getEmpid(), manager);
         return manager;
     }
 
     @Override
     public Manager update(Manager manager) {
-        return null;
+        this.managers.replace(manager.getEmpid(), manager);
+        return this.managers.get(manager.getEmpid());
     }
 
     @Override
     public void delete(String s) {
-        Manager manager = findID(s);
-        this.managers.remove(manager);
+
+        this.managers.remove(s);
 
     }
 
     @Override
     public Manager read(String s) {
-        Manager manager = findID(s);
-        if(manager.equals(s))
-            return manager;
-        else return null;
+      return this.managers.get(s);
     }
 
-    public Manager findID(String s)
-    {
-        return managers.stream().filter(o -> o.getEmpid().equals(s))
-                .findFirst().orElse(null);
-    }
+
 }

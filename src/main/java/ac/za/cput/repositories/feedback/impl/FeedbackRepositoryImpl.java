@@ -3,21 +3,20 @@ package ac.za.cput.repositories.feedback.impl;
 import ac.za.cput.domains.feedback.Feedback;
 import ac.za.cput.repositories.feedback.FeedbackRepository;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class FeedbackRepositoryImpl implements FeedbackRepository {
 
     private static FeedbackRepositoryImpl repository = null;
-    private Set<Feedback> feedbacks;
+    private Map<String,Feedback> feedbacks;
 
     private FeedbackRepositoryImpl()
     {
-        this.feedbacks = new HashSet<>();
+        this.feedbacks = new HashMap<>();
 
     }
 
-    public static FeedbackRepository getRepository()
+    public static FeedbackRepositoryImpl getRepository()
     {
         if(repository == null) repository = new FeedbackRepositoryImpl();
         return repository;
@@ -26,44 +25,40 @@ public class FeedbackRepositoryImpl implements FeedbackRepository {
 
     @Override
     public Set<Feedback> getAll() {
-        return this.feedbacks;
+        Collection<Feedback> feedbacks = this.feedbacks.values();
+        Set<Feedback> set = new HashSet<>();
+        set.addAll(feedbacks);
+        return set;
     }
 
     @Override
     public Feedback create(Feedback feedback) {
-        this.feedbacks.add(feedback);
+        this.feedbacks.put(feedback.getGuestID(),feedback);
         return feedback;
     }
 
     @Override
     public Feedback update(Feedback feedback) {
+        this.feedbacks.replace(feedback.getGuestID(),feedback);
+        return this.feedbacks.get(feedback.getGuestID());
 
-        Feedback feedbackUpdate = findID(feedback.getGuestID());
-        if (feedbackUpdate != null)
-        {
-            this.feedbacks.remove(feedbackUpdate);
-            return create(feedback);
-        }
-        return null;
     }
 
     @Override
     public void delete(String s) {
-        Feedback feedback = findID(s);
+
         this.feedbacks.remove(s);
     }
 
     @Override
     public Feedback read(String s) {
-       Feedback feedback = findID(s);
-        if(feedbacks.equals(s))
-            return feedback;
-        return null;
+        return this.feedbacks.get(s);
+
     }
 
-    public Feedback findID(String s)
-    {
-        return feedbacks.stream().filter(o -> o.getGuestID().equals(s))
-                .findAny().orElse(null);
-    }
+//    public Feedback findID(String s)
+//    {
+//        return feedbacks.stream().filter(o -> o.getGuestID().equals(s))
+//                .findAny().orElse(null);
+//    }
 }

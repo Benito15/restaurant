@@ -8,9 +8,9 @@ public class Inventory {
     private int qty;
 
 
-    public Inventory(){}
+    private Inventory(){}
 
-    public Inventory(Builder builder)
+    private Inventory(Builder builder)
     {
         this.invID = builder.invID;
         this.desc = builder.desc;

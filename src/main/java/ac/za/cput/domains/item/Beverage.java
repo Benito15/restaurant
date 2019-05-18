@@ -32,12 +32,12 @@ public class Beverage extends Item{
 
     @Override
     public String toString() {
-        return "Beverage{" +
-                ", itemID='" + itemID + '\'' +
-                ", desc='" + desc + '\'' +
-                ", qty=" + qty +
-                ", price=" + price +
-                ", volume=" + volume +
-                '}';
+        return "\n Beverage{" +
+                "ItemID='" + itemID + "\n" +
+                "Desc='" + desc + "\n" +
+                "qty=" + qty + "\n"+
+                "price=" + price + "\n"+
+                "volume=" + volume + "\n"
+               ;
     }
 }

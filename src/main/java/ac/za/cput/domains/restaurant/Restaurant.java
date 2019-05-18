@@ -29,6 +29,18 @@ public class Restaurant {
         return totEmployees;
     }
 
+    public void setResID(String resID) {
+        this.resID = resID;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setTotEmployees(int totEmployees) {
+        this.totEmployees = totEmployees;
+    }
+
     public static class Builder
     {
 
@@ -66,11 +78,10 @@ public class Restaurant {
 
     @Override
     public String toString() {
-        return "Restaurant{" +
-                "resID='" + resID + '\'' +
-                ", name='" + name + '\'' +
-                ", totEmployees=" + totEmployees +
-                '}';
+        return "\n Restaurant" +
+                "resID= " + resID + "\n" +
+                "Name= " + name + "\n" +
+                "Total Employees= " + totEmployees + "\n";
     }
 
     @Override

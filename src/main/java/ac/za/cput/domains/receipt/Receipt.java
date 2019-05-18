@@ -7,7 +7,7 @@ import java.util.Objects;
 
 public class Receipt {
 
-    private String recID,  desc;
+    private String recID, billID,  desc;
     private Date dte;
     private double total;
 
@@ -16,14 +16,19 @@ public class Receipt {
     private Receipt(Builder builder)
     {
         this.recID = builder.recID;
+        this.billID = builder.billID;
         this.dte = builder.dte;
         this.desc = builder.desc;
         this.total = builder.total;
 
     }
 
-    public String getBillID() {
+    public String getRecID() {
         return recID;
+    }
+
+    public String getBillID() {
+        return billID;
     }
 
     public Date getDte() {
@@ -38,9 +43,29 @@ public class Receipt {
         return total;
     }
 
+    public void setRecID(String recID) {
+        this.recID = recID;
+    }
+
+    public void setBillID(String billID) {
+        this.billID = billID;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    public void setDte(Date dte) {
+        this.dte = dte;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
     public static class Builder
     {
-        private String recID, desc;
+        private String recID,billID, desc;
         private Date dte;
         private double total;
 
@@ -50,6 +75,12 @@ public class Receipt {
             this.recID = recID;
             return this;
 
+        }
+
+        public Builder billID(String billID)
+        {
+            this.billID = billID;
+            return this;
         }
 
         public Builder dte(Date dte)
@@ -82,11 +113,11 @@ public class Receipt {
     @Override
     public String toString() {
         return "receipt{" +
-                "ReceiptID='" + recID + '\'' +
-                ", Date='" + dte + '\'' +
-                ", Description='" + desc + '\'' +
-                ", Total=" + total +
-                '}';
+                "ReceiptID='" + recID + "\n" +
+                "billID= " + billID + "\n"  +
+                ", Date='" + dte + "\n"  +
+                ", Description='" + desc + "\n"  +
+                ", Total=" + total+ "\n"  ;
     }
 
     @Override

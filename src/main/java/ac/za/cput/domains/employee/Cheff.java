@@ -25,11 +25,13 @@ public class Cheff extends Employee {
 
     @Override
     public String toString() {
-        return "Cheff{" +
-                "empid='" + empid + '\'' +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", salary=" + salary +
-                '}';
+        return " \n Cheff{" +
+                "Empid= " + empid + "\n"+
+                "Name= " + name + "\n"+
+                "Surname= " + surname + "\n" +
+                "Salary= " + salary +"\n";
     }
+
+
+
 }

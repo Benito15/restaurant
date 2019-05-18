@@ -3,18 +3,17 @@ package ac.za.cput.repositories.emprepositories.impl;
 import ac.za.cput.domains.employee.Employee;
 import ac.za.cput.repositories.emprepositories.EmployeeRepository;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class EmployeeRepositoryImpl implements EmployeeRepository
 {
 
     private static EmployeeRepositoryImpl repository = null;
-    private Set<Employee> employees;
+    private Map<String,Employee> employees;
 
     private EmployeeRepositoryImpl()
     {
-        this.employees = new HashSet<>();
+        this.employees = new HashMap<>();
     }
 
 
@@ -30,42 +29,44 @@ public class EmployeeRepositoryImpl implements EmployeeRepository
 
     @Override
     public Set<Employee> getAll() {
-        return this.employees;
+        Collection<Employee> employees = this.employees.values();
+        Set<Employee> set = new HashSet<>();
+        set.addAll(employees);
+        return set;
     }
 
 
 
     @Override
     public Employee create(Employee employee) {
-        this.employees.add(employee);
+        this.employees.put(employee.getEmpid(),employee);
         return employee;
     }
 
     @Override
     public Employee update(Employee employee) {
-        return null;
+        this.employees.replace(employee.getEmpid(), employee);
+        return this.employees.get(employee.getEmpid());
     }
 
     @Override
     public void delete(String s) {
-        Employee employee = findID(s);
+
         this.employees.remove(s);
 
     }
 
     @Override
     public Employee read(String s) {
-        Employee employee = findID(s);
-        if(employees.equals(s))
-            return employee;
-        return null;
+        return this.employees.get(s);
+
     }
 
-    public Employee findID(String s)
-    {
-        return employees.stream().filter(o -> o.getEmpid().equals(s))
-                .findFirst().orElse(null);
-    }
+//    public Employee findID(String s)
+//    {
+//        return employees.stream().filter(o -> o.getEmpid().equals(s))
+//                .findFirst().orElse(null);
+//    }
 
 
 
