@@ -2,9 +2,11 @@ package ac.za.cput.repositories.supplierrepository.impl;
 
 import ac.za.cput.domains.supplier.Supplier;
 import ac.za.cput.repositories.supplierrepository.SupplierRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
+@Repository("SupplierInMemory")
 public class SupplierRepositoryImpl implements SupplierRepository {
 
     private static SupplierRepositoryImpl repository = null;

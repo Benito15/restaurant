@@ -3,9 +3,11 @@ package ac.za.cput.repositories.paymentrepositories.impl;
 import ac.za.cput.domains.payment.Credit;
 import ac.za.cput.repositories.billrepository.BillRepository;
 import ac.za.cput.repositories.paymentrepositories.CreditRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
+@Repository("CreditInMemory")
 public class CreditRepositoryImpl implements CreditRepository {
 
     private static CreditRepositoryImpl repository = null;

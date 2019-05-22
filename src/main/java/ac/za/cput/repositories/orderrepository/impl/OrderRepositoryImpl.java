@@ -2,9 +2,11 @@ package ac.za.cput.repositories.orderrepository.impl;
 
 import ac.za.cput.domains.order.Order;
 import ac.za.cput.repositories.orderrepository.OrderRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
+@Repository("OrderInMemory")
 public class OrderRepositoryImpl implements OrderRepository {
 
     private static OrderRepositoryImpl repository = null;

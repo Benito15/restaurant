@@ -2,9 +2,11 @@ package ac.za.cput.repositories.guestrepository.impl;
 
 import ac.za.cput.domains.guest.Guest;
 import ac.za.cput.repositories.guestrepository.GuestRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
+@Repository("GuestInMemory")
 public class GuestRepositoryImpl implements GuestRepository {
 
     private static GuestRepositoryImpl repository = null;

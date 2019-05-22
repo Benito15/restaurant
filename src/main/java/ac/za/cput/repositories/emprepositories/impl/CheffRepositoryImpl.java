@@ -2,9 +2,11 @@ package ac.za.cput.repositories.emprepositories.impl;
 
 import ac.za.cput.domains.employee.Cheff;
 import ac.za.cput.repositories.emprepositories.CheffRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
+@Repository("CheffInMemory")
 public class CheffRepositoryImpl implements CheffRepository {
 
     private static CheffRepositoryImpl repository = null;

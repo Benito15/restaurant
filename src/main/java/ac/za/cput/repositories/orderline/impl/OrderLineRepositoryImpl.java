@@ -2,9 +2,11 @@ package ac.za.cput.repositories.orderline.impl;
 
 import ac.za.cput.domains.orderline.OrderLine;
 import ac.za.cput.repositories.orderline.OrderLineRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
+@Repository("OrderLineInMemory")
 public class OrderLineRepositoryImpl implements  OrderLineRepository {
 
     private static OrderLineRepositoryImpl repository = null;

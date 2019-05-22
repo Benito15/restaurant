@@ -91,7 +91,7 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Employee{" +
+        return "employee{" +
                 "empid='" + empid + '\'' +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +

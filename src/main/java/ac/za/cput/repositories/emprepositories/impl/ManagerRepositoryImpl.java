@@ -2,9 +2,11 @@ package ac.za.cput.repositories.emprepositories.impl;
 
 import ac.za.cput.domains.employee.Manager;
 import ac.za.cput.repositories.emprepositories.ManagerRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
+@Repository("ManagerInMemory")
 public class ManagerRepositoryImpl implements ManagerRepository {
 
    private static ManagerRepositoryImpl repository = null;

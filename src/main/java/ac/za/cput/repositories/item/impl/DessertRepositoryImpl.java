@@ -2,9 +2,11 @@ package ac.za.cput.repositories.item.impl;
 
 import ac.za.cput.domains.item.Dessert;
 import ac.za.cput.repositories.item.DessertRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
+@Repository("DessertInMemory")
 public class DessertRepositoryImpl  implements DessertRepository {
 
     private static DessertRepositoryImpl repository = null;

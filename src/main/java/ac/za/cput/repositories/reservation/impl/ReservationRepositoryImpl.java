@@ -2,9 +2,11 @@ package ac.za.cput.repositories.reservation.impl;
 
 import ac.za.cput.domains.reservation.Reservation;
 import ac.za.cput.repositories.reservation.ReservationRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
+@Repository("ReservationInMemory")
 public class ReservationRepositoryImpl implements ReservationRepository {
 
     private static ReservationRepositoryImpl repository = null;

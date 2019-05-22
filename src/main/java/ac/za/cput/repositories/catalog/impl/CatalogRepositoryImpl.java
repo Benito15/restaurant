@@ -2,9 +2,11 @@ package ac.za.cput.repositories.catalog.impl;
 
 import ac.za.cput.domains.catalog.Catalog;
 import ac.za.cput.repositories.catalog.CatalogRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
+@Repository("CatalogInMemory")
 public class CatalogRepositoryImpl implements CatalogRepository {
 
     private static CatalogRepositoryImpl repository = null;

@@ -2,9 +2,11 @@ package ac.za.cput.repositories.emprepositories.impl;
 
 import ac.za.cput.domains.employee.Waiter;
 import ac.za.cput.repositories.emprepositories.WaiterRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
+@Repository("WaiterInMemory")
 public class WaiterRepositoryImpl implements WaiterRepository {
 
     private static WaiterRepositoryImpl repository = null;

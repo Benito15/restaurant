@@ -2,9 +2,11 @@ package ac.za.cput.repositories.tablerepository.impl;
 
 import ac.za.cput.domains.table.Table;
 import ac.za.cput.repositories.tablerepository.TableRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
+@Repository("TableInMemory")
 public class TableRepositoryImpl implements TableRepository {
 
     private static TableRepositoryImpl repository = null;
@@ -21,14 +23,8 @@ public class TableRepositoryImpl implements TableRepository {
         return repository;
     }
 
-//    public Table findID(String s)
-//    {
-//        return tables.stream().filter(table -> table.getTableID().trim()
-//                .equals(s)).findAny().orElse(null);
-//
-//
-//
-//    }
+
+
 
 
 

@@ -2,10 +2,11 @@ package ac.za.cput.repositories.billrepository.impl;
 
 import ac.za.cput.domains.bill.Bill;
 import ac.za.cput.repositories.billrepository.BillRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
-
+@Repository("BillinMemory")
 public class BillRepositoryImpl implements BillRepository {
 
     private static BillRepositoryImpl repository = null;

@@ -1,6 +1,9 @@
 package ac.za.cput.domains.guest;
 
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
 import java.util.Objects;
+
 
 public class Guest {
     private String guestId, guestName, guestSurname;

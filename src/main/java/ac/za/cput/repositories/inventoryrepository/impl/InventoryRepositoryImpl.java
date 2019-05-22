@@ -2,9 +2,11 @@ package ac.za.cput.repositories.inventoryrepository.impl;
 
 import ac.za.cput.domains.inventory.Inventory;
 import ac.za.cput.repositories.inventoryrepository.InventoryRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
+@Repository("InventoryInMemory")
 public class InventoryRepositoryImpl implements InventoryRepository {
 
     private static InventoryRepositoryImpl repository = null;

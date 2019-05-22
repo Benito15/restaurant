@@ -2,9 +2,11 @@ package ac.za.cput.repositories.receiptrepository.impl;
 
 import ac.za.cput.domains.receipt.Receipt;
 import ac.za.cput.repositories.receiptrepository.ReceiptRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
+@Repository("ReceiptInMemory")
 public class ReceiptRepositoryImpl implements ReceiptRepository {
 
     private static ReceiptRepositoryImpl repository = null;

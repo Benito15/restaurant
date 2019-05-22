@@ -1,10 +1,13 @@
 package ac.za.cput.repositories.restaurantrepository.impl;
 
 import ac.za.cput.domains.restaurant.Restaurant;
-import repositorytest.restaurantrepository.RestaurantRepository;
+import ac.za.cput.repositories.restaurantrepository.RestaurantRepository;
+import org.springframework.stereotype.Repository;
+
 
 import java.util.*;
 
+@Repository("RestaurantInMemory")
 public class RestaurantRepositoryImpl implements RestaurantRepository {
 
     private static RestaurantRepositoryImpl repository = null;

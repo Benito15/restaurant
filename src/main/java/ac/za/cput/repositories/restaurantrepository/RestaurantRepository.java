@@ -1,4 +1,4 @@
-package repositorytest.restaurantrepository;
+package ac.za.cput.repositories.restaurantrepository;
 
 import ac.za.cput.domains.restaurant.Restaurant;
 import ac.za.cput.repositories.IRepository;

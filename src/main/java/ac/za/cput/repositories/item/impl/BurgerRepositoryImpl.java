@@ -2,9 +2,11 @@ package ac.za.cput.repositories.item.impl;
 
 import ac.za.cput.domains.item.Burger;
 import ac.za.cput.repositories.item.BurgerRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
+@Repository("BurgerInMemory")
 public class BurgerRepositoryImpl implements BurgerRepository {
 
     private static BurgerRepositoryImpl repository = null;

@@ -25,6 +25,14 @@ public class Credit implements Payment {
         return name;
     }
 
+    public void setCardID(String cardID) {
+        this.cardID = cardID;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public static class Builder
     {
         String cardID, name;
@@ -60,9 +68,9 @@ public class Credit implements Payment {
 
     @Override
     public String toString() {
-        return "Credit{" +
-                "cardID='" + cardID + '\'' +
-                ", name='" + name + '\'' +
+        return "\n Credit{" +
+                "cardID='" + cardID + "\n"+
+                ", name='" + name + "\n" +
                 '}';
     }
 }

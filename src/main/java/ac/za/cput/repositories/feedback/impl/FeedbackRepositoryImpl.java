@@ -1,14 +1,18 @@
 package ac.za.cput.repositories.feedback.impl;
 
+
+
 import ac.za.cput.domains.feedback.Feedback;
 import ac.za.cput.repositories.feedback.FeedbackRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
+@Repository("FeedbackInMemory")
 public class FeedbackRepositoryImpl implements FeedbackRepository {
 
     private static FeedbackRepositoryImpl repository = null;
-    private Map<String,Feedback> feedbacks;
+    private Map<String, Feedback> feedbacks;
 
     private FeedbackRepositoryImpl()
     {
@@ -25,9 +29,9 @@ public class FeedbackRepositoryImpl implements FeedbackRepository {
 
     @Override
     public Set<Feedback> getAll() {
-        Collection<Feedback> feedbacks = this.feedbacks.values();
+        Collection<Feedback> feedback = this.feedbacks.values();
         Set<Feedback> set = new HashSet<>();
-        set.addAll(feedbacks);
+        set.addAll(feedback);
         return set;
     }
 

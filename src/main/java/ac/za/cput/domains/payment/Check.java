@@ -25,7 +25,13 @@ public class Check implements Payment {
     }
 
 
+    public void setBankID(String bankID) {
+        this.bankID = bankID;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
 
     @Override
     public Date dte() {
@@ -78,9 +84,9 @@ public class Check implements Payment {
 
     @Override
     public String toString() {
-        return "Check{" +
-                "bankID='" + bankID + '\'' +
-                ", name='" + name + '\'' +
+        return "\n Check{" +
+                "bankID='" + bankID + "\n" +
+                "name='" + name + "\n"+
                 '}';
     }
 }

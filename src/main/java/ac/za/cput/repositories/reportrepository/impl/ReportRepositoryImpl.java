@@ -2,9 +2,12 @@ package ac.za.cput.repositories.reportrepository.impl;
 
 import ac.za.cput.domains.report.Report;
 import ac.za.cput.repositories.reportrepository.ReportRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
+
+@Repository("ReportInMemory")
 public class ReportRepositoryImpl implements ReportRepository {
 
     private static ReportRepositoryImpl repository = null;
