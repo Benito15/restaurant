@@ -3,7 +3,7 @@ package ac.za.cput.servicetest.receipt;
 import ac.za.cput.domains.receipt.Receipt;
 import ac.za.cput.factory.receiptfactory.ReceiptFactory;
 import ac.za.cput.service.receipt.impl.ReceiptServiceImpl;
-import kotlinx.coroutines.experimental.channels.ReceiveOrClosed;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
