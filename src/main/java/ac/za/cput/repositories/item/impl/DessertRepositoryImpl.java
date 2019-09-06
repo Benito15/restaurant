@@ -1,6 +1,6 @@
 package ac.za.cput.repositories.item.impl;
 
-import ac.za.cput.domains.item.Dessert;
+import ac.za.cput.domains.purchase.item.Dessert;
 import ac.za.cput.repositories.item.DessertRepository;
 import org.springframework.stereotype.Repository;
 

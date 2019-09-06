@@ -8,16 +8,16 @@ public class Reservation {
 
     private int totGuest;
 
-    private Reservation()
+    public Reservation(String guestID, String tableID, int totGuest)
     {}
 
-    private Reservation(Builder builder)
-    {
-
-        this.guestID= builder.guestID;
-        this.tableID = builder.tableID;
-        this.totGuest=builder.totGuest;
-    }
+//    public Reservation(Builder builder)
+//    {
+//
+//        this.guestID= builder.guestID;
+//        this.tableID = builder.tableID;
+//        this.totGuest=builder.totGuest;
+//    }
 
     public String getGuestID() {
         return guestID;
@@ -43,34 +43,34 @@ public class Reservation {
         this.totGuest = totGuest;
     }
 
-    public static class Builder
-    {
-        private String guestID,tableID;
-        private int totGuest;
-
-        public Builder guestID(String guestID)
-        {
-            this.guestID = guestID;
-            return this;
-
-        }
-
-        public Builder tableID(String tableID)
-        {
-            this.tableID = tableID;
-            return this;
-        }
-
-        public Builder totGuest(int totGuest)
-        {
-            this.totGuest = totGuest;
-            return this;
-
-        }
-
-        public Reservation build(){return  new Reservation(this);}
-
-    }
+//    public static class Builder
+//    {
+//        private String guestID,tableID;
+//        private int totGuest;
+//
+//        public Builder guestID(String guestID)
+//        {
+//            this.guestID = guestID;
+//            return this;
+//
+//        }
+//
+//        public Builder tableID(String tableID)
+//        {
+//            this.tableID = tableID;
+//            return this;
+//        }
+//
+//        public Builder totGuest(int totGuest)
+//        {
+//            this.totGuest = totGuest;
+//            return this;
+//
+//        }
+//
+//        public Reservation build(){return  new Reservation(this);}
+//
+//    }
 
     @Override
     public String toString() {

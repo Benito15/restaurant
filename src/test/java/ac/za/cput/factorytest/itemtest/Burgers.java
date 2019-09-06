@@ -1,7 +1,7 @@
 package ac.za.cput.factorytest.itemtest;
 
-import ac.za.cput.domains.item.Burger;
-import ac.za.cput.factory.itemfactory.BurgerFactory;
+import ac.za.cput.domains.purchase.item.Burger;
+import ac.za.cput.factory.purchasefactory.itemfactory.BurgerFactory;
 import org.junit.Assert;
 import org.junit.Test;
 

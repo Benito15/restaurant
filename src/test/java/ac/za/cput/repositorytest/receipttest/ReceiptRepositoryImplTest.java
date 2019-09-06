@@ -1,7 +1,7 @@
 package ac.za.cput.repositorytest.receipttest;
 
-import ac.za.cput.domains.receipt.Receipt;
-import ac.za.cput.factory.receiptfactory.ReceiptFactory;
+import ac.za.cput.domains.proofofpayment.receipt.Receipt;
+import ac.za.cput.factory.proofofpayment.receiptfactory.ReceiptFactory;
 import ac.za.cput.repositories.receiptrepository.ReceiptRepository;
 import ac.za.cput.repositories.receiptrepository.impl.ReceiptRepositoryImpl;
 import org.junit.Assert;

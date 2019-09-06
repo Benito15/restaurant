@@ -9,7 +9,7 @@ public class Restaurant {
 
     private Restaurant(){}
 
-    private Restaurant(Builder builder)
+    public Restaurant(Builder builder)
     {
 
         this.resID=builder.resID;

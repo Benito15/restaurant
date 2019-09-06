@@ -1,17 +1,14 @@
 package ac.za.cput.servicetest.item;
 
-import ac.za.cput.domains.item.Beverage;
-import ac.za.cput.factory.itemfactory.BeveragesFactory;
+import ac.za.cput.domains.purchase.item.Beverage;
+import ac.za.cput.factory.purchasefactory.itemfactory.BeveragesFactory;
 import ac.za.cput.service.item.impl.BeverageServiceImpl;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

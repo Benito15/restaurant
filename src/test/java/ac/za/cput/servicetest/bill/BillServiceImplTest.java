@@ -1,17 +1,15 @@
 package ac.za.cput.servicetest.bill;
 
-import ac.za.cput.domains.bill.Bill;
-import ac.za.cput.factory.billfactory.BillFactory;
+import ac.za.cput.domains.proofofpayment.bill.Bill;
+import ac.za.cput.factory.proofofpayment.billfactory.BillFactory;
 import ac.za.cput.service.bill.impl.BillServiceImpl;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class BillServiceImplTest {

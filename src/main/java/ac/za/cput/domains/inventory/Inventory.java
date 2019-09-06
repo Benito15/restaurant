@@ -10,14 +10,10 @@ public class Inventory {
 
     private Inventory(){}
 
-    private Inventory(Builder builder)
-    {
+    public Inventory(Builder builder){
         this.invID = builder.invID;
         this.desc = builder.desc;
         this.qty = builder.qty;
-
-
-
     }
 
     public String getInvID() {

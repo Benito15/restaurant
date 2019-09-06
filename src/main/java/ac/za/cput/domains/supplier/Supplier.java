@@ -10,7 +10,7 @@ public class Supplier {
 
     private Supplier(){}
 
-    private Supplier(Builder builder)
+    public Supplier(Builder builder)
     {
         this.supID = builder.supID;
         this.name = builder.name;

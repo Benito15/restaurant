@@ -6,15 +6,15 @@ public class Catalog {
     private String supID;
     private String description;
 
-    private Catalog(){}
+    public Catalog(String itemID, String supID, String description){}
 
-    private Catalog (Builder builder)
-    {
-        this.itemID = builder.itemID;
-        this.supID = builder.supID;
-        this.description = builder.description;
-
-    }
+//    public Catalog (Builder builder)
+//    {
+//        this.itemID = builder.itemID;
+//        this.supID = builder.supID;
+//        this.description = builder.description;
+//
+//    }
 
 
     public String getItemID() {
@@ -41,36 +41,36 @@ public class Catalog {
         this.description = description;
     }
 
-    public static class Builder
-    {
-
-        private String itemID;
-        private String supID;
-        private String description;
-
-        public Builder itemID(String itemID)
-        {
-            this.itemID = itemID;
-            return this;
-
-        }
-
-        public Builder supID(String supID)
-        {
-            this.supID = supID;
-            return this;
-
-        }
-
-        public Builder description(String description)
-        {
-            this.description = description;
-            return this;
-        }
-
-        public Catalog build() {return new Catalog (this);}
-
-    }
+//    public static class Builder
+//    {
+//
+//        private String itemID;
+//        private String supID;
+//        private String description;
+//
+//        public Builder itemID(String itemID)
+//        {
+//            this.itemID = itemID;
+//            return this;
+//
+//        }
+//
+//        public Builder supID(String supID)
+//        {
+//            this.supID = supID;
+//            return this;
+//
+//        }
+//
+//        public Builder description(String description)
+//        {
+//            this.description = description;
+//            return this;
+//        }
+//
+//        public Catalog build() {return new Catalog (this);}
+//
+//    }
 
     @Override
     public String toString() {

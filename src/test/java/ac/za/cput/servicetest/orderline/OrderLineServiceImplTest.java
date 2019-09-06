@@ -1,17 +1,14 @@
 package ac.za.cput.servicetest.orderline;
 
-import ac.za.cput.domains.orderline.OrderLine;
-import ac.za.cput.factory.orderlinefactory.OrderLineFactory;
+import ac.za.cput.domains.purchase.orderline.OrderLine;
+import ac.za.cput.factory.purchasefactory.orderlinefactory.OrderLineFactory;
 import ac.za.cput.service.orderline.impl.OrderLineServiceImpl;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

@@ -1,6 +1,6 @@
 package ac.za.cput.repositories.item.impl;
 
-import ac.za.cput.domains.item.Burger;
+import ac.za.cput.domains.purchase.item.Burger;
 import ac.za.cput.repositories.item.BurgerRepository;
 import org.springframework.stereotype.Repository;
 

@@ -14,7 +14,7 @@ public class Book {
 
     private Book(){}
 
-    private Book(Builder builder) {
+    public Book(Builder builder) {
         this.bookingID = builder.bookingID;
         this.dte = builder.dte;
         this.tme = builder.tme;

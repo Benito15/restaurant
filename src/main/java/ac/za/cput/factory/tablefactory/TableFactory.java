@@ -7,7 +7,7 @@ public class TableFactory {
 
 
 
-    public static Table getGuest(int capacity,boolean isavailable)
+    public static Table getTable(int capacity,boolean isavailable)
     {
         return new Table.Builder().capacity(capacity)
                 .isavailable(isavailable)

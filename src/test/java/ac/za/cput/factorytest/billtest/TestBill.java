@@ -1,7 +1,7 @@
 package ac.za.cput.factorytest.billtest;
 
-import ac.za.cput.domains.bill.Bill;
-import ac.za.cput.factory.billfactory.BillFactory;
+import ac.za.cput.domains.proofofpayment.bill.Bill;
+import ac.za.cput.factory.proofofpayment.billfactory.BillFactory;
 import org.junit.Assert;
 import org.junit.Test;
 

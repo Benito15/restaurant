@@ -9,7 +9,7 @@ public class Report {
 
     private Report(){}
 
-    private Report(Builder builder)
+    public Report(Builder builder)
     {
         this.repID = builder.repID;
         this.empID= builder.empID;

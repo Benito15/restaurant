@@ -1,22 +1,13 @@
 package ac.za.cput.domains.employee;
 
 public class Waiter extends Employee{
-
-
     private Waiter(){}
 
-    private Waiter(Builder builder)
-    {
+    private Waiter(Builder builder){
        super(builder);
 
     }
-
-
-
-    public static class Builder extends Employee.Builder
-    {
-
-
+    public static class Builder extends Employee.Builder {
         public Waiter build()
         {
             return new Waiter(this);
@@ -33,3 +24,5 @@ public class Waiter extends Employee{
                 '}';
     }
 }
+
+

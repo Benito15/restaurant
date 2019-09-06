@@ -1,7 +1,11 @@
 package ac.za.cput.repositorytest.reservation;
 
+import ac.za.cput.domains.guest.Guest;
 import ac.za.cput.domains.reservation.Reservation;
+import ac.za.cput.domains.table.Table;
+import ac.za.cput.factory.guestfactory.GuestFactory;
 import ac.za.cput.factory.reservationfactory.ReservationFactory;
+import ac.za.cput.factory.tablefactory.TableFactory;
 import ac.za.cput.repositories.reservation.ReservationRepository;
 import ac.za.cput.repositories.reservation.impl.ReservationRepositoryImpl;
 import org.junit.Assert;
@@ -20,12 +24,18 @@ public class ReservationRepositoryImplTest {
 
     @Autowired
     private ReservationRepository repository;
-
+    private Table table;
+    private Guest guest;
+    private Reservation reservation;
+    private Reservation reservation2;
 
     @Before
     public void setUp() throws Exception {
         this.repository = ReservationRepositoryImpl.getRepository();
-
+        this.guest = GuestFactory.getGuest("Bennie", "Kriel", 25);
+        this.table = TableFactory.getTable(25, true);
+        this.reservation= ReservationFactory.getReservation(guest.getGuestId(),table.getTableID(),table.getCapacity());
+        this.reservation2 = ReservationFactory.getReservation(guest.getGuestId(), table.getTableID(), table.getCapacity());
     }
 
     @Test
@@ -37,7 +47,7 @@ public class ReservationRepositoryImplTest {
 
     @Test
     public void create() {
-        Reservation reservation = ReservationFactory.getReservation(5);
+
         this.repository.create(reservation);
         int size = this.repository.getAll().size();
         System.out.println(size);
@@ -48,7 +58,6 @@ public class ReservationRepositoryImplTest {
     @Test
     public void update() {
         int updateGuest = 6;
-        Reservation reservation = ReservationFactory.getReservation(5);
 
         repository.create(reservation);
         System.out.println("Reservation 1: \n" + this.repository.getAll());
@@ -66,8 +75,7 @@ public class ReservationRepositoryImplTest {
     public void delete() {
         System.out.println(this.repository.getAll().size());
         System.out.println("--------------------------------");
-        Reservation reservation = ReservationFactory.getReservation(5);
-        Reservation reservation2 = ReservationFactory.getReservation(3);
+        Reservation reservation2 = ReservationFactory.getReservation("scss","scs",34);
         this.repository.create(reservation);
         this.repository.create(reservation2);
         System.out.println(this.repository.getAll().size());
@@ -81,8 +89,6 @@ public class ReservationRepositoryImplTest {
 
     @Test
     public void read() {
-        Reservation reservation = ReservationFactory.getReservation(5);
-        Reservation reservation2 = ReservationFactory.getReservation(3);
 
         this.repository.create(reservation);
         this.repository.create(reservation2);

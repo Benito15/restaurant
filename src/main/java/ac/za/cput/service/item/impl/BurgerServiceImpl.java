@@ -1,6 +1,6 @@
 package ac.za.cput.service.item.impl;
 
-import ac.za.cput.domains.item.Burger;
+import ac.za.cput.domains.purchase.item.Burger;
 import ac.za.cput.repositories.item.BurgerRepository;
 import ac.za.cput.repositories.item.impl.BurgerRepositoryImpl;
 import ac.za.cput.service.item.BurgerService;

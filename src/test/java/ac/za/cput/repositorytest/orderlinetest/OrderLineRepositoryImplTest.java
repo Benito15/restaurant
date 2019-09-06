@@ -1,11 +1,9 @@
 package ac.za.cput.repositorytest.orderlinetest;
 
-import ac.za.cput.domains.orderline.OrderLine;
-import ac.za.cput.factory.orderlinefactory.OrderLineFactory;
+import ac.za.cput.domains.purchase.orderline.OrderLine;
+import ac.za.cput.factory.purchasefactory.orderlinefactory.OrderLineFactory;
 import ac.za.cput.repositories.orderline.OrderLineRepository;
 import ac.za.cput.repositories.orderline.impl.OrderLineRepositoryImpl;
-import ac.za.cput.repositories.orderrepository.OrderRepository;
-import ac.za.cput.repositories.tablerepository.impl.TableRepositoryImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,8 +13,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Set;
-
-import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

@@ -1,7 +1,7 @@
 package ac.za.cput.repositorytest.item;
 
-import ac.za.cput.domains.item.Dessert;
-import ac.za.cput.factory.itemfactory.DessertFactory;
+import ac.za.cput.domains.purchase.item.Dessert;
+import ac.za.cput.factory.purchasefactory.itemfactory.DessertFactory;
 import ac.za.cput.repositories.item.DessertRepository;
 import ac.za.cput.repositories.item.impl.DessertRepositoryImpl;
 
@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class DessertRepositoryImplTest {

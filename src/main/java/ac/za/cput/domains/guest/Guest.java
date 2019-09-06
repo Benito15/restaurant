@@ -14,7 +14,7 @@ public class Guest {
 
 
 
-    private Guest(Builder builder)
+    public Guest(Builder builder)
     {
      this.guestId = builder.guestId;
      this.guestName = builder.guestName;

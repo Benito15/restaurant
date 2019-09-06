@@ -13,7 +13,7 @@ import java.util.Objects;
 
         private Feedback(){}
 
-        private Feedback(Builder builder)
+        public Feedback(Builder builder)
         {
             this.guestID = builder.guestID;
             this.dte = builder.dte;

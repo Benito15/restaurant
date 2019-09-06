@@ -1,6 +1,6 @@
 package ac.za.cput.service.orderline.impl;
 
-import ac.za.cput.domains.orderline.OrderLine;
+import ac.za.cput.domains.purchase.orderline.OrderLine;
 import ac.za.cput.repositories.orderline.OrderLineRepository;
 import ac.za.cput.repositories.orderline.impl.OrderLineRepositoryImpl;
 import ac.za.cput.service.orderline.OrderLineService;

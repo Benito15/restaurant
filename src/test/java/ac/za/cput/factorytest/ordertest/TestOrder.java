@@ -1,7 +1,7 @@
 package ac.za.cput.factorytest.ordertest;
 
-import ac.za.cput.domains.order.Order;
-import ac.za.cput.factory.orderfactory.OrderFactory;
+import ac.za.cput.domains.purchase.order.Order;
+import ac.za.cput.factory.purchasefactory.orderfactory.OrderFactory;
 import org.junit.Assert;
 import org.junit.Test;
 

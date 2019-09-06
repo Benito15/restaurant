@@ -1,6 +1,6 @@
 package ac.za.cput.repositories.billrepository.impl;
 
-import ac.za.cput.domains.bill.Bill;
+import ac.za.cput.domains.proofofpayment.bill.Bill;
 import ac.za.cput.repositories.billrepository.BillRepository;
 import org.springframework.stereotype.Repository;
 

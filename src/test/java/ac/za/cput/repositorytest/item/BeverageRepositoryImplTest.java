@@ -1,7 +1,7 @@
 package ac.za.cput.repositorytest.item;
 
-import ac.za.cput.domains.item.Beverage;
-import ac.za.cput.factory.itemfactory.BeveragesFactory;
+import ac.za.cput.domains.purchase.item.Beverage;
+import ac.za.cput.factory.purchasefactory.itemfactory.BeveragesFactory;
 import ac.za.cput.repositories.item.BeverageRepository;
 import ac.za.cput.repositories.item.impl.BeverageRepositoryImpl;
 import org.junit.Assert;
@@ -13,8 +13,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Set;
-
-import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

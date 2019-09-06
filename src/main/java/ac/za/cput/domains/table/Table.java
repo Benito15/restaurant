@@ -10,7 +10,7 @@ public class Table {
 
     private Table(){}
 
-    private Table(Builder builder)
+    public Table(Builder builder)
     {
         this.tableID = builder.tableID;
         this.capacity = builder.capacity;

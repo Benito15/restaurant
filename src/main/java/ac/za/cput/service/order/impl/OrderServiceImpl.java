@@ -1,9 +1,8 @@
 package ac.za.cput.service.order.impl;
 
-import ac.za.cput.domains.order.Order;
+import ac.za.cput.domains.purchase.order.Order;
 import ac.za.cput.repositories.orderrepository.OrderRepository;
 import ac.za.cput.repositories.orderrepository.impl.OrderRepositoryImpl;
-import ac.za.cput.service.IService;
 import ac.za.cput.service.order.OrderService;
 import org.springframework.stereotype.Service;
 

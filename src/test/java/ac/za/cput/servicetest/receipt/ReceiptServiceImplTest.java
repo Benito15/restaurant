@@ -1,18 +1,15 @@
 package ac.za.cput.servicetest.receipt;
 
-import ac.za.cput.domains.receipt.Receipt;
-import ac.za.cput.factory.receiptfactory.ReceiptFactory;
+import ac.za.cput.domains.proofofpayment.receipt.Receipt;
+import ac.za.cput.factory.proofofpayment.receiptfactory.ReceiptFactory;
 import ac.za.cput.service.receipt.impl.ReceiptServiceImpl;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

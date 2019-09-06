@@ -4,7 +4,7 @@ public class Manager extends Employee{
 
 
 
-    private Manager(){}
+
 
     private Manager(Builder builder)
     {

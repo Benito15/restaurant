@@ -1,6 +1,6 @@
 package ac.za.cput.repositories.paymentrepositories;
 
-import ac.za.cput.domains.payment.Credit;
+import ac.za.cput.domains.proofofpayment.payment.Credit;
 import ac.za.cput.repositories.IRepository;
 
 import java.util.Set;

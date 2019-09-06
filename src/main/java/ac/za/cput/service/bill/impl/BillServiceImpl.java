@@ -1,6 +1,6 @@
 package ac.za.cput.service.bill.impl;
 
-import ac.za.cput.domains.bill.Bill;
+import ac.za.cput.domains.proofofpayment.bill.Bill;
 import ac.za.cput.repositories.billrepository.BillRepository;
 import ac.za.cput.repositories.billrepository.impl.BillRepositoryImpl;
 import ac.za.cput.service.bill.BillService;

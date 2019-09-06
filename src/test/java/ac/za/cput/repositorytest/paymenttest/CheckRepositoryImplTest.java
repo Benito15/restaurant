@@ -1,7 +1,7 @@
 package ac.za.cput.repositorytest.paymenttest;
 
-import ac.za.cput.domains.payment.Check;
-import ac.za.cput.factory.paymentfactory.CheckFactory;
+import ac.za.cput.domains.proofofpayment.payment.Check;
+import ac.za.cput.factory.proofofpayment.paymentfactory.CheckFactory;
 import ac.za.cput.repositories.paymentrepositories.CheckRepository;
 import ac.za.cput.repositories.paymentrepositories.impl.CheckRepositoryImpl;
 import org.junit.Assert;

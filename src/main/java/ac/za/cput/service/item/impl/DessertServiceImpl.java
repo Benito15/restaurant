@@ -1,6 +1,6 @@
 package ac.za.cput.service.item.impl;
 
-import ac.za.cput.domains.item.Dessert;
+import ac.za.cput.domains.purchase.item.Dessert;
 import ac.za.cput.repositories.item.DessertRepository;
 import ac.za.cput.repositories.item.impl.DessertRepositoryImpl;
 import ac.za.cput.service.item.DessertService;

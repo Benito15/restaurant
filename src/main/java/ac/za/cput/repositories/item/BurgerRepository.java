@@ -1,6 +1,6 @@
 package ac.za.cput.repositories.item;
 
-import ac.za.cput.domains.item.Burger;
+import ac.za.cput.domains.purchase.item.Burger;
 import ac.za.cput.repositories.IRepository;
 
 import java.util.Set;

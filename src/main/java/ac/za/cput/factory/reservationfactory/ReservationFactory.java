@@ -5,12 +5,10 @@ import ac.za.cput.util.Misc;
 
 public class ReservationFactory {
 
-    public static Reservation getReservation(int totGuest)
+    public static Reservation getReservation(String guestID, String tableID, int totGuest)
     {
-        return new Reservation.Builder().totGuest(totGuest)
-                .guestID(Misc.generateId())
-                .tableID(Misc.generateId())
-                .build();
+
+        return new Reservation(guestID, tableID, totGuest);
 
     }
 

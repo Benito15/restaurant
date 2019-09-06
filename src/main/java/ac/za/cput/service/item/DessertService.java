@@ -1,6 +1,6 @@
 package ac.za.cput.service.item;
 
-import ac.za.cput.domains.item.Dessert;
+import ac.za.cput.domains.purchase.item.Dessert;
 import ac.za.cput.service.IService;
 
 import java.util.Set;

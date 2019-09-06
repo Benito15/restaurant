@@ -6,15 +6,10 @@ import ac.za.cput.util.Misc;
 public class CatalogFactory {
 
 
-    public static Catalog getCatalog(String description)
+    public static Catalog getCatalog(String itemID, String supID, String description)
     {
-        return new Catalog.Builder()
-                .itemID(Misc.generateId())
-                .supID(Misc.generateId())
-                .description(description)
-                .build();
 
-
+        return new Catalog(itemID, supID, description);
     }
 
 }

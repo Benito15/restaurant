@@ -1,7 +1,7 @@
 package ac.za.cput.repositorytest.item;
 
-import ac.za.cput.domains.item.Burger;
-import ac.za.cput.factory.itemfactory.BurgerFactory;
+import ac.za.cput.domains.purchase.item.Burger;
+import ac.za.cput.factory.purchasefactory.itemfactory.BurgerFactory;
 import ac.za.cput.repositories.item.BurgerRepository;
 import ac.za.cput.repositories.item.impl.BurgerRepositoryImpl;
 import org.junit.Assert;
@@ -12,10 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.Map;
 import java.util.Set;
-
-import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

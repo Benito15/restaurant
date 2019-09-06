@@ -5,15 +5,12 @@ import ac.za.cput.util.Misc;
 
 public class GuestFactory {
 
-    public static Guest getGuest(String name,String lastname, int age)
-    {
+    public static Guest getGuest(String name,String lastname, int age){
         return new Guest.Builder().age(age)
                 .guestName(name)
                 .guestSurname(lastname)
                 .guestId(Misc.generateId())
                 .build();
-
-
     }
 
 

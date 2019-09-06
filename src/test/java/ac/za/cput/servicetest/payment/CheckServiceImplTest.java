@@ -1,17 +1,14 @@
 package ac.za.cput.servicetest.payment;
 
-import ac.za.cput.domains.payment.Check;
-import ac.za.cput.factory.paymentfactory.CheckFactory;
+import ac.za.cput.domains.proofofpayment.payment.Check;
+import ac.za.cput.factory.proofofpayment.paymentfactory.CheckFactory;
 import ac.za.cput.service.payment.impl.CheckServiceImpl;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

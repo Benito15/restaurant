@@ -2,21 +2,13 @@ package ac.za.cput.domains.employee;
 
 public class Cheff extends Employee {
 
+    private Cheff(){}
 
-    private Cheff(Builder builder)
-    {
+    private Cheff(Builder builder){
        super(builder);
-
     }
 
-
-
-
-    public static class Builder extends Employee.Builder
-    {
-
-
-
+    public static class Builder extends Employee.Builder{
         public Cheff build()
         {
             return new Cheff(this);
@@ -31,7 +23,4 @@ public class Cheff extends Employee {
                 "Surname= " + surname + "\n" +
                 "Salary= " + salary +"\n";
     }
-
-
-
 }

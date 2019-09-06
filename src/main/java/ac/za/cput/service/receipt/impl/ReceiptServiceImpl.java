@@ -1,9 +1,8 @@
 package ac.za.cput.service.receipt.impl;
 
-import ac.za.cput.domains.receipt.Receipt;
+import ac.za.cput.domains.proofofpayment.receipt.Receipt;
 import ac.za.cput.repositories.receiptrepository.ReceiptRepository;
 import ac.za.cput.repositories.receiptrepository.impl.ReceiptRepositoryImpl;
-import ac.za.cput.service.guest.impl.GuestServiceImpl;
 import ac.za.cput.service.receipt.ReceiptService;
 import org.springframework.stereotype.Service;
 
