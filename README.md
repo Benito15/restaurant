@@ -1,6 +1,6 @@
 ****Restaurant Booking System****
 
-![image](NewClassDiagram.jpg)
+![image](restaurantUML.jpg)
 <img>
 
 
