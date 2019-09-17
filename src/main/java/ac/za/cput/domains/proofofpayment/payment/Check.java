@@ -3,18 +3,19 @@ package ac.za.cput.domains.proofofpayment.payment;
 import java.util.Date;
 import java.util.Objects;
 
-public class Check implements Payment {
+public class Check extends Payment {
 
  private String bankID, name;
 
- private Check(){}
 
- public Check(Builder builder)
- {
-    this.bankID = builder.bankID;
-    this.name = builder.name;
 
- }
+    private Check(Builder builder)
+    {
+        super(builder);
+        this.bankID = builder.bankID;
+        this.name = builder.name;
+
+    }
 
     public String getBankID() {
         return bankID;
@@ -33,19 +34,19 @@ public class Check implements Payment {
         this.name = name;
     }
 
-    @Override
-    public Date dte() {
-        return dte();
-    }
+//    @Override
+//    public Date dte() {
+//        return dte();
+//    }
 
-    @Override
-    public double payAmount() {
-        return 0;
-    }
+//    @Override
+//    public double payAmount() {
+//        return 0;
+//    }
 
 
 
-    public static class Builder
+    public static class Builder extends Payment.Builder
     {
         private String bankID;
         private String name;

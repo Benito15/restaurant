@@ -1,7 +1,7 @@
 package ac.za.cput.domains.employee;
 
 public class Waiter extends Employee{
-    private Waiter(){}
+
 
     private Waiter(Builder builder){
        super(builder);

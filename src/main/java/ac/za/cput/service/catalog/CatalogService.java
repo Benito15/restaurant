@@ -5,7 +5,11 @@ import ac.za.cput.service.IService;
 
 import java.util.Set;
 
-public interface CatalogService extends IService<Catalog, String> {
+public interface CatalogService  {
+    Catalog create(Catalog catalog);
+    Catalog read(Catalog catalog);
+    Catalog update(Catalog catalog);
+    void delete(Catalog catalog);
     Set<Catalog> getAll();
 
 }

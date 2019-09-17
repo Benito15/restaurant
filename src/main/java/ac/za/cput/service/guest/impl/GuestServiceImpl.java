@@ -11,7 +11,7 @@ import java.util.Set;
 @Service("GuestService")
 public class GuestServiceImpl implements GuestService {
 
-    private GuestServiceImpl service = null;
+    private static GuestServiceImpl service = null;
     private GuestRepository repository;
 
     private  GuestServiceImpl()

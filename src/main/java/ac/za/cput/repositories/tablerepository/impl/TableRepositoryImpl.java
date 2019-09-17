@@ -10,11 +10,11 @@ import java.util.*;
 public class TableRepositoryImpl implements TableRepository {
 
     private static TableRepositoryImpl repository = null;
-    private Map<String,Table> tables;
+    private Set<Table> tables;
 
     public TableRepositoryImpl()
     {
-        this.tables = new HashMap<>();
+        this.tables = new HashSet<>();
     }
 
     public static TableRepositoryImpl getRepository()
@@ -23,47 +23,44 @@ public class TableRepositoryImpl implements TableRepository {
         return repository;
     }
 
-
-
-
-
-
     @Override
     public Set<Table> getAll() {
-        Collection<Table> tables = this.tables.values();
-        Set<Table> set = new HashSet<>();
-        set.addAll(tables);
-        return set;
+
+        return tables;
     }
 
     @Override
     public Table create(Table table) {
-        tables.put(table.getTableID(), table);
+        tables.add(table);
         return table;
     }
 
     @Override
     public Table update(Table table) {
-        this.tables.replace(table.getTableID(), table);
-        return this.tables.get(table.getTableID());
+        Table inDB = read(table.getTableID());
+
+        if(tables.contains(inDB)){
+            tables.remove(inDB);
+            tables.add(table);
+            return table;
+        }
+        return null;
     }
 
     @Override
     public void delete(String s) {
-
-        //if(table != null)
-            this.tables.remove(s);
-
+        Table toDelete = read(s);
+        if (toDelete != null) {
+            this.tables.remove(toDelete);
+        }
     }
 
     @Override
     public Table read(String s) {
 
-        return this.tables.get(s);
+        return this.tables.stream().filter(table -> table.getTableID().equalsIgnoreCase(s)).findAny().orElse(null);
 
     }
-
-
 
 
 }

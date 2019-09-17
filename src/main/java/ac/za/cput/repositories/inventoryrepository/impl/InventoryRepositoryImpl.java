@@ -10,11 +10,11 @@ import java.util.*;
 public class InventoryRepositoryImpl implements InventoryRepository {
 
     private static InventoryRepositoryImpl repository = null;
-    private Map<String,Inventory> inventories;
+    private Set<Inventory> inventories;
 
     public InventoryRepositoryImpl()
     {
-        this.inventories = new HashMap<>();
+        this.inventories = new HashSet<>();
     }
 
     public static InventoryRepositoryImpl getRepository()
@@ -31,16 +31,13 @@ public class InventoryRepositoryImpl implements InventoryRepository {
 
     @Override
     public Set<Inventory> getAll() {
-        Collection<Inventory> inventories = this.inventories.values();
-        Set<Inventory> set = new HashSet<>();
-        set.addAll(inventories);
-        return set;
+        return inventories;
 
     }
 
     @Override
     public Inventory create(Inventory inventory) {
-        this.inventories.put(inventory.getInvID(), inventory);
+        this.inventories.add(inventory);
         return inventory;
     }
 
@@ -48,21 +45,29 @@ public class InventoryRepositoryImpl implements InventoryRepository {
 
     @Override
     public Inventory update(Inventory inventory) {
-        this.inventories.replace(inventory.getInvID(), inventory);
-        return this.inventories.get(inventory.getInvID());
+
+        Inventory readInventory = repository.read(inventory.getInvID());
+        if(this.inventories.contains(readInventory)){
+            this.inventories.remove(readInventory);
+            this.inventories.add(inventory);
+            return inventory;
+        }
+        return null;
 
     }
 
     @Override
-    public void delete(String s) {
+    public void delete(String  inventory) {
+        Inventory deleteInventory = read(inventory);
+        this.inventories.remove(deleteInventory);
 
-        this.inventories.remove(s);
     }
 
     @Override
-    public Inventory read(String s) {
-        return this.inventories.get(s);
-
+    public Inventory read(String inventory) {
+        return this.inventories.stream()
+                .filter(thisInventories-> thisInventories.getInvID().equalsIgnoreCase(inventory))
+                .findAny().orElse(null);
     }
 
 

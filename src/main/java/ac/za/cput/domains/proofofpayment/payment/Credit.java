@@ -2,15 +2,14 @@ package ac.za.cput.domains.proofofpayment.payment;
 
 import java.util.Date;
 
-public class Credit implements Payment {
+public class Credit extends Payment {
 
     private String cardID;
     private String name;
 
-    private Credit(){}
-
-    public Credit(Builder builder)
+    private Credit(Builder builder)
     {
+        super(builder);
         this.cardID = builder.cardID;
         this.name = builder.name;
 
@@ -32,7 +31,7 @@ public class Credit implements Payment {
         this.name = name;
     }
 
-    public static class Builder
+    public static class Builder extends Payment.Builder
     {
         String cardID, name;
 
@@ -54,15 +53,10 @@ public class Credit implements Payment {
 
 
 
-    @Override
-    public Date dte() {
-        return dte();
-    }
 
-    @Override
-    public double payAmount() {
-        return 0;
-    }
+
+
+
 
 
     @Override

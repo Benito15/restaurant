@@ -15,7 +15,8 @@ public class TestCatalog {
         String itemID = "12";
         String supID = "101";
         String description = "This is description: ";
-        Catalog catalog = CatalogFactory.getCatalog(description);
+
+        Catalog catalog = CatalogFactory.getCatalog(itemID, supID,description);
         Assert.assertNotNull(catalog);
 
 

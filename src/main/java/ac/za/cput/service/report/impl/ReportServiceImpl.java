@@ -11,7 +11,7 @@ import java.util.Set;
 @Service("ReportService")
 public class ReportServiceImpl implements ReportService {
 
-   private ReportServiceImpl service = null;
+   private static ReportServiceImpl service = null;
    private ReportRepository repository;
 
    private ReportServiceImpl()
@@ -42,13 +42,13 @@ public class ReportServiceImpl implements ReportService {
     }
 
     @Override
-    public void delete(String s) {
-        this.repository.delete(s);
+    public void delete(Report report) {
+        this.repository.delete(report);
 
     }
 
     @Override
-    public Report read(String s) {
-        return this.repository.read(s);
+    public Report read(Report report) {
+        return this.repository.read(report);
     }
 }

@@ -10,11 +10,11 @@ import java.util.*;
 public class BillRepositoryImpl implements BillRepository {
 
     private static BillRepositoryImpl repository = null;
-    private Map<String,Bill> bills;
+    private Set<Bill> bills;
 
     private BillRepositoryImpl()
     {
-        this.bills = new HashMap<>();
+        this.bills = new HashSet<>();
 
     }
 
@@ -28,34 +28,42 @@ public class BillRepositoryImpl implements BillRepository {
     @Override
     public Set<Bill> getAll()
     {
-        Collection<Bill>bills = this.bills.values();
-        Set<Bill>set = new HashSet<>();
-        set.addAll(bills);
-        return set;
+       return bills;
     }
 
     @Override
     public Bill create(Bill bill) {
-        this.bills.put(bill.getBillID(),bill);
+        this.bills.add(bill);
         return bill;
     }
 
     @Override
     public Bill update(Bill bill) {
-       this.bills.replace(bill.getBillID(),bill);
-       return this.bills.get(bill.getBillID());
+      Bill readBill = repository.read(bill);
+      if (this.bills.contains(readBill)){
+          this.bills.remove(readBill);
+          this.bills.add(bill);
+          return bill;
+
+      }
+        return null;
+      }
+
+    @Override
+    public void delete(Bill bill) {
+       Bill deleteBill = read(bill);
+       this.bills.remove(deleteBill);
 
     }
 
-    @Override
-    public void delete(String s) {
 
-        this.bills.remove(s);
-    }
 
     @Override
-    public Bill read(String s) {
-      return this.bills.get(s);
+    public Bill read(Bill bill) {
+        return this.bills.stream()
+            .filter(thisBill -> thisBill.getBillID().equalsIgnoreCase(bill.getBillID())
+            && thisBill.getOrderID().equalsIgnoreCase(bill.getOrderID()))
+            .findAny().orElse(null);
     }
 
 

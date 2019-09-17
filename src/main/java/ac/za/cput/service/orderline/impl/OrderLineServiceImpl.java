@@ -45,13 +45,13 @@ public class OrderLineServiceImpl implements OrderLineService {
     }
 
     @Override
-    public void delete(String s) {
-        this.repository.delete(s);
+    public void delete(OrderLine orderLine) {
+        this.repository.delete(orderLine);
 
     }
 
     @Override
-    public OrderLine read(String s) {
-        return this.repository.read(s);
+    public OrderLine read(OrderLine orderLine) {
+        return this.repository.read(orderLine);
     }
 }

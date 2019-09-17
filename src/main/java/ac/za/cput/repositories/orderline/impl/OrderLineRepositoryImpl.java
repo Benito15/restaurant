@@ -10,11 +10,11 @@ import java.util.*;
 public class OrderLineRepositoryImpl implements  OrderLineRepository {
 
     private static OrderLineRepositoryImpl repository = null;
-    private Map<String,OrderLine> orderLines;
+    private Set<OrderLine> orderLines;
 
     private OrderLineRepositoryImpl()
     {
-        this.orderLines = new HashMap<>();
+        this.orderLines = new HashSet<>();
     }
 
     public static OrderLineRepositoryImpl getRepository()
@@ -32,32 +32,41 @@ public class OrderLineRepositoryImpl implements  OrderLineRepository {
 
     @Override
     public Set<OrderLine> getAll() {
-        Collection<OrderLine> orderLines = this.orderLines.values();
-        Set<OrderLine> set = new HashSet<>();
-        set.addAll(orderLines);
-        return set;    }
+
+        return orderLines;
+    }
 
     @Override
     public OrderLine create(OrderLine orderLine) {
-        orderLines.put(orderLine.getOrderID(),orderLine);
+        this.orderLines.add(orderLine);
         return orderLine;
     }
 
     @Override
     public OrderLine update(OrderLine orderLine) {
-        this.orderLines.replace(orderLine.getOrderID(), orderLine);
-        return this.orderLines.get(orderLine.getOrderID());
+        OrderLine readBill = repository.read(orderLine);
+        if (this.orderLines.contains(readBill)){
+            this.orderLines.remove(readBill);
+            this.orderLines.add(orderLine);
+            return orderLine;
+
+        }
+        return null;
     }
 
     @Override
-    public void delete(String s) {
+    public void delete(OrderLine orderLine) {
 
-        this.orderLines.remove(s);
+        OrderLine deleteOrderLine = read(orderLine);
+        this.orderLines.remove(deleteOrderLine);
     }
 
     @Override
-    public OrderLine read(String s) {
-        return this.orderLines.get(s);
+    public OrderLine read(OrderLine orderLine) {
+        return this.orderLines.stream()
+                .filter(thisOrderLines-> thisOrderLines.getOrderID().equalsIgnoreCase(orderLine.getOrderID())
+                        && thisOrderLines.getItemID().equalsIgnoreCase(orderLine.getItemID()))
+                .findAny().orElse(null);
 
     }
 }

@@ -5,6 +5,10 @@ import ac.za.cput.service.IService;
 
 import java.util.Set;
 
-public interface ReceiptService extends IService<Receipt,String> {
+public interface ReceiptService {
+    Receipt create(Receipt receipt);
+    Receipt read(Receipt receipt);
+    Receipt update(Receipt receipt);
+    void delete(Receipt receipt);
     Set<Receipt> getAll();
 }

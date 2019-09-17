@@ -11,7 +11,7 @@ import java.util.Set;
 @Service("ReceiptService")
 public class ReceiptServiceImpl implements ReceiptService {
 
-    private ReceiptServiceImpl service = null;
+    private static ReceiptServiceImpl service = null;
     private ReceiptRepository repository;
 
     private ReceiptServiceImpl()
@@ -43,13 +43,13 @@ public class ReceiptServiceImpl implements ReceiptService {
     }
 
     @Override
-    public void delete(String s) {
-        this.repository.delete(s);
+    public void delete(Receipt receipt) {
+        this.repository.delete(receipt);
 
     }
 
     @Override
-    public Receipt read(String s) {
-        return this.repository.read(s);
+    public Receipt read(Receipt receipt) {
+        return this.repository.read(receipt);
     }
 }

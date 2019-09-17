@@ -16,6 +16,7 @@ public class TestCheff {
         double salary = 2000;
 
         Cheff cheff = CheffFactory.getCheff(name,surname,salary);
+
         Assert.assertNotNull(cheff.getEmpid());
     }
 

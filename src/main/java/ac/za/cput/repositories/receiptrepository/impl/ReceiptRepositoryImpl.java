@@ -10,11 +10,11 @@ import java.util.*;
 public class ReceiptRepositoryImpl implements ReceiptRepository {
 
     private static ReceiptRepositoryImpl repository = null;
-    private Map<String,Receipt> receipts;
+    private Set<Receipt> receipts;
 
     private ReceiptRepositoryImpl()
     {
-        this.receipts = new HashMap<>();
+        this.receipts = new HashSet<>();
     }
 
     public static ReceiptRepositoryImpl getRepository()
@@ -25,42 +25,44 @@ public class ReceiptRepositoryImpl implements ReceiptRepository {
 
     @Override
     public Set<Receipt> getAll() {
-        Collection<Receipt> receipts = this.receipts.values();
-        Set<Receipt> set = new HashSet<>();
-        set.addAll(receipts);
-        return set;
+
+        return receipts;
     }
 
     @Override
     public Receipt create(Receipt receipt) {
-        this.receipts.put(receipt.getRecID(), receipt);
+        this.receipts.add(receipt);
         return receipt;
     }
 
     @Override
     public Receipt update(Receipt receipt) {
-        this.receipts.replace(receipt.getRecID(), receipt);
-        return this.receipts.get(receipt.getRecID());
+        Receipt readBill = repository.read(receipt);
+        if (this.receipts.contains(readBill)){
+            this.receipts.remove(readBill);
+            this.receipts.add(receipt);
+            return receipt;
+
+        }
+        return null;
     }
 
     @Override
-    public void delete(String s) {
-
-        this.receipts.remove(s);
+    public void delete(Receipt receipt) {
+        Receipt deleteReceipt = read(receipt);
+        this.receipts.remove(deleteReceipt);
     }
 
     @Override
-    public Receipt read(String s) {
-        return this.receipts.get(s);
-
+    public Receipt read(Receipt receipt) {
+        return this.receipts.stream()
+                .filter(thisReceipt-> thisReceipt.getRecID().equalsIgnoreCase(receipt.getRecID())
+                        && thisReceipt.getBillID().equalsIgnoreCase(receipt.getBillID()))
+                .findAny().orElse(null);
+    }
     }
 
-//    public Receipt findID(String s)
-//    {
-//        return receipts.stream().filter(p -> p.getRecID().equals(s))
-//                .findAny().orElse(null);
 //
-//
-//    }
 
-}
+
+

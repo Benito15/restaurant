@@ -11,7 +11,7 @@ import java.util.Set;
 @Service("CatalogService")
 public class CatalogServiceImpl implements CatalogService {
 
-    private CatalogServiceImpl service = null;
+    private static CatalogServiceImpl service = null;
     private CatalogRepository repository;
 
     private CatalogServiceImpl()
@@ -44,12 +44,12 @@ public class CatalogServiceImpl implements CatalogService {
     }
 
     @Override
-    public void delete(String s) {
-        this.repository.delete(s);
+    public void delete(Catalog cat) {
+        this.repository.delete(cat);
     }
 
     @Override
-    public Catalog read(String s) {
-        return this.repository.read(s);
+    public Catalog read(Catalog cat) {
+        return this.repository.read(cat);
     }
 }

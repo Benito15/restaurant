@@ -10,11 +10,11 @@ import java.util.*;
 public class ReservationRepositoryImpl implements ReservationRepository {
 
     private static ReservationRepositoryImpl repository = null;
-    private Map<String,Reservation> reservations;
+    private Set<Reservation> reservations;
 
     private ReservationRepositoryImpl()
     {
-        this.reservations = new HashMap<>();
+        this.reservations = new HashSet<>();
     }
 
     public static ReservationRepositoryImpl getRepository()
@@ -26,43 +26,42 @@ public class ReservationRepositoryImpl implements ReservationRepository {
     @Override
     public Set<Reservation> getAll()
     {
-        Collection<Reservation> reservations = this.reservations.values();
-        Set<Reservation> set = new HashSet<>();
-        set.addAll(reservations);
-        return set;
+        return reservations;
     }
 
     @Override
     public Reservation create(Reservation reservation) {
-        this.reservations.put(reservation.getTableID(), reservation);
+        this.reservations.add(reservation);
         return reservation;
     }
 
     @Override
     public Reservation update(Reservation reservation) {
-        this.reservations.replace(reservation.getTableID(), reservation);
-        return this.reservations.get(reservation.getTableID());
+        Reservation readReservation= repository.read(reservation);
+        if (this.reservations.contains(readReservation)){
+            this.reservations.remove(readReservation);
+            this.reservations.add(reservation);
+            return reservation;
 
+        }
+        return null;
+    }
+
+
+    @Override
+    public void delete(Reservation reservation) {
+        Reservation deleteReservation= read(reservation);
+        this.reservations.remove(deleteReservation);
     }
 
     @Override
-    public void delete(String s) {
-
-        this.reservations.remove(s);
-    }
-
-    @Override
-    public Reservation read(String s) {
-        return this.reservations.get(s);
+    public Reservation read(Reservation reservation) {
+        return this.reservations.stream()
+                .filter(thisReservation-> thisReservation.getTableID().equalsIgnoreCase(reservation.getTableID())
+                        && thisReservation.getGuestID().equalsIgnoreCase(reservation.getGuestID()))
+                .findAny().orElse(null);
     }
 
 
-//    public Reservation findID(String s)
-//    {
-//        return this.reservations.stream().filter(reservation-> reservation.getTableID().equals(s))
-//                .findAny().orElse(null);
-//
-//
-//    }
 
 }

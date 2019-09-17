@@ -105,6 +105,15 @@ public class Receipt {
 
         }
 
+        public Builder copy(Receipt receipt) {
+            this.billID = receipt.billID;
+            this.recID = receipt.billID;
+            this.dte = receipt.dte;
+            this.desc = receipt.desc;
+            this.total = receipt.total;
+            return this;
+        }
+
         public Receipt build(){return new Receipt(this);}
 
     }

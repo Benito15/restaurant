@@ -68,6 +68,13 @@ public class Table {
 
         }
 
+        public Builder copy(Table table) {
+            this.tableID = table.tableID;
+            this.capacity = table.capacity;
+            this.isavailable = table.isavailable;
+            return this;
+        }
+
         public Table build()
         {
             return new Table(this);

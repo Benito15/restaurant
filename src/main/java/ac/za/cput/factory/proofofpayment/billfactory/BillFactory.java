@@ -8,11 +8,12 @@ import java.util.Date;
 public class BillFactory {
 
 
-    public static Bill getBill(Date dte, String desc, double total)
+    public static Bill getBill(String orderID, Date dte, String desc, double total)
     {
         return new Bill.Builder().dte(dte)
                 .desc(desc)
                 .total(total)
+                .orderID(orderID)
                 .billID(Misc.generateId())
                 .build();
 

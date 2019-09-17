@@ -42,13 +42,13 @@ public class FeedbackServiceImpl implements FeedbackService {
     }
 
     @Override
-    public void delete(String s) {
+    public void delete(Feedback feed) {
 
-        this.repository.delete(s);
+        this.repository.delete(feed);
     }
 
     @Override
-    public Feedback read(String s) {
-        return this.repository.read(s);
+    public Feedback read(Feedback feed) {
+        return this.repository.read(feed);
     }
 }

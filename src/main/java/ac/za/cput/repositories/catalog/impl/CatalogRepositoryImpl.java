@@ -10,59 +10,54 @@ import java.util.*;
 public class CatalogRepositoryImpl implements CatalogRepository {
 
     private static CatalogRepositoryImpl repository = null;
-    private Map<String,Catalog> catalogs;
+    private Set<Catalog> catalogs;
 
-    private CatalogRepositoryImpl()
-    {
-        this.catalogs = new HashMap<>();
+    private CatalogRepositoryImpl() {
+        this.catalogs = new HashSet<>();
     }
 
-    public  static CatalogRepositoryImpl getRepository()
-    {
-        if(repository == null) repository = new CatalogRepositoryImpl();
+    public static CatalogRepositoryImpl getRepository() {
+        if (repository == null) repository = new CatalogRepositoryImpl();
         return repository;
 
     }
 
     @Override
     public Set<Catalog> getAll() {
-        Collection<Catalog> catalogs = this.catalogs.values();
-        Set<Catalog> set = new HashSet<>();
-        set.addAll(catalogs);
-        return set;
+        return catalogs;
     }
 
     @Override
     public Catalog create(Catalog catalog) {
-        this.catalogs.put(catalog.getItemID(),catalog);
+        this.catalogs.add(catalog);
         return catalog;
     }
 
     @Override
     public Catalog update(Catalog catalog) {
-        this.catalogs.replace(catalog.getItemID(), catalog);
-        return this.catalogs.get(catalog.getItemID());
+        Catalog readCatalog = repository.read(catalog);
+        if (this.catalogs.contains(readCatalog)) {
+            this.catalogs.remove(readCatalog);
+            this.catalogs.add(catalog);
+            return catalog;
+        }
+        return null;
     }
 
     @Override
-    public void delete(String s) {
+    public void delete(Catalog catalog) {
+        Catalog deleteCatalog = read(catalog);
+        this.catalogs.remove(deleteCatalog);
 
-        this.catalogs.remove(s);
 
     }
 
     @Override
-    public Catalog read(String s) {
-        return this.catalogs.get(s);
+    public Catalog read(Catalog catalog) {
+        return this.catalogs.stream()
+                .filter(thisCatalog -> thisCatalog.getItemID().equalsIgnoreCase(catalog.getItemID())
+                        && thisCatalog.getSupID().equalsIgnoreCase(catalog.getSupID()))
+                .findAny().orElse(null);
     }
-
-    //public Catalog findID(String s)
-//    {
-//        return this.catalogs.stream().filter(catalog -> catalog.getItemID().equals(s))
-//                .findAny().orElse(null);
-//
-//
-//    }
-
 
 }

@@ -11,11 +11,11 @@ import java.util.*;
 public class RestaurantRepositoryImpl implements RestaurantRepository {
 
     private static RestaurantRepositoryImpl repository = null;
-    private Map<String,Restaurant> restaurants;
+    private Set<Restaurant> restaurants;
 
     private RestaurantRepositoryImpl()
     {
-        this.restaurants = new HashMap<>();
+        this.restaurants = new HashSet<>();
     }
 
     public static RestaurantRepositoryImpl getRepository()
@@ -26,42 +26,43 @@ public class RestaurantRepositoryImpl implements RestaurantRepository {
 
     @Override
     public Set<Restaurant> getAll() {
-        Collection<Restaurant> restaurants = this.restaurants.values();
-        Set<Restaurant> set = new HashSet<>();
-        set.addAll(restaurants);
-        return set;
+
+        return restaurants;
     }
 
     @Override
     public Restaurant create(Restaurant restaurant) {
-        this.restaurants.put(restaurant.getResID(), restaurant);
+        this.restaurants.add(restaurant);
         return restaurant;
     }
 
     @Override
     public Restaurant update(Restaurant restaurant) {
-        this.restaurants.replace(restaurant.getResID(), restaurant);
-        return this.restaurants.get(restaurant.getResID());
+        Restaurant deleterestaurant= read(restaurant.getResID());
+        if(restaurants.contains(deleterestaurant)){
+            restaurants.remove(deleterestaurant);
+            restaurants.add(restaurant);
+            return restaurant;
+        }
+
+        return null;
     }
 
     @Override
     public void delete(String s) {
 
-        restaurants.remove(s);
+        Restaurant restaurant = read(s);
+        this.restaurants.remove(restaurant);
 
     }
 
     @Override
     public Restaurant read(String s) {
-        return this.restaurants.get(s);
+        return this.restaurants.stream().
+                filter(res -> res.getResID().equalsIgnoreCase(s))
+                .findAny().orElse(null);
 
     }
 
-//    public Restaurant findID(String s)
-//    {
-//        return restaurants.stream().filter(restaurant-> restaurant.getResID().equals(s))
-//                .findAny().orElse(null);
-//
-//
-//    }
+
 }

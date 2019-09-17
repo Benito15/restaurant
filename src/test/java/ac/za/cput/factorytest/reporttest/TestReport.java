@@ -14,7 +14,7 @@ public class TestReport {
     {
         Date dte = new Date();
         String description;
-        Report report = ReportFactory.getReport(dte,"Wazzzup");
+        Report report = ReportFactory.getReport(dte,"Wazzzup",null);
         System.out.println(report);
         Assert.assertNotNull(report.getEmpID());
 

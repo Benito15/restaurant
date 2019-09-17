@@ -12,9 +12,9 @@ public class TestTable {
     public void tableTest()
     {
         int capacity = 5;
-        boolean isAvailable = false;
+        boolean isAvailable = true;
 
-        Table table = TableFactory.getGuest(capacity,isAvailable);
+        Table table = TableFactory.getTable(capacity,isAvailable);
         System.out.println(table );
         Assert.assertNotNull(table.getCapacity());
 

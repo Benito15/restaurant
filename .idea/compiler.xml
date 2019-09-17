@@ -7,9 +7,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Assignment-9" />
-        <module name="ass7" />
         <module name="Ass6a" />
         <module name="DDDUpdate" />
+        <module name="ass7" />
         <module name="Restaurant" />
       </profile>
     </annotationProcessing>

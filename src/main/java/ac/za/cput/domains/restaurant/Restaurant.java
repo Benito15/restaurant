@@ -69,6 +69,13 @@ public class Restaurant {
 
         }
 
+        public Builder copy(Restaurant restaurant) {
+            this.resID=restaurant.resID;
+            this.name=restaurant.name;
+            this.totEmployees=restaurant.totEmployees;
+            return this;
+        }
+
         public Restaurant build()
         {
             return new Restaurant(this);

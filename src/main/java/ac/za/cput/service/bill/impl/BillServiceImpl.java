@@ -10,7 +10,7 @@ import java.util.Set;
 @Service("BillServiceImpl")
 public class BillServiceImpl implements BillService {
 
-    private BillServiceImpl service = null;
+    private static BillServiceImpl service = null;
     private BillRepository repository;
 
     private BillServiceImpl()
@@ -40,13 +40,13 @@ public class BillServiceImpl implements BillService {
     }
 
     @Override
-    public void delete(String s) {
-        this.repository.delete(s);
+    public void delete(Bill bi) {
+        this.repository.delete(bi);
 
     }
 
     @Override
-    public Bill read(String s) {
+    public Bill read(Bill s) {
         return this.repository.read(s);
     }
 }

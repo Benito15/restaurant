@@ -10,12 +10,12 @@ import java.util.*;
 public class WaiterRepositoryImpl implements WaiterRepository {
 
     private static WaiterRepositoryImpl repository = null;
-    private Map<String,Waiter> waiters;
+    private Set<Waiter> waiters;
 
 
     private WaiterRepositoryImpl()
     {
-        this.waiters = new HashMap<>();
+        this.waiters = new HashSet<>();
 
     }
 
@@ -29,46 +29,37 @@ public class WaiterRepositoryImpl implements WaiterRepository {
     @Override
     public Set<Waiter> getAll()
     {
-        Collection<Waiter> waiters= this.waiters.values();
-        Set<Waiter> set = new HashSet<>();
-        set.addAll(waiters);
-        return set;
+        return waiters;
     }
 
     @Override
     public Waiter create(Waiter waiter) {
-        this.waiters.put(waiter.getEmpid(),waiter);
+        this.waiters.add(waiter);
         return waiter;
+
     }
 
     @Override
     public Waiter update(Waiter waiter) {
-        this.waiters.replace(waiter.getEmpid(), waiter);
-        return this.waiters.get(waiter.getEmpid());
+        Waiter readWaiter = repository.read(waiter.getEmpid());
+        if (this.waiters.contains(readWaiter)){
+            this.waiters.remove(readWaiter);
+            this.waiters.add(waiter);
+            return waiter;
+        }
+        return null;
     }
 
     @Override
-    public void delete(String s) {
-
-        this.waiters.remove(s);
+    public void delete(String  waiter) {
+        Waiter deleteWaiter = read(waiter);
+        this.waiters.remove(deleteWaiter);
     }
 
     @Override
     public Waiter read(String s) {
+        return this.waiters.stream()
+                .filter(thisWaiter -> thisWaiter.getEmpid().equalsIgnoreCase(s)).findAny().orElse(null);
 
-        return this.waiters.get(s);
-
-
-//        Waiter waiter = findID(s);
-//        if(waiter.equals(s))
-//            return waiter;
-//        else return null;
     }
-
-//    public Waiter findID(String s)
-//    {
-//        return waiters.stream().filter(o -> o.getEmpid().equals(s))
-//                .findFirst().orElse(null);
-//
-//    }
 }

@@ -6,11 +6,11 @@ public class CreditFactory {
 
 
 
-public static Credit getCredit(String name, String cardID)
+public static Credit getCredit(String orderID, String description, double amount,String name, String cardID)
     {
-        return new Credit.Builder().name(name)
+        return new Credit.Builder()
+                .name(name)
                 .cardID(cardID)
-
                 .build();
 
 

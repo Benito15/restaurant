@@ -10,11 +10,11 @@ import java.util.*;
 public class BurgerRepositoryImpl implements BurgerRepository {
 
     private static BurgerRepositoryImpl repository = null;
-    private Map<String,Burger> burgers;
+    private Set<Burger> burgers;
 
     private BurgerRepositoryImpl()
     {
-        this.burgers = new HashMap<>();
+        this.burgers = new HashSet<>();
 
     }
 
@@ -26,34 +26,40 @@ public class BurgerRepositoryImpl implements BurgerRepository {
 
     @Override
     public Set<Burger> getAll() {
-        Collection<Burger> burgers = this.burgers.values();
-        Set<Burger> set = new HashSet<>();
-        set.addAll(burgers);
-        return set;
+
+        return burgers;
     }
 
     @Override
     public Burger create(Burger burger) {
-        this.burgers.put(burger.getItemID(),burger);
+        this.burgers.add(burger);
         return burger;
     }
 
     @Override
     public Burger update(Burger burger) {
-        this.burgers.replace(burger.getItemID(),burger);
-        return this.burgers.get(burger.getItemID());
+        Burger deleteBurger= read(burger.getItemID());
+        if(burgers.contains(deleteBurger )){
+            burgers.remove(deleteBurger );
+            burgers.add(burger );
+            return burger ;
+        }
+
+        return null;
+
     }
 
     @Override
     public void delete(String s) {
-
-        this.burgers.remove(s);
+        Burger deleteDessert = read(s);
+        burgers.remove(deleteDessert);
 
 
     }
 
     @Override
     public Burger read(String s) {
-        return this.burgers.get(s);
+        return this.burgers.stream().filter(burger -> burger.getItemID().equalsIgnoreCase(s))
+                .findAny().orElse(null);
     }
 }

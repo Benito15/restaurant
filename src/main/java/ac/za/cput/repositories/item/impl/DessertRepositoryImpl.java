@@ -10,11 +10,11 @@ import java.util.*;
 public class DessertRepositoryImpl  implements DessertRepository {
 
     private static DessertRepositoryImpl repository = null;
-    private Map<String,Dessert> desserts;
+    private Set<Dessert> desserts;
 
     private DessertRepositoryImpl()
     {
-        this.desserts = new HashMap<>();
+        this.desserts = new HashSet<>();
 
     }
 
@@ -26,34 +26,41 @@ public class DessertRepositoryImpl  implements DessertRepository {
 
     @Override
     public Set<Dessert> getAll() {
-        Collection<Dessert> desserts = this.desserts.values();
-        Set<Dessert> set = new HashSet<>();
-        set.addAll(desserts);
-        return set;
+
+        return desserts;
     }
 
     @Override
     public Dessert create(Dessert dessert) {
-        this.desserts.put(dessert.getItemID(),dessert);
+        this.desserts.add(dessert);
         return dessert;
     }
 
     @Override
     public Dessert update(Dessert dessert) {
-        this.desserts.replace(dessert.getItemID(),dessert);
-        return this.desserts.get(dessert.getItemID());
+        Dessert deleteDessert = read(dessert.getItemID());
+        if(desserts.contains(deleteDessert )){
+            desserts.remove(deleteDessert );
+            desserts.add(dessert );
+            return dessert ;
+        }
+
+        return null;
+
+
     }
 
     @Override
     public void delete(String s) {
-        this.desserts.remove(s);
-
+        Dessert deleteDessert = read(s);
+        desserts.remove(deleteDessert);
 
     }
 
     @Override
     public Dessert read(String s) {
-        return this.desserts.get(s);
+        return this.desserts.stream().filter(dessert -> dessert.getItemID().equalsIgnoreCase(s))
+                .findAny().orElse(null);
 
     }
 }

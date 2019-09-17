@@ -5,6 +5,10 @@ import ac.za.cput.service.IService;
 
 import java.util.Set;
 
-public interface BillService extends IService<Bill, String> {
+public interface BillService  {
+    Bill create(Bill bill);
+    Bill read(Bill bill);
+    Bill update(Bill bill);
+    void delete(Bill bill);
     Set<Bill> getAll();
 }

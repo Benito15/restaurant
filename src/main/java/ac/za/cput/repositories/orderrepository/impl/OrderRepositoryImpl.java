@@ -10,11 +10,11 @@ import java.util.*;
 public class OrderRepositoryImpl implements OrderRepository {
 
     private static OrderRepositoryImpl repository = null;
-    private Map<String, Order> orders;
+    private Set<Order> orders;
 
     private OrderRepositoryImpl()
     {
-        this.orders = new HashMap<>();
+        this.orders = new HashSet<>();
     }
 
     public static OrderRepositoryImpl getRepository()
@@ -25,43 +25,43 @@ public class OrderRepositoryImpl implements OrderRepository {
 
     @Override
     public Order create(Order order) {
-        this.orders.put(order.getOrderID(), order);
+        this.orders.add(order);
         return order;
     }
 
     @Override
     public Order update(Order order)
     {
-        this.orders.replace(order.getOrderID(), order);
-        return this.orders.get(order.getOrderID());
+        Order readOrder= repository.read(order);
+        if (this.orders.contains(readOrder)){
+            this.orders.remove(readOrder);
+            this.orders.add(order);
+            return order;
+
+        }
+        return null;
+    }
+
+
+    @Override
+    public void delete(Order order) {
+        Order deleteOrder= read(order);
+        this.orders.remove(deleteOrder);
     }
 
     @Override
-    public void delete(String s) {
-
-        this.orders.remove(s);
-    }
-
-    @Override
-    public Order read(String s) {
-        return this.orders.get(s);
-
+    public Order read(Order order) {
+        return this.orders.stream()
+                .filter(thisOrder -> thisOrder.getOrderID().equalsIgnoreCase(order.getOrderID()))
+                        .findAny().orElse(null);
     }
 
     @Override
     public Set<Order> getAll() {
-        Collection<Order> orders = this.orders.values();
-        Set<Order> set = new HashSet<>();
-        set.addAll(orders);
-        return set;
+
+        return orders;
     }
 
-//    public Order findID(String o)
-//    {
-//        return orders.stream().filter(p -> p.getOrderID().equals(o))
-//                .findAny().orElse(null);
-//
-//
-//    }
+
 
 }

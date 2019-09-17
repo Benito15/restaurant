@@ -2,7 +2,7 @@ package ac.za.cput.domains.employee;
 
 public class Cheff extends Employee {
 
-    private Cheff(){}
+
 
     private Cheff(Builder builder){
        super(builder);

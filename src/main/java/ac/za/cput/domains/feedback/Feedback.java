@@ -1,27 +1,34 @@
 package ac.za.cput.domains.feedback;
 
-
-
 import java.util.Date;
 import java.util.Objects;
 
-    public class Feedback {
+public class Feedback {
 
 
-        private String guestID, desc;
+        private String feedbackID,guestID, desc;
         private Date dte;
 
         private Feedback(){}
 
         public Feedback(Builder builder)
         {
+            this.feedbackID = builder.feedbackID;
             this.guestID = builder.guestID;
             this.dte = builder.dte;
             this.desc = builder.desc;
 
         }
 
-        public String getGuestID() {
+    public String getFeedbackID() {
+        return feedbackID;
+    }
+
+    public void setFeedbackID(String feedbackID) {
+        this.feedbackID = feedbackID;
+    }
+
+    public String getGuestID() {
             return guestID;
         }
 
@@ -45,33 +52,46 @@ import java.util.Objects;
             this.dte = dte;
         }
 
-        public static class Builder
+    public static class Builder
+    {
+        private String feedbackID,guestID,desc;
+        private Date dte;
+
+        public Builder guestID(String guestID)
         {
-            private String guestID,desc;
-            private Date dte;
-
-            public Builder guestID(String guestID)
-            {
-                this.guestID = guestID;
-                return this;
-            }
-
-
-
-            public Builder desc(String desc)
-            {
-                this.desc=desc;
-                return this;
-            }
-
-            public Builder dte(Date dte)
-            {
-                this.dte = dte;
-                return this;
-            }
-
-            public Feedback build(){return new Feedback(this);}
+            this.guestID = guestID;
+            return this;
         }
+
+        public Builder feedbackID(String feedbackID)
+        {
+            this.feedbackID = feedbackID;
+            return this;
+        }
+
+
+        public Builder desc(String desc)
+        {
+            this.desc=desc;
+            return this;
+        }
+
+        public Builder dte(Date dte)
+        {
+            this.dte = dte;
+            return this;
+        }
+
+        public Builder copy(Feedback feedback) {
+            this.feedbackID = feedback.feedbackID;
+            this.guestID = feedback.guestID;
+            this.desc = feedback.desc;
+            this.dte = feedback.dte;
+            return this;
+        }
+
+        public Feedback build(){return new Feedback(this);}
+    }
 
         @Override
         public String toString() {

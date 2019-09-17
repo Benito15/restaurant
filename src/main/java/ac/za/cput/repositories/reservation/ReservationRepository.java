@@ -5,8 +5,12 @@ import ac.za.cput.repositories.IRepository;
 
 import java.util.Set;
 
-public interface ReservationRepository extends IRepository<Reservation, String> {
+public interface ReservationRepository  {
 
+    Reservation create(Reservation reservation);
+    Reservation read(Reservation reservation);
+    Reservation update(Reservation reservation);
+    void delete(Reservation bill);
     Set<Reservation> getAll();
 
 }

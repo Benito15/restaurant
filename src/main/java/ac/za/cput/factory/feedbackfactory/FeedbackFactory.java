@@ -7,14 +7,12 @@ import java.util.Date;
 
 public class FeedbackFactory {
 
-
-
-
-    public static Feedback getFeedback(String desc, Date dte)
+    public static Feedback getFeedback(String desc, Date dte, String guestID)
     {
         return new Feedback.Builder().desc(desc)
                 .dte(dte)
-                .guestID(Misc.generateId())
+                .guestID(guestID)
+                .feedbackID(Misc.generateId())
                 .build();
 
     }

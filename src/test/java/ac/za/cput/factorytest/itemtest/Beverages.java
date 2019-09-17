@@ -1,6 +1,7 @@
 package ac.za.cput.factorytest.itemtest;
 
 import ac.za.cput.domains.purchase.item.Beverage;
+import ac.za.cput.domains.purchase.item.Item;
 import ac.za.cput.factory.purchasefactory.itemfactory.BeveragesFactory;
 import org.junit.Assert;
 import org.junit.Test;
@@ -16,7 +17,7 @@ public class Beverages {
         int qty = 3;
         double price = 250;
 
-        Beverage beverages = BeveragesFactory.getBeverage(desc,qty,price);
+        Item beverages = BeveragesFactory.getBeverage(desc,qty,price);
         System.out.println(beverages);
         Assert.assertNotNull(beverages.getQty());
 

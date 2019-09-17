@@ -43,13 +43,13 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void delete(String s) {
-        this.repository.delete(s);
+    public void delete(Order order) {
+        this.repository.delete(order);
 
     }
 
     @Override
-    public Order read(String s) {
-        return this.repository.read(s);
+    public Order read(Order order) {
+        return this.repository.read(order);
     }
 }

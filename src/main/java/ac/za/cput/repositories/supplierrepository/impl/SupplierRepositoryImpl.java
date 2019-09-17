@@ -10,11 +10,11 @@ import java.util.*;
 public class SupplierRepositoryImpl implements SupplierRepository {
 
     private static SupplierRepositoryImpl repository = null;
-    private Map<String,Supplier> suppliers;
+    private Set<Supplier> suppliers;
 
     public SupplierRepositoryImpl()
     {
-        this.suppliers = new HashMap<>();
+        this.suppliers = new HashSet<>();
     }
 
     public static SupplierRepositoryImpl getRepository()
@@ -26,44 +26,44 @@ public class SupplierRepositoryImpl implements SupplierRepository {
 
     @Override
     public Set<Supplier> getAll() {
-        Collection<Supplier> suppliers = this.suppliers.values();
-        Set<Supplier> set = new HashSet<>();
-        set.addAll(suppliers);
-        return set;
+
+        return suppliers;
     }
 
 
     @Override
     public Supplier create(Supplier supplier) {
-        suppliers.put(supplier.getSupID(), supplier);
+        this.suppliers.add(supplier);
         return supplier;
     }
 
     @Override
     public Supplier update(Supplier supplier) {
-        this.suppliers.replace(supplier.getSupID(), supplier);
-        return this.suppliers.get(supplier.getSupID());
+        Supplier deleteSupplier = repository.read(supplier.getSupID());
+        if (this.suppliers.contains(deleteSupplier)){
+            this.suppliers.remove(deleteSupplier);
+            this.suppliers.add(supplier);
+            return supplier;
+
+        }
+        return null;
 
     }
 
     @Override
     public void delete(String s) {
 
-        this.suppliers.remove(s);
+        Supplier toDelete = read(s);
+        if (toDelete != null) {
+            this.suppliers.remove(toDelete);
+        }
     }
 
     @Override
     public Supplier read(String s) {
-        return this.suppliers.get(s);
+        return this.suppliers.stream().
+                filter(sup->sup.getSupID().equalsIgnoreCase(s)).findAny().orElse(null);
 
     }
 
-
-//    public Supplier findID(String s)
-//    {
-//        return suppliers.stream().filter(p -> p.getSupID().equals(s))
-//                .findFirst().orElse(null);
-//
-//
-//    }
 }

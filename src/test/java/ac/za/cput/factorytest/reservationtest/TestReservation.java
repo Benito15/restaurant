@@ -11,9 +11,10 @@ public class TestReservation {
     public void testRes()
     {
         String resID = "45";
+        String tableID="1";
         int totGuest = 14;
 
-        Reservation reservation = ReservationFactory.getReservation( totGuest);
+        Reservation reservation = ReservationFactory.getReservation( resID,tableID,totGuest);
         Assert.assertNotNull(reservation);
     }
 

@@ -10,11 +10,11 @@ import java.util.*;
 public class CheckRepositoryImpl implements CheckRepository {
 
     private static CheckRepositoryImpl repository = null;
-    private Map<String,Check> checks;
+    private Set<Check> checks;
 
     private CheckRepositoryImpl()
     {
-        this.checks = new HashMap<>();
+        this.checks = new HashSet<>();
 
     }
 
@@ -27,40 +27,38 @@ public class CheckRepositoryImpl implements CheckRepository {
     @Override
     public Set<Check> getAll()
     {
-        Collection<Check> checks= this.checks.values();
-        Set<Check> set = new HashSet<>();
-        set.addAll(checks);
-        return set;
+
+        return checks;
     }
 
     @Override
     public Check create(Check check) {
-        this.checks.put(check.getBankID(), check);
+       this.checks.add(check);
         return check;
     }
 
     @Override
     public Check update(Check check) {
-        this.checks.replace(check.getBankID(), check);
-        return this.checks.get(check.getBankID());
+        Check readCheck = repository.read(check.getBankID());
+        if (this.checks.contains(readCheck)){
+            this.checks.remove(readCheck);
+            this.checks.add(check);
+            return check;
+
+        }
+        return null;
+    }
+    @Override
+    public void delete(String check) {
+        Check deleteCheck = read(check);
+        this.checks.remove(deleteCheck);
     }
 
     @Override
-    public void delete(String s) {
-
-        this.checks.remove(s);
+    public Check read(String check) {
+        return this.checks.stream()
+                .filter(thisCheck-> thisCheck.getBankID().equalsIgnoreCase(check))
+                .findAny().orElse(null);
     }
-
-    @Override
-    public Check read(String s) {
-        return this.checks.get(s);
-    }
-
-//    public Check findID(String s)
-//    {
-//        return checks.stream().filter(o-> o.getBankID().equals(s))
-//                .findFirst().orElse(null);
-//    }
-
 
 }

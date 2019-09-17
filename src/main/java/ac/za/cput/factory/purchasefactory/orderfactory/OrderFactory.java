@@ -7,13 +7,14 @@ import java.util.Date;
 
 public class OrderFactory {
 
-    public static Order getOrder( Date dte, double tot)
+    public static Order getOrder(String guestID, String empID, Date dte, double tot)
 
     {
         return new Order.Builder().dte(dte)
                 .total(tot)
                 .orderID(Misc.generateId())
-                .guestID(Misc.generateId())
+                .guestID(guestID)
+                .empID(empID)
                 .build();
 
 

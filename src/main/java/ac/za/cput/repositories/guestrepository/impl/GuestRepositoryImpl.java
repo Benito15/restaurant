@@ -10,102 +10,62 @@ import java.util.*;
 public class GuestRepositoryImpl implements GuestRepository {
 
     private static GuestRepositoryImpl repository = null;
-    private Map<String,Guest> guests;
+    private Set<Guest> guests;
 
-    private GuestRepositoryImpl()
-    {
-        this.guests = new HashMap<>();
+    private GuestRepositoryImpl() {
+        this.guests = new HashSet<>();
 
     }
 
-   public static GuestRepositoryImpl getRepository()
-   {
-       if(repository == null) repository = new GuestRepositoryImpl();
-       return repository;
+    public static GuestRepositoryImpl getRepository() {
+        if (repository == null) repository = new GuestRepositoryImpl();
+        return repository;
 
-   }
+    }
 
     @Override
     public Guest create(Guest guest) {
-        this.guests.put(guest.getGuestId(),guest);
+        this.guests.add(guest);
         return guest;
     }
 
     @Override
     public Guest update(Guest guest) {
+        Guest readGuest = repository.read(guest.getGuestId());
+        if (this.guests.contains(readGuest)) {
+            this.guests.remove(readGuest);
+            this.guests.add(guest);
+            return guest;
 
-//        Guest toUpdate =  findID(guest.getGuestId());
-//        if(toUpdate != null) {
-//            this.guests.remove(toUpdate);
-//            return create(guest);
-//        }
-//        return null;
-
-        this.guests.replace(guest.getGuestId(), guest);
-        return this.guests.get(guest.getGuestId());
+        }
+        return null;
 
 
-
-//        if(guests.contains(guest))
-//        {
-//            guests.remove(guest);
-//            guest = new Guest.Builder().guestId(guest.getGuestId())
-//                    .guestName(guest.getGuestName())
-//                    .guestSurname(guest.getGuestSurname()).age(guest.getAge()).build();
-//            this.guests.add(guest);
-//
-//        }
-//        return guest;
     }
 
     ///////
     @Override
-    public void delete(String s) {
-      this.guests.remove(s);
+    public void delete(String guest) {
+        Guest deleteGuest = read(guest);
+        this.guests.remove(deleteGuest);
 
     }
 
 
-////find the student in the set and return it if it exist
+    ////find the student in the set and return it if it exist
     @Override
-    public Guest read( String s) {
-//    Iterator<Guest> itr = guests.iterator();
-//        while(itr.hasNext())
-//        {
-//            if(itr.next().getGuestId().contains(s))
-//            {
-//                return null;
-//            }else
-//                return null;
-//        }
+    public Guest read(String guest) {
+        return this.guests.stream()
+                .filter(thisGuest -> thisGuest.getGuestId().equalsIgnoreCase(guest))
+                .findAny().orElse(null);
 
 
-        return this.guests.get(s);
-
-
-//        Guest guest = null;
-//        for (Guest readGuest: guests)
-//            if(readGuest.getGuestName().equals(s))
-//            {
-//                System.out.println(readGuest.getGuestName() + readGuest.getGuestSurname());
-//                guest = new Guest.Builder().guestName(s).build();
-//            }
-//        return guest;
     }
 
-//    public Guest findID(String s)
-//    {
-//        return guests.stream().filter(guest -> guest.getGuestId().trim().equals(s))
-//        .findAny().orElse(null);
-//
-//
-//    }
 
     @Override
     public Set<Guest> getAll() {
-        Collection<Guest> guests = this.guests.values();
-        Set<Guest> set = new HashSet<>();
-        set.addAll(guests);
-        return set;
+
+        return guests;
     }
 }

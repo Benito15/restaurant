@@ -82,6 +82,14 @@ public class Report {
             return this;
         }
 
+        public Builder copy(Report report) {
+            this.repID = report.repID;
+            this.empID= report.empID;
+            this.dte = report.dte;
+            this.description = report.description;
+            return this;
+        }
+
         public Report build()
         {
             return new Report(this);

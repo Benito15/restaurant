@@ -6,9 +6,9 @@ import java.util.Objects;
 
 
 public class Guest {
+
     private String guestId, guestName, guestSurname;
     private int age;
-   // private Set<Guest> guest;
 
     private Guest(){}
 
@@ -73,6 +73,13 @@ public class Guest {
 
         }
 
+        public Builder copy(Guest guest) {
+            this.guestId = guest.guestId;
+            this.guestName = guest.guestName;
+            this.guestSurname= guest.guestSurname;
+            this.age= guest.age;
+            return this;
+        }
 
 
         public Guest build()

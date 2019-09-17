@@ -11,7 +11,7 @@ import java.util.Set;
 @Service("ReservationService")
 public class ReservationServiceImpl implements ReservationService {
 
-    private ReservationServiceImpl service = null;
+    private static ReservationServiceImpl service = null;
     private ReservationRepository repository;
 
     private ReservationServiceImpl()
@@ -41,13 +41,13 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public void delete(String s) {
-        this.repository.delete(s);
+    public void delete(Reservation reservation) {
+        this.repository.delete(reservation);
 
     }
 
     @Override
-    public Reservation read(String s) {
-        return this.repository.read(s);
+    public Reservation read(Reservation reservation) {
+        return this.repository.read(reservation);
     }
 }

@@ -10,11 +10,11 @@ import java.util.*;
 public class ManagerRepositoryImpl implements ManagerRepository {
 
    private static ManagerRepositoryImpl repository = null;
-   private Map<String,Manager> managers;
+   private Set<Manager> managers;
 
    private ManagerRepositoryImpl()
    {
-       this.managers = new HashMap<>();
+       this.managers = new HashSet<>();
 
    }
 
@@ -27,35 +27,40 @@ public class ManagerRepositoryImpl implements ManagerRepository {
 
     @Override
     public Set<Manager> getAll() {
-        Collection<Manager> managers = this.managers.values();
-        Set<Manager> set = new HashSet<>();
-        set.addAll(managers);
-        return set;
+        return managers;
 
     }
 
     @Override
     public Manager create(Manager manager) {
-        this.managers.put(manager.getEmpid(), manager);
+        this.managers.add(manager);
         return manager;
     }
 
     @Override
     public Manager update(Manager manager) {
-        this.managers.replace(manager.getEmpid(), manager);
-        return this.managers.get(manager.getEmpid());
+       Manager readManager = repository.read(manager.getEmpid());
+       if (this.managers.contains(readManager)){
+           this.managers.remove(readManager);
+           this.managers.add(manager);
+           return manager;
+       }
+
+       return null;
     }
 
     @Override
-    public void delete(String s) {
+    public void delete(String manager) {
 
-        this.managers.remove(s);
-
+        Manager deleteManager = read(manager);
+        this.managers.remove(deleteManager);
     }
 
     @Override
-    public Manager read(String s) {
-      return this.managers.get(s);
+    public Manager read(String s)
+    {
+      return this.managers.stream().filter(thisManager -> thisManager.getEmpid().equalsIgnoreCase(s))
+              .findAny().orElse(null);
     }
 
 

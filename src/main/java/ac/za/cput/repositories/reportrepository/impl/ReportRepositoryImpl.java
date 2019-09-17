@@ -11,12 +11,12 @@ import java.util.*;
 public class ReportRepositoryImpl implements ReportRepository {
 
     private static ReportRepositoryImpl repository = null;
-    private Map<String,Report> reports;
+    private Set<Report> reports;
 
 
     private ReportRepositoryImpl()
     {
-        this.reports = new HashMap<>();
+        this.reports = new HashSet<>();
 
     }
 
@@ -30,40 +30,45 @@ public class ReportRepositoryImpl implements ReportRepository {
 
     @Override
     public Set<Report> getAll() {
-        Collection<Report> reports = this.reports.values();
-        Set<Report> set = new HashSet<>();
-        set.addAll(reports);
-        return set;
+
+
+        return this.reports;
     }
 
     @Override
     public Report create(Report report) {
-        this.reports.put(report.getRepID(), report);
+        this.reports.add(report);
         return report;
     }
 
     //// implementation still needs to be done!!
     @Override
     public Report update(Report report) {
-        this.reports.replace(report.getRepID(), report);
-        return this.reports.get(report.getRepID());
+        Report readReport = repository.read(report);
+        if (this.reports.contains(readReport)){
+            this.reports.remove(readReport);
+            this.reports.add(report);
+            return report;
+
+        }
+        return null;
     }
 
     @Override
-    public void delete(String s) {
-
-        reports.remove(s);
+    public void delete(Report report) {
+        Report deleteReport = read(report);
+        this.reports.remove(deleteReport);
     }
 
     @Override
-    public Report read(String s) {
-        return this.reports.get(s);
+    public Report read(Report report) {
+        return this.reports.stream()
+                .filter(thisReport-> thisReport.getRepID().equalsIgnoreCase(report.getRepID())
+                        && thisReport.getEmpID().equalsIgnoreCase(report.getEmpID()))
+                .findAny().orElse(null);
     }
 
-//    public Report findID(String s)
-//    {
-//        return reports.stream().filter(report -> report.getRepID().equals(s))
-//                .findAny().orElse(null);
-//    }
+
+
 
 }

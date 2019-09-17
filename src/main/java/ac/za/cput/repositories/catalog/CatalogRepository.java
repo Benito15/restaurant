@@ -5,8 +5,13 @@ import ac.za.cput.repositories.IRepository;
 
 import java.util.Set;
 
-public interface CatalogRepository extends IRepository<Catalog,String> {
+public interface CatalogRepository  {
 
+
+    Catalog create(Catalog catalog);
+    Catalog read(Catalog catalog);
+    Catalog update(Catalog catalog);
+    void delete(Catalog catalog);
     Set<Catalog> getAll();
 
 

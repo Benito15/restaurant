@@ -3,10 +3,10 @@ package ac.za.cput.domains.inventory;
 import java.util.Objects;
 
 public class Inventory {
+
     private String invID;
     private String desc;
     private int qty;
-
 
     private Inventory(){}
 
@@ -60,11 +60,18 @@ public class Inventory {
 
        }
 
-    public Builder qty(int qty)
-       {
+        public Builder qty(int qty)
+        {
            this.qty = qty;
            return this;
 
+        }
+
+       public Builder copy(Inventory inventory) {
+           this.invID = inventory.invID;
+           this.desc= inventory.desc;
+           this.qty= inventory.qty;
+           return this;
        }
 
        public Inventory build()

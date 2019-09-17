@@ -10,11 +10,11 @@ import java.util.*;
 public class CheffRepositoryImpl implements CheffRepository {
 
     private static CheffRepositoryImpl repository = null;
-    private Map<String, Cheff> cheffs;
+    private Set<Cheff> cheffs;
 
     private CheffRepositoryImpl()
     {
-        this.cheffs = new HashMap<>();
+        this.cheffs = new HashSet<>();
     }
 
     public static CheffRepositoryImpl getRepository()
@@ -27,41 +27,43 @@ public class CheffRepositoryImpl implements CheffRepository {
 
     @Override
     public Set<Cheff> getAll() {
-        Collection<Cheff> cheffs = this.cheffs.values();
-        Set<Cheff> set = new HashSet<>();
-        set.addAll(cheffs);
-        return set;
+       return cheffs;
     }
 
     @Override
     public Cheff create(Cheff cheff) {
-        this.cheffs.put(cheff.getEmpid(),cheff);
+        this.cheffs.add(cheff);
         return cheff;
     }
 ////////////
     @Override
     public Cheff update(Cheff cheff) {
-        this.cheffs.replace(cheff.getEmpid(), cheff);
-        return this.cheffs.get(cheff.getEmpid());
+       Cheff readcheff = repository.read(cheff.getEmpid());
+       if (this.cheffs.contains(readcheff)){
+           this.cheffs.remove(readcheff);
+           this.cheffs.add(cheff);
+           return cheff;
+       }
+
+       return null;
 
     }
 
     @Override
     public void delete(String s) {
-        this.cheffs.remove(s);
+
+        Cheff deleteCheff = read(s);
+        this.cheffs.remove(deleteCheff);
 
     }
 
     @Override
     public Cheff read(String s) {
-        return this.cheffs.get(s);
+        return this.cheffs.stream().filter(
+                thisCheff -> thisCheff.getEmpid().equalsIgnoreCase(s)).
+                findAny().orElse(null);
     }
 
-//    public Cheff findID(String s)
-//    {
-//        return cheffs.stream().filter(o -> o.getEmpid().equals(s))
-//                .findFirst().orElse(null);
-//
-//    }
+
 
 }

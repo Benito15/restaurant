@@ -5,6 +5,11 @@ import ac.za.cput.service.IService;
 
 import java.util.Set;
 
-public interface FeedbackService extends IService<Feedback, String> {
+public interface FeedbackService  {
+    Feedback create(Feedback feedback);
+    Feedback read(Feedback feedback);
+    Feedback update(Feedback feedback);
+    void delete(Feedback feedback);
+
     Set<Feedback> getAll();
 }

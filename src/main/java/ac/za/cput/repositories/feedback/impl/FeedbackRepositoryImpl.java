@@ -12,11 +12,11 @@ import java.util.*;
 public class FeedbackRepositoryImpl implements FeedbackRepository {
 
     private static FeedbackRepositoryImpl repository = null;
-    private Map<String, Feedback> feedbacks;
+    private Set<Feedback> feedbacks;
 
     private FeedbackRepositoryImpl()
     {
-        this.feedbacks = new HashMap<>();
+        this.feedbacks = new HashSet<>();
 
     }
 
@@ -29,40 +29,42 @@ public class FeedbackRepositoryImpl implements FeedbackRepository {
 
     @Override
     public Set<Feedback> getAll() {
-        Collection<Feedback> feedback = this.feedbacks.values();
-        Set<Feedback> set = new HashSet<>();
-        set.addAll(feedback);
-        return set;
+
+        return feedbacks;
     }
 
     @Override
     public Feedback create(Feedback feedback) {
-        this.feedbacks.put(feedback.getGuestID(),feedback);
+        this.feedbacks.add(feedback);
         return feedback;
     }
 
     @Override
     public Feedback update(Feedback feedback) {
-        this.feedbacks.replace(feedback.getGuestID(),feedback);
-        return this.feedbacks.get(feedback.getGuestID());
+        Feedback readFeadback = repository.read(feedback);
+        if(this.feedbacks.contains(readFeadback)){
+            this.feedbacks.remove(readFeadback);
+            this.feedbacks.add(feedback);
+            return feedback;
+        }
+        return null;
+    }
+
+    @Override
+    public void delete(Feedback feedback) {
+        Feedback deleteFeedback = read(feedback);
+        this.feedbacks.remove(deleteFeedback);
 
     }
 
     @Override
-    public void delete(String s) {
-
-        this.feedbacks.remove(s);
-    }
-
-    @Override
-    public Feedback read(String s) {
-        return this.feedbacks.get(s);
+    public Feedback read(Feedback feedback) {
+        return this.feedbacks.stream()
+                .filter(thisFeedback -> thisFeedback.getFeedbackID().equalsIgnoreCase(feedback.getFeedbackID())
+                && thisFeedback.getGuestID().equalsIgnoreCase(feedback.getGuestID())).findAny().orElse(null);
 
     }
 
-//    public Feedback findID(String s)
-//    {
-//        return feedbacks.stream().filter(o -> o.getGuestID().equals(s))
-//                .findAny().orElse(null);
-//    }
+
+
 }

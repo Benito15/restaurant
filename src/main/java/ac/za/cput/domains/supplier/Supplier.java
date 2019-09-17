@@ -67,6 +67,12 @@ public class Supplier {
 
         }
 
+        public Builder copy(Supplier supplier) {
+            this.supID = supplier.supID;
+            this.name = supplier.name;
+            this.address = supplier.address;
+            return this;
+        }
 
 
  public Supplier build(){return new Supplier(this);}

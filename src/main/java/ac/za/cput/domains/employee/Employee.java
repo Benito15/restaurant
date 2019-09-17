@@ -7,7 +7,7 @@ public abstract class Employee {
     protected String empid, name, surname;
     protected double salary;
 
-    public Employee(){}
+    private Employee(){}
 
     protected Employee(Builder builder)
     {
@@ -71,6 +71,14 @@ public abstract class Employee {
 
         public Builder salary(double salary){
             this.salary=salary;
+            return this;
+        }
+
+        public Builder copy(Employee employee) {
+            this.empid = employee.empid;
+            this.name = employee.name;
+            this.surname = employee.surname;
+            this.salary = employee.salary;
             return this;
         }
 

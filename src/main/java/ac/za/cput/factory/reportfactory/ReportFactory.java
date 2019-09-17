@@ -9,12 +9,12 @@ public class ReportFactory {
 
 
 
-    public static Report getReport(Date dte,String description)
+    public static Report getReport(Date dte,String description, String empID)
     {
         return new Report.Builder().dte(dte)
                 .description(description)
                 .repID(Misc.generateId())
-                .empID(Misc.generateId())
+                .empID(empID)
                 .build();
 
 

@@ -7,6 +7,7 @@ public class Order {
 ///empi
     private String orderID;
     private String guestID;
+    private String empID;
     private Date dte;
     private double total;
 
@@ -16,8 +17,17 @@ public class Order {
     {
         this.orderID =  builder.orderID;
         this.guestID = builder.guestID;
+        this.empID = builder.empID;
         this.dte = builder.dte;
         this.total = builder.total;
+    }
+
+    public String getEmpID() {
+        return empID;
+    }
+
+    public void setEmpID(String empID) {
+        this.empID = empID;
     }
 
     public String getOrderID() {
@@ -54,10 +64,15 @@ public class Order {
 
     public static class Builder
     {
-        private String orderID,guestID;
+        private String orderID,guestID, empID;
         private Date dte;
         private double total;
 
+        public Builder empID(String empID){
+            this.empID=empID;
+            return this;
+
+        }
 
         public Builder orderID(String orderID)
         {

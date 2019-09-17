@@ -10,11 +10,11 @@ import java.util.*;
 public class BeverageRepositoryImpl implements BeverageRepository {
 
     private static BeverageRepositoryImpl repository = null;
-    private Map<String,Beverage> beverages;
+    private Set<Beverage> beverages;
 
     private BeverageRepositoryImpl()
     {
-        this.beverages = new HashMap<>();
+            this.beverages = new HashSet<>();
 
     }
 
@@ -27,22 +27,26 @@ public class BeverageRepositoryImpl implements BeverageRepository {
 
     @Override
     public Set<Beverage> getAll() {
-
-        Collection<Beverage> beverages= this.beverages.values();
-        Set<Beverage> set = new HashSet<>();
-        set.addAll(beverages);
-        return set;
+        return beverages;
     }
 
     @Override
     public Beverage create(Beverage beverage) {
-        this.beverages.put(beverage.getItemID(),beverage);
-        return beverage;    }
+        this.beverages.add(beverage);
+        return beverage;
+    }
 
     @Override
     public Beverage update(Beverage beverage) {
-        this.beverages.replace(beverage.getItemID(),beverage);
-        return this.beverages.get(beverage.getItemID());
+        Beverage readBeverage= repository.read(beverage.getItemID());
+        if (this.beverages.contains(readBeverage)) {
+            this.beverages.remove(readBeverage);
+            this.beverages.add(beverage);
+            return beverage;
+
+        }
+        return null;
+
     }
 
     @Override
@@ -53,7 +57,9 @@ public class BeverageRepositoryImpl implements BeverageRepository {
 
     @Override
     public Beverage read(String s) {
-        return this.beverages.get(s);
+        return this.beverages.stream()
+                .filter(thisGuest -> thisGuest.getItemID().equalsIgnoreCase(s))
+                .findAny().orElse(null);
 
     }
 }

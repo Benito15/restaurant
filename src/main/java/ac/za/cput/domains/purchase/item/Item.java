@@ -1,6 +1,8 @@
 package ac.za.cput.domains.purchase.item;
 
 
+import ac.za.cput.domains.proofofpayment.bill.Bill;
+
 import java.util.Objects;
 
 public abstract class Item {
@@ -90,6 +92,14 @@ public Item(){}
             return this;
 
         }
+        public Builder copy(Item item) {
+            this.itemID = item.itemID;
+            this.desc = item.desc;
+            this.qty = item.qty;
+            this.price = item.price;
+            return this;
+        }
+
         public abstract Item build();
 
     }
