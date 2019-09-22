@@ -1,7 +1,14 @@
 package ac.za.cput.repositorytest.paymenttest;
 
-import ac.za.cput.domains.proofofpayment.payment.Check;
+import ac.za.cput.domains.employee.Employee;
+import ac.za.cput.domains.guest.Guest;
+import ac.za.cput.domains.payment.Check;
+import ac.za.cput.domains.payment.Payment;
+import ac.za.cput.domains.purchase.order.Order;
+import ac.za.cput.factory.employeefactory.WaiterFactory;
+import ac.za.cput.factory.guestfactory.GuestFactory;
 import ac.za.cput.factory.proofofpayment.paymentfactory.CheckFactory;
+import ac.za.cput.factory.purchasefactory.orderfactory.OrderFactory;
 import ac.za.cput.repositories.paymentrepositories.CheckRepository;
 import ac.za.cput.repositories.paymentrepositories.impl.CheckRepositoryImpl;
 import org.junit.Assert;
@@ -14,19 +21,29 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Set;
 
-import static org.junit.Assert.*;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class CheckRepositoryImplTest {
 
     @Autowired
     private CheckRepository repository;
+    private Check check;
+    private Order order;
+    private Guest guest;
+    private Employee waiter;
+    private Payment paymentGen;
 
 
     @Before
     public void setUp() throws Exception {
         this.repository = CheckRepositoryImpl.getRepository();
+        String bankID= "86757468786";
+        String bankNAME="absa";
+        guest = GuestFactory.getGuest("Hi","Bye", 25);
+        waiter = WaiterFactory.getWaiter("Waiter", "employee", 0);
+        order = OrderFactory.getOrder(guest.getGuestId(),waiter.getEmpid(), null, 250);
+
+        check = CheckFactory.getCheck(order.getOrderID(), order.getTotal(), bankID, bankNAME );
     }
 
     @Test
@@ -39,61 +56,37 @@ public class CheckRepositoryImplTest {
 
     @Test
     public void create() {
-        Check check = CheckFactory.getCheck("this is the Check", "2011585456");
-        this.repository.create(check);
-        int size = this.repository.getAll().size();
-        System.out.println(size);
-        assertTrue("This repository is not 0: ", this.repository.getAll().size()>0);
+     Check createCheck = this.repository.create(check);
+     Assert.assertNotNull(createCheck);
+
+
     }
 
     @Test
     public void update() {
-        String updateID= "256153311";
-        Check check = CheckFactory.getCheck("this is the Check", "2011585456");
-        Check check2 = CheckFactory.getCheck("this is the Check2", "5251522");
+        Check createCheck = this.repository.create(check);
+        Check readCheck = this.repository.read(createCheck.getBankID());
+        Check updateCheck = new Check(readCheck.getBankID(), readCheck.getAmount(),readCheck.getBankID(),"Capitec");
+        this.repository.update(updateCheck);
+        Assert.assertNotNull(updateCheck);
 
-        this.repository.create(check);
-        this.repository.create(check2);
-        System.out.println("Objects in repository");
-        System.out.println("---------------------");
-        System.out.println(this.repository.getAll());
-        check.setBankID(updateID);
-        this.repository.update(check);
-        System.out.println("Updated Repository");
-        System.out.println("---------------------");
-        System.out.println(this.repository.getAll());
-        System.out.println("Updated to: " + check.getBankID());
-        Assert.assertNotNull(check.getBankID());
     }
 
     @Test
     public void delete() {
-        Check check = CheckFactory.getCheck("this is the Check", "2011585456");
-        Check check2 = CheckFactory.getCheck("this is the Check2", "5251522");
-
-        this.repository.create(check);
-        this.repository.create(check2);
-        System.out.println(this.repository.getAll().size());
-        this.repository.delete(check.getBankID());
-        System.out.println(this.repository.getAll().size());
-        Assert.assertNotNull(this.repository.getAll().size());
+        Check createCheck = this.repository.create(check);
+        Check readCheck = this.repository.read(createCheck.getBankID());
+        this.repository.delete(createCheck.getBankID());
+        Assert.assertNotNull(readCheck.getBankID());
 
 
     }
 
     @Test
     public void read() {
-        Check check = CheckFactory.getCheck("this is the Check", "2011585456");
-        Check check2 = CheckFactory.getCheck("this is the Check2", "5251522");
-
-        this.repository.create(check);
-        this.repository.create(check2);
-
-        Check readCheck = this.repository.read(check.getBankID());
-        System.out.println(readCheck.getBankID());
-        System.out.println("Objects in repoitory");
-        System.out.println(this.repository.getAll().size());
-        Assert.assertNotEquals(readCheck.getBankID(), check2.getBankID());
+        Check createCheck = this.repository.create(check);
+        Check readCheck = this.repository.read(createCheck.getBankID());
+        Assert.assertNotNull(createCheck);
 
     }
 

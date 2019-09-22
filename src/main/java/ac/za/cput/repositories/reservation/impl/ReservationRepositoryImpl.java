@@ -9,15 +9,15 @@ import java.util.*;
 @Repository("ReservationInMemory")
 public class ReservationRepositoryImpl implements ReservationRepository {
 
-    private static ReservationRepositoryImpl repository = null;
     private Set<Reservation> reservations;
+    private static ReservationRepository repository = null;
 
     private ReservationRepositoryImpl()
     {
         this.reservations = new HashSet<>();
     }
 
-    public static ReservationRepositoryImpl getRepository()
+    public static ReservationRepository getRepository()
     {
         if(repository == null) repository = new ReservationRepositoryImpl();
         return repository;
@@ -37,7 +37,7 @@ public class ReservationRepositoryImpl implements ReservationRepository {
 
     @Override
     public Reservation update(Reservation reservation) {
-        Reservation readReservation= repository.read(reservation);
+        Reservation readReservation= repository.read(reservation.getTableID(), reservation.getGuestID());
         if (this.reservations.contains(readReservation)){
             this.reservations.remove(readReservation);
             this.reservations.add(reservation);
@@ -49,16 +49,16 @@ public class ReservationRepositoryImpl implements ReservationRepository {
 
 
     @Override
-    public void delete(Reservation reservation) {
-        Reservation deleteReservation= read(reservation);
+    public void delete(String tableID, String guestID) {
+        Reservation deleteReservation= read(tableID, guestID);
         this.reservations.remove(deleteReservation);
     }
 
     @Override
-    public Reservation read(Reservation reservation) {
+    public Reservation read(String tableID, String guestID) {
         return this.reservations.stream()
-                .filter(thisReservation-> thisReservation.getTableID().equalsIgnoreCase(reservation.getTableID())
-                        && thisReservation.getGuestID().equalsIgnoreCase(reservation.getGuestID()))
+                .filter(thisReservation -> thisReservation.getTableID().equals(tableID)
+                        && thisReservation.getGuestID().equals(guestID))
                 .findAny().orElse(null);
     }
 

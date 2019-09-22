@@ -7,8 +7,8 @@ import java.util.Set;
 
 public interface ReservationService  {
     Reservation create(Reservation reservation);
-    Reservation read(Reservation reservation);
+    Reservation read(String tableID, String guestID );
     Reservation update(Reservation reservation);
-    void delete(Reservation bill);
+    void delete(String tableID, String guestID );
     Set<Reservation>getAll();
 }

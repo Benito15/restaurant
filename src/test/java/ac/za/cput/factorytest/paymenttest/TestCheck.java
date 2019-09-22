@@ -2,7 +2,8 @@ package ac.za.cput.factorytest.paymenttest;
 
 import ac.za.cput.domains.employee.Employee;
 import ac.za.cput.domains.guest.Guest;
-import ac.za.cput.domains.proofofpayment.payment.Check;
+import ac.za.cput.domains.payment.Check;
+import ac.za.cput.domains.payment.Payment;
 import ac.za.cput.domains.purchase.item.Item;
 import ac.za.cput.domains.purchase.order.Order;
 import ac.za.cput.domains.purchase.orderline.OrderLine;
@@ -25,6 +26,7 @@ public class TestCheck {
 
         String bankID = "9605154";
         String cardName = "Absa";
+        String paymentID = "12";
         Guest guest = GuestFactory.getGuest("Ben","Kriel",20);
         Employee waiter = CheffFactory.getCheff("Jen","Zoloa", 20.22);
         Order order = OrderFactory.getOrder(guest.getGuestId(),waiter.getEmpid(),null, 250);
@@ -32,8 +34,8 @@ public class TestCheck {
         OrderLine orderLine = OrderLineFactory.getOrderLine(order.getOrderID(), itemBurger.getItemID(), itemBurger.getDesc(), itemBurger.getQty());
 
 
-        Check check= CheckFactory.getCheck(order.getOrderID(),itemBurger.getDesc(),itemBurger.getPrice(),cardName, bankID);
-        System.out.println(check);
+        Payment check= CheckFactory.getCheck(order.getOrderID(),  itemBurger.getPrice(), bankID, cardName);
+
         Assert.assertNotNull(check);
 
     }

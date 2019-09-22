@@ -9,7 +9,11 @@ public class Reservation {
     private int totGuest;
 
     public Reservation(String guestID, String tableID, int totGuest)
-    {}
+    {
+        this.guestID=guestID;
+        this.tableID = tableID;
+        this.totGuest = totGuest;
+    }
 
 //    public Reservation(Builder builder)
 //    {

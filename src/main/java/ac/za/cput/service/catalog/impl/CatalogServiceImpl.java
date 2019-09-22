@@ -20,7 +20,7 @@ public class CatalogServiceImpl implements CatalogService {
 
     }
 
-    public CatalogServiceImpl getService()
+    public static CatalogServiceImpl getService()
     {
         if(service == null)
             return new CatalogServiceImpl();
@@ -44,12 +44,12 @@ public class CatalogServiceImpl implements CatalogService {
     }
 
     @Override
-    public void delete(Catalog cat) {
-        this.repository.delete(cat);
+    public void delete(String supplierID, String itemID) {
+        this.repository.delete(supplierID, itemID);
     }
 
     @Override
-    public Catalog read(Catalog cat) {
-        return this.repository.read(cat);
+    public Catalog read(String supplierID, String itemID) {
+        return this.repository.read(supplierID, itemID);
     }
 }

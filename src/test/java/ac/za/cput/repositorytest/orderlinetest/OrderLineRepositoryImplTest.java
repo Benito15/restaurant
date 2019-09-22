@@ -1,6 +1,14 @@
 package ac.za.cput.repositorytest.orderlinetest;
 
+import ac.za.cput.domains.employee.Employee;
+import ac.za.cput.domains.guest.Guest;
+import ac.za.cput.domains.purchase.item.Item;
+import ac.za.cput.domains.purchase.order.Order;
 import ac.za.cput.domains.purchase.orderline.OrderLine;
+import ac.za.cput.factory.employeefactory.WaiterFactory;
+import ac.za.cput.factory.guestfactory.GuestFactory;
+import ac.za.cput.factory.purchasefactory.itemfactory.BurgerFactory;
+import ac.za.cput.factory.purchasefactory.orderfactory.OrderFactory;
 import ac.za.cput.factory.purchasefactory.orderlinefactory.OrderLineFactory;
 import ac.za.cput.repositories.orderline.OrderLineRepository;
 import ac.za.cput.repositories.orderline.impl.OrderLineRepositoryImpl;
@@ -20,16 +28,25 @@ public class OrderLineRepositoryImplTest {
 
     @Autowired
     private OrderLineRepository repository;
-
+    OrderLine orderLine;
+    Item burgerItem;
+    Order order;
+    Guest guest;
+    Employee waiter;
     @Before
     public void setUp() throws Exception {
         this.repository = OrderLineRepositoryImpl.getRepository();
+        waiter = WaiterFactory.getWaiter("Lela", "Sji", 0);
+        guest = GuestFactory.getGuest("Lorenzo", "Kola", 24);
+        order = OrderFactory.getOrder(guest.getGuestId(),waiter.getEmpid(),null, 250);
+        burgerItem = BurgerFactory.getBurger("This is a burger", 2, 70.00);
+        orderLine = OrderLineFactory.getOrderLine(order.getOrderID(), burgerItem.getItemID(), burgerItem.getDesc(), burgerItem.getQty());
 
     }
 
     @Test
     public void create() {
-        OrderLine orderLine = OrderLineFactory.getOrderLine("OrderLine Description", 2);
+        OrderLine createOrderLine = this.repository.create(orderLine);
         this.repository.create(orderLine);
         int size = this.repository.getAll().size();
         System.out.println(size);
@@ -38,55 +55,31 @@ public class OrderLineRepositoryImplTest {
 
     @Test
     public void update() {
-        int updateQTY = 4;
-        OrderLine orderLine = OrderLineFactory.getOrderLine("OrderLine Description1", 2);
-        OrderLine orderLine2 = OrderLineFactory.getOrderLine("OrderLine Description2", 8);
+        OrderLine createOrderLine = this.repository.create(orderLine);
+        OrderLine readOrderLine = this.repository.read(createOrderLine.getOrderID(), createOrderLine.getItemID());
+        Assert.assertNotNull(readOrderLine);
 
-
-        this.repository.create(orderLine);
-        this.repository.create(orderLine2);
-        System.out.println("Objects in repository");
-        System.out.println("---------------------");
-        System.out.println(this.repository.getAll());
-        orderLine.setQty(updateQTY);
-        this.repository.update(orderLine);
-        System.out.println("Updated Repository");
-        System.out.println("---------------------");
-        System.out.println("Updated to: "+ orderLine.getQty());
-        Assert.assertNotEquals(orderLine, orderLine2.getQty());
     }
 
     @Test
     public void delete() {
-        System.out.println(this.repository.getAll().size());
-        System.out.println("------------------------------------");
-        OrderLine orderLine = OrderLineFactory.getOrderLine("OrderLine Description", 2);
-        OrderLine orderLine2 = OrderLineFactory.getOrderLine("OrderLine Description2", 4);
-        this.repository.create(orderLine);
-        this.repository.create(orderLine2);
-        System.out.println(this.repository.getAll().size());
+        OrderLine createOrderLine = this.repository.create(orderLine);
+        OrderLine readOrderLine = this.repository.read(createOrderLine.getOrderID(), createOrderLine.getItemID());
+        this.repository.delete(createOrderLine.getOrderID(),createOrderLine.getItemID());
 
-        this.repository.delete(orderLine.getOrderID());
-        System.out.println("After Delete");
-        System.out.println(this.repository.getAll().size());
-        Assert.assertNotNull(this.repository.getAll().size());
+        OrderLine deleteOrderLine = this.repository.read(createOrderLine.getOrderID(), createOrderLine.getItemID());
+        Assert.assertNull(deleteOrderLine);
     }
 
 
     @Test
     public void read() {
 
-        OrderLine orderLine = OrderLineFactory.getOrderLine("OrderLine Description", 2);
-        OrderLine orderLine2 = OrderLineFactory.getOrderLine("OrderLine Description2", 4);
+        OrderLine createOrderLine = this.repository.create(orderLine);
+        OrderLine readOrderLine = this.repository.read(createOrderLine.getOrderID(), createOrderLine.getItemID());
+        Assert.assertNotNull(readOrderLine);
 
-        this.repository.create(orderLine);
-        this.repository.create(orderLine2);
 
-        OrderLine readOrderLine = this.repository.read(orderLine.getOrderID());
-        System.out.println(readOrderLine.getOrderID());
-        System.out.println("--------Objects In Repository:------------");
-        System.out.println(this.repository.getAll().size());
-        Assert.assertNotEquals(readOrderLine.getOrderID(), orderLine2.getOrderID());
     }
 
     @Test

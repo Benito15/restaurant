@@ -101,6 +101,14 @@ public class Order {
 
         }
 
+        public Builder copy(Order order) {
+            this.orderID =  order.orderID;
+            this.guestID = order.guestID;
+            this.empID = order.empID;
+            this.dte = order.dte;
+            this.total = order.total;
+            return this;
+        }
 
         public Order build(){return new Order(this);}
 

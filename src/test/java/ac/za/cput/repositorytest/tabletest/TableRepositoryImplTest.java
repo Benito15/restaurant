@@ -40,7 +40,7 @@ public class TableRepositoryImplTest {
 
     @Test
     public void create() {
-        Table table = TableFactory.getGuest(4,true);
+        Table table = TableFactory.getTable(4,true);
         this.tablerepository.create(table);
         int size = this.tablerepository.getAll().size();
         System.out.println(size);
@@ -50,8 +50,8 @@ public class TableRepositoryImplTest {
     @Test
     public void update() {
         boolean updateTable = true;
-        Table table = TableFactory.getGuest(4,false);
-        Table table2 = TableFactory.getGuest(2,true);
+        Table table = TableFactory.getTable(4,false);
+        Table table2 = TableFactory.getTable(2,true);
 
         tablerepository.create(table);
         tablerepository.create(table2);
@@ -70,8 +70,8 @@ public class TableRepositoryImplTest {
     public void delete() {
         System.out.println(this.tablerepository.getAll().size());
         System.out.println("------------------------------------");
-        Table table = TableFactory.getGuest(4,false);
-        Table table2 = TableFactory.getGuest(2,true);
+        Table table = TableFactory.getTable(4,false);
+        Table table2 = TableFactory.getTable(2,true);
         tablerepository.create(table);
         tablerepository.create(table2);
         System.out.println(this.tablerepository.getAll().size());
@@ -85,8 +85,8 @@ public class TableRepositoryImplTest {
 
     @Test
     public void read() {
-        Table table = TableFactory.getGuest(4,false);
-        Table table2 = TableFactory.getGuest(4,true);
+        Table table = TableFactory.getTable(4,false);
+        Table table2 = TableFactory.getTable(4,true);
         this.tablerepository.create(table);
         this.tablerepository.create(table2);
         Table readtable = this.tablerepository.read(table.getTableID());

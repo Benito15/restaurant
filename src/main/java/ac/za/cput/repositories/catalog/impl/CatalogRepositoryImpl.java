@@ -9,14 +9,14 @@ import java.util.*;
 @Repository("CatalogInMemory")
 public class CatalogRepositoryImpl implements CatalogRepository {
 
-    private static CatalogRepositoryImpl repository = null;
+    private static CatalogRepository repository = null;
     private Set<Catalog> catalogs;
 
     private CatalogRepositoryImpl() {
         this.catalogs = new HashSet<>();
     }
 
-    public static CatalogRepositoryImpl getRepository() {
+    public static CatalogRepository getRepository() {
         if (repository == null) repository = new CatalogRepositoryImpl();
         return repository;
 
@@ -35,7 +35,7 @@ public class CatalogRepositoryImpl implements CatalogRepository {
 
     @Override
     public Catalog update(Catalog catalog) {
-        Catalog readCatalog = repository.read(catalog);
+        Catalog readCatalog = repository.read(catalog.getItemID(), catalog.getSupID());
         if (this.catalogs.contains(readCatalog)) {
             this.catalogs.remove(readCatalog);
             this.catalogs.add(catalog);
@@ -45,18 +45,18 @@ public class CatalogRepositoryImpl implements CatalogRepository {
     }
 
     @Override
-    public void delete(Catalog catalog) {
-        Catalog deleteCatalog = read(catalog);
+    public void delete(String supplierID, String itemID) {
+        Catalog deleteCatalog = read(supplierID, itemID);
         this.catalogs.remove(deleteCatalog);
 
 
     }
 
     @Override
-    public Catalog read(Catalog catalog) {
+    public Catalog read(String supplierID, String itemID) {
         return this.catalogs.stream()
-                .filter(thisCatalog -> thisCatalog.getItemID().equalsIgnoreCase(catalog.getItemID())
-                        && thisCatalog.getSupID().equalsIgnoreCase(catalog.getSupID()))
+                .filter(thisCatalog -> thisCatalog.getItemID().equalsIgnoreCase(supplierID)
+                        && thisCatalog.getSupID().equalsIgnoreCase(itemID))
                 .findAny().orElse(null);
     }
 

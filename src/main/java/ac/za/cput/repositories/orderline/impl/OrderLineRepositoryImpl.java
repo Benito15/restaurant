@@ -44,7 +44,7 @@ public class OrderLineRepositoryImpl implements  OrderLineRepository {
 
     @Override
     public OrderLine update(OrderLine orderLine) {
-        OrderLine readBill = repository.read(orderLine);
+        OrderLine readBill = repository.read(orderLine.getOrderID(), orderLine.getItemID());
         if (this.orderLines.contains(readBill)){
             this.orderLines.remove(readBill);
             this.orderLines.add(orderLine);
@@ -55,17 +55,17 @@ public class OrderLineRepositoryImpl implements  OrderLineRepository {
     }
 
     @Override
-    public void delete(OrderLine orderLine) {
+    public void delete(String orderID, String itemID) {
 
-        OrderLine deleteOrderLine = read(orderLine);
+        OrderLine deleteOrderLine = read(orderID, itemID);
         this.orderLines.remove(deleteOrderLine);
     }
 
     @Override
-    public OrderLine read(OrderLine orderLine) {
+    public OrderLine read(String orderID, String itemID) {
         return this.orderLines.stream()
-                .filter(thisOrderLines-> thisOrderLines.getOrderID().equalsIgnoreCase(orderLine.getOrderID())
-                        && thisOrderLines.getItemID().equalsIgnoreCase(orderLine.getItemID()))
+                .filter(thisOrderLines-> thisOrderLines.getOrderID().equalsIgnoreCase(orderID)
+                        && thisOrderLines.getItemID().equalsIgnoreCase(itemID))
                 .findAny().orElse(null);
 
     }

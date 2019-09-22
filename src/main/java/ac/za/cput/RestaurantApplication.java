@@ -17,11 +17,7 @@ public class RestaurantApplication {
         SpringApplication.run(RestaurantApplication.class, args);
     }
 
-    @Bean
-    public RestTemplate restTemplate()
-    {
-        return new RestTemplate();
-    }
+
 
 
 

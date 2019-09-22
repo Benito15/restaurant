@@ -1,6 +1,6 @@
 package ac.za.cput.service.payment.impl;
 
-import ac.za.cput.domains.proofofpayment.payment.Credit;
+import ac.za.cput.domains.payment.Credit;
 
 import ac.za.cput.repositories.paymentrepositories.CreditRepository;
 import ac.za.cput.repositories.paymentrepositories.impl.CreditRepositoryImpl;

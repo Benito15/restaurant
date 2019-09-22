@@ -9,9 +9,9 @@ public interface CatalogRepository  {
 
 
     Catalog create(Catalog catalog);
-    Catalog read(Catalog catalog);
+    Catalog read(String supplierID, String itemID);
     Catalog update(Catalog catalog);
-    void delete(Catalog catalog);
+    void delete(String supplierID, String itemID);
     Set<Catalog> getAll();
 
 

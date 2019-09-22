@@ -19,7 +19,7 @@ public class ReceiptServiceImpl implements ReceiptService {
         repository = ReceiptRepositoryImpl.getRepository();
     }
 
-    public  ReceiptServiceImpl getService()
+    public  static ReceiptServiceImpl getService()
     {
         if(service == null)return  new ReceiptServiceImpl();
         return  service;

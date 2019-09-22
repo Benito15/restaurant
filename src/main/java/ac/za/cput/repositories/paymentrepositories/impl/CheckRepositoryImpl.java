@@ -1,6 +1,6 @@
 package ac.za.cput.repositories.paymentrepositories.impl;
 
-import ac.za.cput.domains.proofofpayment.payment.Check;
+import ac.za.cput.domains.payment.Check;
 import ac.za.cput.repositories.paymentrepositories.CheckRepository;
 import org.springframework.stereotype.Repository;
 
@@ -9,8 +9,8 @@ import java.util.*;
 @Repository("CheckInMemory")
 public class CheckRepositoryImpl implements CheckRepository {
 
-    private static CheckRepositoryImpl repository = null;
     private Set<Check> checks;
+    private static CheckRepositoryImpl repository = null;
 
     private CheckRepositoryImpl()
     {
@@ -18,7 +18,7 @@ public class CheckRepositoryImpl implements CheckRepository {
 
     }
 
-    public static CheckRepository getRepository()
+    public static CheckRepositoryImpl getRepository()
     {
         if(repository == null) repository = new CheckRepositoryImpl();
         return repository;
@@ -55,9 +55,9 @@ public class CheckRepositoryImpl implements CheckRepository {
     }
 
     @Override
-    public Check read(String check) {
+    public Check read(String bankID) {
         return this.checks.stream()
-                .filter(thisCheck-> thisCheck.getBankID().equalsIgnoreCase(check))
+                .filter(thisCheck-> thisCheck.getBankID().equalsIgnoreCase(bankID))
                 .findAny().orElse(null);
     }
 

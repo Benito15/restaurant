@@ -1,14 +1,25 @@
 package ac.za.cput.servicetest.orderline;
 
+import ac.za.cput.domains.employee.Employee;
+import ac.za.cput.domains.guest.Guest;
+import ac.za.cput.domains.purchase.item.Item;
+import ac.za.cput.domains.purchase.order.Order;
 import ac.za.cput.domains.purchase.orderline.OrderLine;
+import ac.za.cput.factory.employeefactory.WaiterFactory;
+import ac.za.cput.factory.guestfactory.GuestFactory;
+import ac.za.cput.factory.purchasefactory.itemfactory.BurgerFactory;
+import ac.za.cput.factory.purchasefactory.orderfactory.OrderFactory;
 import ac.za.cput.factory.purchasefactory.orderlinefactory.OrderLineFactory;
 import ac.za.cput.service.orderline.impl.OrderLineServiceImpl;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.Set;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -16,54 +27,59 @@ public class OrderLineServiceImplTest {
 
     @Autowired
    private OrderLineServiceImpl service;
+    OrderLine orderLine;
+    Item burgerItem;
+    Order order;
+    Guest guest;
+    Employee waiter;
 
+    @Before
+    public void setUp() throws Exception {
+        this.service = OrderLineServiceImpl.getService();
+        waiter = WaiterFactory.getWaiter("Lela", "Sji", 0);
+        guest = GuestFactory.getGuest("Lorenzo", "Kola", 24);
+        order = OrderFactory.getOrder(guest.getGuestId(),waiter.getEmpid(),null, 250);
+        burgerItem = BurgerFactory.getBurger("This is a burger", 2, 70.00);
+        orderLine = OrderLineFactory.getOrderLine(order.getOrderID(), burgerItem.getItemID(), burgerItem.getDesc(), burgerItem.getQty());
+
+    }
 
     @Test
     public void getAll() {
-        OrderLine orderLine = OrderLineFactory.getOrderLine("ORDERLINE",5);
-        this.service.create(orderLine);
-        System.out.println(service.getAll());
-        Assert.assertNotNull(service);
+        Set<OrderLine>orderLineSet =  this.service.getAll();
+        Assert.assertNotNull(orderLineSet);
     }
 
     @Test
     public void create() {
-        OrderLine orderLine = OrderLineFactory.getOrderLine("ORDERLINE",5);
-        this.service.create(orderLine);
-        System.out.println(service.getAll());
-        Assert.assertTrue(this.service.getAll().size()>0);
+        OrderLine createOrderLine = this.service.create(orderLine);
+        Assert.assertNotNull(createOrderLine);
+
+
     }
 
     @Test
     public void update() {
-        int newQTy =10;
-        OrderLine orderLine = OrderLineFactory.getOrderLine("ORDERLINE",5);
-        this.service.create(orderLine);
-        OrderLine updatedOrd = OrderLineFactory.getOrderLine(orderLine.getDesc(),newQTy);
-        this.service.update(updatedOrd);
-        Assert.assertNotNull(updatedOrd.getQty());
+        OrderLine createOrderLine = this.service.create(orderLine);
+        OrderLine readOrderLine = this.service.read(createOrderLine.getOrderID(),createOrderLine.getItemID());
+        OrderLine updateOrderLine = OrderLineFactory.getOrderLine(readOrderLine.getOrderID(), readOrderLine.getItemID(),orderLine.getDesc(), 2);
+        this.service.update(updateOrderLine);
+        Assert.assertNotNull(updateOrderLine.getQty());
 
     }
 
     @Test
     public void delete() {
-        OrderLine orderLine = OrderLineFactory.getOrderLine("ORDERLINE",5);
-        OrderLine orderLine2 = OrderLineFactory.getOrderLine("ORDERLINE",5);
-        this.service.create(orderLine);
-        this.service.create(orderLine2);
-        this.service.delete(orderLine2.getItemID());
-        Assert.assertTrue(this.service.getAll().size() >=1);
+        OrderLine createOrderLine = this.service.create(orderLine);
+        Assert.assertNotNull(createOrderLine);
+
 
     }
 
     @Test
     public void read() {
-        OrderLine orderLine = OrderLineFactory.getOrderLine("ORDERLINE",5);
-        OrderLine orderLine2 = OrderLineFactory.getOrderLine("ORDERLINE2",10);
-        this.service.create(orderLine);
-        this.service.create(orderLine2);
-        OrderLine readOrderLine = this.service.read(orderLine.getItemID());
-
-
-           }
+        OrderLine createOrderLine = this.service.create(orderLine);
+        OrderLine readOrderLine = this.service.read(createOrderLine.getOrderID(),createOrderLine.getItemID());
+        Assert.assertNotNull(readOrderLine.getItemID());
+    }
 }

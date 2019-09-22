@@ -19,7 +19,7 @@ public class ReportServiceImpl implements ReportService {
        repository = ReportRepositoryImpl.getRepository();
    }
 
-    public  ReportServiceImpl getService()
+    public static ReportServiceImpl getService()
     {
         if(service == null)return  new ReportServiceImpl();
         return  service;

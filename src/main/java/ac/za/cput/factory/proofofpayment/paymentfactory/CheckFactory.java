@@ -1,17 +1,15 @@
 package ac.za.cput.factory.proofofpayment.paymentfactory;
 
-import ac.za.cput.domains.proofofpayment.payment.Check;
+import ac.za.cput.domains.payment.Check;
+
+
 
 public class CheckFactory {
 
 
-    public static Check getCheck(String orderID, String description, double amount,String name, String bankID)
+    public static Check getCheck( String orderID, double amount, String bankID,String name)
     {
-        return new Check.Builder()
-                .name(name)
-                .bankID(bankID)
-                .build();
-
+        return  new Check(orderID,  amount, bankID, name);
 
     }
 

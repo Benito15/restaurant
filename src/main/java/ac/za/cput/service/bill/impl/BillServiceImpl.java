@@ -18,7 +18,7 @@ public class BillServiceImpl implements BillService {
         repository = BillRepositoryImpl.getRepository();
     }
 
-    public BillServiceImpl getService()
+    public static BillServiceImpl getService()
     {
         if(service == null) return new BillServiceImpl();
         return service;

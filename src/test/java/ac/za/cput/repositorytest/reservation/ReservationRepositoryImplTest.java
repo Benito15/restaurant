@@ -22,7 +22,7 @@ import java.util.Set;
 @SpringBootTest
 public class ReservationRepositoryImplTest {
 
-    @Autowired
+   @Autowired
     private ReservationRepository repository;
     private Table table;
     private Guest guest;
@@ -31,11 +31,11 @@ public class ReservationRepositoryImplTest {
 
     @Before
     public void setUp() throws Exception {
-        this.repository = ReservationRepositoryImpl.getRepository();
         this.guest = GuestFactory.getGuest("Bennie", "Kriel", 25);
         this.table = TableFactory.getTable(25, true);
         this.reservation= ReservationFactory.getReservation(guest.getGuestId(),table.getTableID(),table.getCapacity());
         this.reservation2 = ReservationFactory.getReservation(guest.getGuestId(), table.getTableID(), table.getCapacity());
+        this.repository = ReservationRepositoryImpl.getRepository();
     }
 
     @Test
@@ -80,7 +80,7 @@ public class ReservationRepositoryImplTest {
         this.repository.create(reservation2);
         System.out.println(this.repository.getAll().size());
 
-        this.repository.delete(reservation2.getTableID());
+        this.repository.delete(reservation2.getTableID(), reservation2.getGuestID());
         System.out.println("After Delete");
         System.out.println(this.repository.getAll().size());
         Assert.assertNotNull(this.repository);
@@ -90,17 +90,12 @@ public class ReservationRepositoryImplTest {
     @Test
     public void read() {
 
-        this.repository.create(reservation);
-        this.repository.create(reservation2);
-        System.out.println("Size after creating Objects->");
-        System.out.println(this.repository.getAll().size());
-        System.out.println("-------------------------------");
-        Reservation readReservation = this.repository.read(reservation.getTableID());
-        System.out.println("Reading Object into new Object of type Reservation");
-        System.out.println(readReservation.getTableID());
-        System.out.println("-----------------------------------");
+       Reservation createReservation = this.repository.create(reservation);
+        this.repository.create(createReservation);
 
-        Assert.assertNotEquals(reservation2.getTableID(), readReservation.getTableID());
+
+        Reservation readReservation = this.repository.read(createReservation.getTableID(), createReservation.getGuestID());
+       Assert.assertNotNull(readReservation);
 
 
     }

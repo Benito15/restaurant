@@ -2,8 +2,7 @@ package ac.za.cput.factorytest.paymenttest;
 
 import ac.za.cput.domains.employee.Employee;
 import ac.za.cput.domains.guest.Guest;
-import ac.za.cput.domains.proofofpayment.payment.Credit;
-import ac.za.cput.domains.proofofpayment.payment.Payment;
+import ac.za.cput.domains.payment.Payment;
 import ac.za.cput.domains.purchase.item.Item;
 import ac.za.cput.domains.purchase.order.Order;
 import ac.za.cput.domains.purchase.orderline.OrderLine;
@@ -24,6 +23,8 @@ public class TestCredit {
 
        String cardID = "9605154";
        String cardName = "Absa";
+        String paymentID = "12";
+
         Guest guest = GuestFactory.getGuest("Ben","Kriel",20);
         Employee waiter = CheffFactory.getCheff("Jen","Zoloa", 20.22);
         Order order = OrderFactory.getOrder(guest.getGuestId(),waiter.getEmpid(),null, 250);
@@ -32,7 +33,7 @@ public class TestCredit {
 
 
 
-        Payment credit= CreditFactory.getCredit(order.getOrderID(),itemBurger.getDesc(), itemBurger.getPrice(), cardName, cardID);
+        Payment credit= CreditFactory.getCredit(order.getOrderID(),itemBurger.getPrice(), cardID, cardName);
         System.out.println(credit);
         Assert.assertNotNull(credit);
 

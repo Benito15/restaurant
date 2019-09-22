@@ -1,7 +1,11 @@
 package ac.za.cput.repositorytest.catalogtest;
 
 import ac.za.cput.domains.catalog.Catalog;
+import ac.za.cput.domains.purchase.item.Item;
+import ac.za.cput.domains.supplier.Supplier;
 import ac.za.cput.factory.catalogfactory.CatalogFactory;
+import ac.za.cput.factory.purchasefactory.itemfactory.BurgerFactory;
+import ac.za.cput.factory.supplierfactory.SupplierFactory;
 import ac.za.cput.repositories.catalog.CatalogRepository;
 import ac.za.cput.repositories.catalog.impl.CatalogRepositoryImpl;
 import org.junit.Assert;
@@ -12,7 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.xml.bind.SchemaOutputResolver;
+
+
 import java.util.Set;
 
 import static org.junit.Assert.*;
@@ -23,76 +28,69 @@ public class CatalogRepositoryImplTest {
 
     @Autowired
     private CatalogRepository repository;
+    Catalog catalog;
+    Item burgerItem;
+    Supplier supplier;
 
     @Before
     public void setUp() throws Exception {
+        burgerItem = BurgerFactory.getBurger("Cheese Burger", 1, 50.00);
+        supplier = SupplierFactory.getSupplier("Johnny", null);
+        catalog  = CatalogFactory.getCatalog(burgerItem.getItemID(),supplier.getSupID(), burgerItem.getDesc());
         this.repository = CatalogRepositoryImpl.getRepository();
     }
 
     @Test
     public void getAll() {
-        Set<Catalog> getAllCatalogs = this.repository.getAll();
-        System.out.println("Get All Catalogs: " + this.repository.getAll().size());
-        Assert.assertNotNull("CatalogRepository: ", this.repository.getAll());
+
+
+        Assert.assertNotNull(this.repository.getAll());
     }
 
     @Test
     public void create() {
-        Catalog catalog = CatalogFactory.getCatalog("CATALOG 1");
-        this.repository.create(catalog);
+        Catalog createCatalog = this.repository.create(catalog);
+
+        this.repository.create(createCatalog);
         int size = this.repository.getAll().size();
         System.out.println(size);
-        Assert.assertTrue("This repository is not 0", this.repository.getAll().size() >0);
+
+        Assert.assertNotNull(createCatalog);
 
     }
 
     @Test
     public void update() {
-        String updatedDesc = "Catalog2";
-        Catalog catalog= CatalogFactory.getCatalog("Catalog1");
+        Catalog createCatalog = this.repository.create(catalog);
 
-        repository.create(catalog);
-        System.out.println("Catalog1: \n" + this.repository.getAll());
-        System.out.println("----------------------------------------");
-        catalog.setDescription(updatedDesc);
 
-        this.repository.update(catalog);
-        System.out.println("After catalog update---------------------------");
+        Catalog readCatalog = this.repository.read(createCatalog.getItemID(), createCatalog.getSupID());
+
         System.out.println(this.repository.getAll());
-        Assert.assertEquals(updatedDesc, catalog.getDescription());
+        Assert.assertNotNull(readCatalog);
     }
 
     @Test
     public void delete() {
-        System.out.println(this.repository.getAll().size());
-        System.out.println("--------------------------------");
-        Catalog catalog= CatalogFactory.getCatalog("Catalog1");
-        Catalog catalog2= CatalogFactory.getCatalog("Catalog2");
-        repository.create(catalog);
-        repository.create(catalog2);
-        System.out.println(this.repository.getAll().size());
 
-        this.repository.delete(catalog.getItemID());
-        System.out.println("After Delete");
-        System.out.println(this.repository.getAll().size());
-        Assert.assertNotNull(this.repository);
+        Catalog createCatalog = this.repository.create(catalog);
+
+
+        Catalog readCatalog = this.repository.read(createCatalog.getItemID(), createCatalog.getSupID());
+        this.repository.delete(createCatalog.getItemID(), createCatalog.getSupID());
+        Catalog deletedCatalog = this.repository.read(createCatalog.getItemID(), createCatalog.getSupID());
+        Assert.assertNull(deletedCatalog);
     }
 
     @Test
     public void read() {
-        Catalog catalog= CatalogFactory.getCatalog("Catalog1");
-        Catalog catalog2= CatalogFactory.getCatalog("Catalog2");
-        this.repository.create(catalog);
-        this.repository.create(catalog2);
-        System.out.println("Size after creating Objects->");
-        System.out.println(this.repository.getAll().size());
-        System.out.println("-------------------------------");
-        Catalog readCatalog = this.repository.read(catalog.getItemID());
-        System.out.println("Reading Object into new Object of type Catalog: ");
-        System.out.println(readCatalog.getItemID());
-        System.out.println("-----------------------------------");
+        Catalog createCatalog = this.repository.create(catalog);
 
-        Assert.assertNotEquals(catalog2.getItemID(), readCatalog.getItemID());
+
+        repository.create(createCatalog);
+        Catalog readCatalog = this.repository.read(createCatalog.getItemID(), createCatalog.getSupID());
+
+        Assert.assertNotNull(readCatalog);
 
     }
 }

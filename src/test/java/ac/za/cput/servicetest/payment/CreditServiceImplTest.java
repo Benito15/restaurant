@@ -1,6 +1,6 @@
 package ac.za.cput.servicetest.payment;
 
-import ac.za.cput.domains.proofofpayment.payment.Credit;
+import ac.za.cput.domains.payment.Credit;
 import ac.za.cput.factory.proofofpayment.paymentfactory.CreditFactory;
 import ac.za.cput.service.payment.impl.CreditServiceImpl;
 import org.junit.Assert;
@@ -20,7 +20,7 @@ public class CreditServiceImplTest {
 
     @Test
     public void getAll() {
-        Credit credit = CreditFactory.getCredit("Credit","143411786");
+        Credit credit = CreditFactory.getCredit("436436", 299, "57820752", "Capitec");
         this.service.create(credit);
         System.out.println(service.getAll());
         Assert.assertNotNull(service);
@@ -28,7 +28,7 @@ public class CreditServiceImplTest {
 
     @Test
     public void create() {
-        Credit credit = CreditFactory.getCredit("Credit","143411786");
+        Credit credit = CreditFactory.getCredit("436436", 299, "57820752", "Capitec");
         this.service.create(credit);
         System.out.println(service.getAll());
         Assert.assertTrue(this.service.getAll().size()>0);
@@ -37,18 +37,18 @@ public class CreditServiceImplTest {
     @Test
     public void update() {
         String updateDescription = "Updated Description";
-        Credit credit = CreditFactory.getCredit("Credit","143411786");
+        Credit credit = CreditFactory.getCredit("436436", 299, "57820752", "Capitec");
         this.service.create(credit);
-        Credit updatedCredit = CreditFactory.getCredit(updateDescription,credit.getCardID());
+        Credit updatedCredit = CreditFactory.getCredit(credit.getOrderID(), credit.getAmount(), credit.getCardID(), credit.getName());
         this.service.update(updatedCredit);
-        Assert.assertTrue(updatedCredit.getName().contains(updateDescription));
+        Assert.assertNotNull(credit);
 
     }
 
     @Test
     public void delete() {
-        Credit credit = CreditFactory.getCredit("Credit","143411786");
-        Credit credit2 = CreditFactory.getCredit("Credit45","143445411786");
+        Credit credit = CreditFactory.getCredit("545", 99, "3535543", "Standard-Bank");
+        Credit credit2 = CreditFactory.getCredit("436436", 299, "57820752", "Capitec");
         this.service.create(credit);
         this.service.create(credit2);
         this.service.delete(credit.getCardID());
@@ -58,8 +58,8 @@ public class CreditServiceImplTest {
 
     @Test
     public void read() {
-        Credit credit = CreditFactory.getCredit("Credit","143411786");
-        Credit credit2 = CreditFactory.getCredit("Credit41","23143411786");
+        Credit credit = CreditFactory.getCredit("545", 99, "3535543", "Standard-Bank");
+        Credit credit2 = CreditFactory.getCredit("436436", 299, "57820752", "Capitec");
         this.service.create(credit);
         this.service.create(credit2);
         Credit readCredit = this.service.read(credit.getCardID());

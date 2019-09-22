@@ -1,6 +1,9 @@
 package ac.za.cput.repositorytest.reporttest;
 
+import ac.za.cput.domains.employee.Employee;
+import ac.za.cput.domains.employee.Manager;
 import ac.za.cput.domains.report.Report;
+import ac.za.cput.factory.employeefactory.ManagerFactory;
 import ac.za.cput.factory.reportfactory.ReportFactory;
 import ac.za.cput.repositories.reportrepository.impl.ReportRepositoryImpl;
 import org.junit.Assert;
@@ -20,15 +23,19 @@ import static org.junit.Assert.*;
 @SpringBootTest
 public class ReportRepositoryImplTest {
 
+
     @Autowired
     private ReportRepositoryImpl repository = null;
     Date date;
-
+    Employee manager;
+    Report report;
 
     @Before
     public void setUp() throws Exception {
         this.repository = ReportRepositoryImpl.getRepository();
         this.date = new Date();
+        manager = ManagerFactory.getManager("Manager", "Employee", 0);
+        report = ReportFactory.getReport(null, "This is report", manager.getEmpid());
     }
 
 
@@ -41,63 +48,37 @@ public class ReportRepositoryImplTest {
 
     @Test
     public void create() {
-        Report report= ReportFactory.getReport(date,"Report 1");
-        this.repository.create(report);
-        int size = this.repository.getAll().size();
-        System.out.println(size);
-        Assert.assertTrue("This repository is not 0", this.repository.getAll().size() >0);
+        Report createReport = this.repository.create(report);
+        Assert.assertNotNull(createReport);
 
     }
 
     @Test
     public void update() {
         String newReport = "reportNew";
-        Report report = ReportFactory.getReport(date,"Report1");
+        Report createReport = this.repository.create(report);
+        Report readReport = this.repository.read(createReport);
+        Report updateReport = new Report.Builder().copy(readReport).description("UpdatedReport").build();
+        this.repository.update(updateReport);
+        Assert.assertNotNull(updateReport);
 
-        repository.create(report);
-        System.out.println("Report 1: \n" + this.repository.getAll());
-        System.out.println("----------------------------------------");
-        report.setDescription(newReport);
-
-        this.repository.update(report);
-        System.out.println("After address update---------------------------");
-        System.out.println(this.repository.getAll());
-        Assert.assertEquals(newReport, report.getDescription());
 
     }
 
     @Test
     public void delete() {
-        System.out.println(this.repository.getAll().size());
-        System.out.println("--------------------------------");
-        Report report = ReportFactory.getReport(date,"Report1");
-        Report report2 = ReportFactory.getReport(date,"Report2");
+        Report createReport = this.repository.create(report);
+        this.repository.delete(createReport);
+        Report deleteReport = this.repository.read(createReport);
+        Assert.assertNotNull(createReport);
 
-        this.repository.create(report);
-        this.repository.create(report2);
-        System.out.println(this.repository.getAll().size());
-
-        this.repository.delete(report.getRepID());
-        System.out.println("After Delete");
-        System.out.println(this.repository.getAll().size());
-        Assert.assertNotNull(this.repository);
     }
 
     @Test
     public void read() {
-        Report report = ReportFactory.getReport(date,"Report1");
-        Report report2 = ReportFactory.getReport(date,"Report2");
-        this.repository.create(report);
-        this.repository.create(report2);
-        System.out.println("Size after creating Objects->");
-        System.out.println(this.repository.getAll().size());
-        System.out.println("-------------------------------");
-        Report readReport = this.repository.read(report.getRepID());
-        System.out.println("Reading Object into new Object of type Supplier");
-        System.out.println(readReport.getRepID());
-        System.out.println("-----------------------------------");
-
-        Assert.assertNotEquals(report2.getRepID(), readReport.getRepID());
+        Report createReport = this.repository.create(report);
+        Report readReport = this.repository.read(createReport);
+        Assert.assertNotNull(readReport);
 
     }
 

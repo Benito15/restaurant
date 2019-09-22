@@ -12,7 +12,7 @@ import java.util.Set;
 @Service("OrderLineService")
 public class OrderLineServiceImpl implements OrderLineService {
 
-    private OrderLineServiceImpl service = null;
+    private static OrderLineServiceImpl service = null;
     private OrderLineRepository repository;
 
     private OrderLineServiceImpl()
@@ -20,7 +20,7 @@ public class OrderLineServiceImpl implements OrderLineService {
         repository = OrderLineRepositoryImpl.getRepository();
     }
 
-    public OrderLineServiceImpl getService()
+    public static OrderLineServiceImpl getService()
     {
         if(service ==null) return new OrderLineServiceImpl();
         return service;
@@ -45,13 +45,13 @@ public class OrderLineServiceImpl implements OrderLineService {
     }
 
     @Override
-    public void delete(OrderLine orderLine) {
-        this.repository.delete(orderLine);
+    public void delete(String orderID, String itemID) {
+        this.repository.delete(orderID, itemID);
 
     }
 
     @Override
-    public OrderLine read(OrderLine orderLine) {
-        return this.repository.read(orderLine);
+    public OrderLine read(String orderID, String itemID) {
+        return this.repository.read(orderID, itemID);
     }
 }

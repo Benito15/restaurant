@@ -40,6 +40,22 @@ public class Guest {
         return age;
     }
 
+    public void setGuestId(String guestId) {
+        this.guestId = guestId;
+    }
+
+    public void setGuestName(String guestName) {
+        this.guestName = guestName;
+    }
+
+    public void setGuestSurname(String guestSurname) {
+        this.guestSurname = guestSurname;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
     public static class Builder{
 
     private String guestId, guestName,guestSurname;

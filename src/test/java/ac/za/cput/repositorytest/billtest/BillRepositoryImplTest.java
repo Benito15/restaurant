@@ -1,7 +1,13 @@
 package ac.za.cput.repositorytest.billtest;
 
+import ac.za.cput.domains.employee.Employee;
+import ac.za.cput.domains.guest.Guest;
 import ac.za.cput.domains.proofofpayment.bill.Bill;
+import ac.za.cput.domains.purchase.order.Order;
+import ac.za.cput.factory.employeefactory.CheffFactory;
+import ac.za.cput.factory.guestfactory.GuestFactory;
 import ac.za.cput.factory.proofofpayment.billfactory.BillFactory;
+import ac.za.cput.factory.purchasefactory.orderfactory.OrderFactory;
 import ac.za.cput.repositories.billrepository.BillRepository;
 import ac.za.cput.repositories.billrepository.impl.BillRepositoryImpl;
 import org.junit.Assert;
@@ -27,14 +33,22 @@ public class BillRepositoryImplTest {
     @Autowired
     private BillRepository billRepository;
     Bill bill;
+    Order order;
+    Guest guest;
     Date nowDate ;
+    Employee waiter;
     SimpleDateFormat format;
+
 
     @Before
     public void setUp() throws Exception {
         this.billRepository = BillRepositoryImpl.getRepository();
         format = new SimpleDateFormat("-yyyy-MM-dd");
         nowDate = new Date();
+        guest = GuestFactory.getGuest("Hilda", "Oubaas",86);
+        waiter = CheffFactory.getCheff("waiter","Chicken", 2500);
+        bill = BillFactory.getBill("sds", null,"This is the bill", 200);
+        order = OrderFactory.getOrder(guest.getGuestId(), waiter.getEmpid(),null, bill.getTotal());
 
     }
 
@@ -47,7 +61,6 @@ public class BillRepositoryImplTest {
     @Test
     public void create() {
 
-      Bill bill = BillFactory.getBill(nowDate,"1 - Bill", 200);
       billRepository.create(bill);
       System.out.println(billRepository.getAll());
         Assert.assertNotNull(billRepository);
@@ -56,27 +69,25 @@ public class BillRepositoryImplTest {
 
     @Test
     public void update() {
-        Bill bill = BillFactory.getBill(nowDate,"1 - Bill", 200);
-        billRepository.create(bill);
-        Bill bill2 = BillFactory.getBill(nowDate,"2 - Bill", 400);
+
+        Bill createBill = billRepository.create(bill);
+        Bill readBill = this.billRepository.read(createBill);
         //billRepository.create(bill2);
-        billRepository.update(bill2);
-        Assert.assertNotSame(bill, bill2);
+        Bill updateBill = new Bill.Builder().copy(readBill).desc("Updated description").build();
+
+        Assert.assertNotNull(updateBill);
 
     }
 
     @Test
     public void delete() {
 
-        Bill bill = BillFactory.getBill(nowDate,"1 - Bill", 200);
-        Bill bill2 = BillFactory.getBill(nowDate,"2 - Bill", 400);
+        Bill createBill = billRepository.create(bill);
+        Bill readBill = this.billRepository.read(createBill);
+        this.billRepository.delete(createBill);
 
-        billRepository.create(bill);
-        billRepository.create(bill2);
-
-        billRepository.delete(bill2.getBillID());
-        System.out.println(billRepository.getAll());
-       // Assert.assertNotEquals(bill, bill2);
+        Bill deleteBill = this.billRepository.read(createBill);
+        Assert.assertNull(deleteBill);
 
     }
 
@@ -93,23 +104,11 @@ public class BillRepositoryImplTest {
 //            System.out.println(testingDate);
 //        } catch (ParseException e) {
 //            e.printStackTrace();
-//        }
-        LocalDate instantDate = LocalDate.of( 2015 , 2 , 25);
-        Instant instant = Instant.from(instantDate.atStartOfDay(ZoneId.of("GMT")));
-        Date pasteDate= Date.from(instant);
+//
+        Bill createBill = billRepository.create(bill);
+        Bill readBill = this.billRepository.read(createBill);
 
-        System.out.println(pasteDate);
-
-        Bill bill = BillFactory.getBill(this.nowDate,"1 - Bill", 100);
-        Bill bill2 = BillFactory.getBill(pasteDate,"2- Bill", 150);
-
-        //System.out.println(bill2);
-        billRepository.create(bill);
-        billRepository.create(bill2);
-        Bill readBill = this.billRepository.read(bill.getBillID());
-
-        Assert.assertTrue(bill2.getTotal() > readBill.getTotal());
-
+        Assert.assertNotNull(readBill);
 
 
 

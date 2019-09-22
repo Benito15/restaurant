@@ -7,8 +7,8 @@ import java.util.Set;
 
 public interface OrderLineRepository  {
     OrderLine create(OrderLine orderLine);
-    OrderLine read(OrderLine orderLine);
+    OrderLine read(String orderID, String itemID);
     OrderLine update(OrderLine orderLine);
-    void delete(OrderLine orderLine);
+    void delete(String orderID, String itemID);
     Set<OrderLine> getAll();
 }

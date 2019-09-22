@@ -1,6 +1,6 @@
 package ac.za.cput.service.payment;
 
-import ac.za.cput.domains.proofofpayment.payment.Check;
+import ac.za.cput.domains.payment.Check;
 import ac.za.cput.service.IService;
 
 import java.util.Set;

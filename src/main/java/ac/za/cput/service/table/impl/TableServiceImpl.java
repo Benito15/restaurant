@@ -11,7 +11,7 @@ import java.util.Set;
 @Service("Table")
 public class TableServiceImpl implements TableService {
 
-  private TableServiceImpl service = null;
+  private static TableServiceImpl service = null;
   private TableRepository repository;
 
   private TableServiceImpl()
@@ -19,7 +19,7 @@ public class TableServiceImpl implements TableService {
       repository = TableRepositoryImpl.getRepository();
   }
 
-  public TableServiceImpl getService()
+  public static TableServiceImpl getService()
   {
       if(service == null) return new TableServiceImpl();
       return service;

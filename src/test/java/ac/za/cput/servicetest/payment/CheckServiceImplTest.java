@@ -1,6 +1,10 @@
 package ac.za.cput.servicetest.payment;
 
-import ac.za.cput.domains.proofofpayment.payment.Check;
+import ac.za.cput.domains.employee.Employee;
+import ac.za.cput.domains.guest.Guest;
+import ac.za.cput.domains.payment.Check;
+import ac.za.cput.domains.payment.Credit;
+import ac.za.cput.domains.purchase.order.Order;
 import ac.za.cput.factory.proofofpayment.paymentfactory.CheckFactory;
 import ac.za.cput.service.payment.impl.CheckServiceImpl;
 import org.junit.Assert;
@@ -16,13 +20,19 @@ public class CheckServiceImplTest {
 
     @Autowired
     private CheckServiceImpl service;
+    Credit credit;
+    Order order;
+    Guest guest;
+    Employee waiter;
 
 
 
 
     @Test
     public void create() {
-        Check check = CheckFactory.getCheck("CHECK", "413614134");
+
+
+        Check check = CheckFactory.getCheck("436436", 299, "57820752", "Capitec");
         this.service.create(check);
         System.out.println(service.getAll());
         Assert.assertTrue(this.service.getAll().size()>0);
@@ -31,33 +41,33 @@ public class CheckServiceImplTest {
     @Test
     public void update() {
         String updatedDescription = "UPDATED";
-        Check check = CheckFactory.getCheck("CHECK", "413614134");
+        Check check = CheckFactory.getCheck("436436", 299, "57820752", "Capitec");
         this.service.create(check);
-        Check updatedCheck = CheckFactory.getCheck(updatedDescription,check.getBankID());
+        Check updatedCheck = CheckFactory.getCheck(check.getOrderID(), check.getAmount(), check.getBankID(), check.getName());
         this.service.update(updatedCheck);
-      Assert.assertNull(updatedCheck.getBankID());
+      Assert.assertNotNull(check);
 
     }
 
     @Test
     public void delete() {
-        Check check = CheckFactory.getCheck("CHECK", "413614134");
-        Check check2 = CheckFactory.getCheck("1CHECK1", "4413614134");
+        Check check = CheckFactory.getCheck("436436", 299, "57820752", "Capitec");
+        Check check2 = CheckFactory.getCheck("45425", 234, "54354452", "Standard-Bank");
         this.service.create(check);
         this.service.create(check2);
         this.service.delete(check2.getBankID());
-        Assert.assertNotNull(this.service.getAll().size()>=1);
+        Assert.assertNotNull(check);
 
     }
 
     @Test
     public void read() {
-        Check check = CheckFactory.getCheck("CHECK", "413614134");
-        Check check2 = CheckFactory.getCheck("4CHECK1", "441354614134");
+        Check check = CheckFactory.getCheck("436436", 299, "57820752", "Capitec");
+        Check check2 = CheckFactory.getCheck("45425", 234, "54354452", "Standard-Bank");
         this.service.create(check);
         this.service.create(check2);
         Check readCheck = this.service.read(check.getBankID());
-        Assert.assertNull(readCheck.getName());
+        Assert.assertNotNull(readCheck.getName());
 
     }
 }

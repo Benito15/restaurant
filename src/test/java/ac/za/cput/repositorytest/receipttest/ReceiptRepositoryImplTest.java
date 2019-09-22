@@ -1,6 +1,13 @@
 package ac.za.cput.repositorytest.receipttest;
 
+import ac.za.cput.domains.employee.Employee;
+import ac.za.cput.domains.employee.Waiter;
+import ac.za.cput.domains.guest.Guest;
+import ac.za.cput.domains.proofofpayment.bill.Bill;
 import ac.za.cput.domains.proofofpayment.receipt.Receipt;
+import ac.za.cput.factory.employeefactory.CheffFactory;
+import ac.za.cput.factory.guestfactory.GuestFactory;
+import ac.za.cput.factory.proofofpayment.billfactory.BillFactory;
 import ac.za.cput.factory.proofofpayment.receiptfactory.ReceiptFactory;
 import ac.za.cput.repositories.receiptrepository.ReceiptRepository;
 import ac.za.cput.repositories.receiptrepository.impl.ReceiptRepositoryImpl;
@@ -24,11 +31,20 @@ public class ReceiptRepositoryImplTest {
     @Autowired
     private ReceiptRepository repository;
     Date dte;
+    Guest guest;
+    Employee waiter;
+    Bill bill;
+    Receipt receipt;
 
     @Before
     public void setUp() throws Exception {
         repository = ReceiptRepositoryImpl.getRepository();
         dte = new Date();
+        guest = GuestFactory.getGuest("Hilda", "Oubaas",86);
+        waiter = CheffFactory.getCheff("waiter","Chicken", 2500);
+        bill = BillFactory.getBill("sds", null,"This is the bill", 200);
+        receipt = ReceiptFactory.getReceipt(bill.getBillID(), null, bill.getDesc(), bill.getTotal());
+
     }
 
 
@@ -41,32 +57,19 @@ public class ReceiptRepositoryImplTest {
 
     @Test
     public void create() {
-        Receipt receipt = ReceiptFactory.getReceipt(dte, "this is the Receipt", 200);
-        this.repository.create(receipt);
-        int size = this.repository.getAll().size();
-        System.out.println(size);
-        assertTrue("This repository is not 0: ", this.repository.getAll().size()>0);
+        Receipt createReceipt = this.repository.create(receipt);
+        Assert.assertNotNull(createReceipt.getRecID());
+
     }
 
     @Test
     public void update() {
         double updateTotal = 400;
-
-        Receipt receipt = ReceiptFactory.getReceipt(dte, "Number 1", 200);
-        Receipt receipt1 = ReceiptFactory.getReceipt(dte, "Number 1", 1000);
-
-        this.repository.create(receipt);
-        this.repository.create(receipt1);
-
-        System.out.println("Objects in repository");
-        System.out.println("---------------------");
-        System.out.println(this.repository.getAll());
-        receipt.setTotal(updateTotal);
-        this.repository.update(receipt);
-        System.out.println("Updated Repository");
-        System.out.println("---------------------");
-        System.out.println(this.repository.getAll());
-        System.out.println("Updated to: " + receipt.getTotal());
+        Receipt createReceipt = this.repository.create(receipt);
+        Receipt readReceipt = this.repository.read(createReceipt);
+        Receipt updateReceipt = new Receipt.Builder().copy(readReceipt).desc("UPDATED").build();
+        this.repository.update(updateReceipt);
+        Assert.assertNotNull(updateReceipt);
 
 
     }
@@ -74,18 +77,10 @@ public class ReceiptRepositoryImplTest {
     @Test
     public void delete() {
         System.out.println("Start");
-        System.out.println(this.repository.getAll().size());
-        System.out.println("------------------------------------");
-        Receipt receipt = ReceiptFactory.getReceipt(dte, "Number 1", 200);
-        Receipt receipt1 = ReceiptFactory.getReceipt(dte, "Number 1", 1000);
-
-        this.repository.create(receipt);
-        this.repository.create(receipt1);
-
-        this.repository.delete(receipt1.getRecID());
-        System.out.println("After Delete");
-        System.out.println(this.repository.getAll().size());
-        Assert.assertNotNull(this.repository.getAll().size());
+        Receipt createReceipt = this.repository.create(receipt);
+        Receipt readReceipt = this.repository.read(createReceipt);
+        this.repository.delete(createReceipt);
+        Assert.assertNotNull(readReceipt);
 
 
     }
@@ -93,17 +88,12 @@ public class ReceiptRepositoryImplTest {
     @Test
     public void read() {
 
-        Receipt receipt = ReceiptFactory.getReceipt(dte, "Number 1", 200);
-        Receipt receipt1 = ReceiptFactory.getReceipt(dte, "Number 1", 1000);
+        Receipt createReceipt = this.repository.create(receipt);
+        Receipt readReceipt = this.repository.read(createReceipt);
+        Assert.assertNotNull(readReceipt);
 
-        this.repository.create(receipt);
-        this.repository.create(receipt1);
 
-        Receipt readReceipt = this.repository.read(receipt.getRecID());
-        System.out.println(readReceipt.getRecID());
-        System.out.println("--------Objects In Repository:------------");
-        System.out.println(this.repository.getAll().size());
-        Assert.assertNotEquals(readReceipt.getRecID(), receipt1.getRecID());
+
     }
 
 

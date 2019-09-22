@@ -1,6 +1,10 @@
 package ac.za.cput.repositorytest.ordertest;
 
+import ac.za.cput.domains.employee.Employee;
+import ac.za.cput.domains.guest.Guest;
 import ac.za.cput.domains.purchase.order.Order;
+import ac.za.cput.factory.employeefactory.WaiterFactory;
+import ac.za.cput.factory.guestfactory.GuestFactory;
 import ac.za.cput.factory.purchasefactory.orderfactory.OrderFactory;
 import ac.za.cput.repositories.orderrepository.OrderRepository;
 import ac.za.cput.repositories.orderrepository.impl.OrderRepositoryImpl;
@@ -24,76 +28,52 @@ public class OrderRepositoryImplTest {
     @Autowired
     private OrderRepository repository;
     Date date;
+    Order order;
+    Employee waiter;
+    Guest guest;
 
     @Before
     public void setUp() throws Exception {
         repository = OrderRepositoryImpl.getRepository();
+        guest = GuestFactory.getGuest("Hi","Bye", 25);
+        waiter = WaiterFactory.getWaiter("Waiter", "employee", 0);
+        order = OrderFactory.getOrder(guest.getGuestId(),waiter.getEmpid(), null, 250);
         date = new Date();
     }
 
     @Test
     public void create() {
-        Order order = OrderFactory.getOrder(date,200);
-        this.repository.create(order);
-        int size = this.repository.getAll().size();
-        System.out.println(size);
-        assertTrue("This repository is not 0: ", this.repository.getAll().size()>0);
+        Order createOrder = this.repository.create(order);
+        Assert.assertNotNull(createOrder);
     }
 
     @Test
     public void update() {
-        double updateTotal = 400;
+        Order createOrder= this.repository.create(order);
+        Order readOrder = this.repository.read(createOrder);
+        Order updateOrder= new Order.Builder().copy(readOrder).total(300).build();
+        this.repository.update(updateOrder);
+        Assert.assertNotEquals(updateOrder.getTotal(), createOrder.getTotal());
 
-        Order order = OrderFactory.getOrder(date,200);
-        Order order1 = OrderFactory.getOrder(date,300);
-
-        this.repository.create(order);
-        this.repository.create(order1);
-        System.out.println("Objects in repository");
-        System.out.println("---------------------");
-        System.out.println(this.repository.getAll());
-        order.setTotal(updateTotal);
-        this.repository.update(order);
-        System.out.println("Updated Repository");
-        System.out.println("---------------------");
-        System.out.println(this.repository.getAll());
-        System.out.println("Updated to: "+ order.getTotal());
-        //this.repository
-        Assert.assertNotEquals(updateTotal, order1.getTotal());
 
     }
 
     @Test
     public void delete() {
-        System.out.println(this.repository.getAll().size());
-        System.out.println("------------------------------------");
-        Order order = OrderFactory.getOrder(date,200);
-        Order order1 = OrderFactory.getOrder(date,400);
-        this.repository.create(order);
-        this.repository.create(order1);
-        System.out.println(this.repository.getAll().size());
 
-        this.repository.delete(order1.getOrderID());
-        System.out.println("After Delete");
-        System.out.println(this.repository.getAll().size());
-        Assert.assertNotNull(this.repository.getAll().size());
+        Order createOrder= this.repository.create(order);
+        this.repository.delete(createOrder);
+        Order deleteOrder = this.repository.read(createOrder);
+        Assert.assertNull(deleteOrder);
+
 
     }
 
     @Test
     public void read() {
-        Order order = OrderFactory.getOrder(date,200);
-        Order order1 = OrderFactory.getOrder(date,400);
-
-        this.repository.create(order);
-        this.repository.create(order1);
-
-        Order readOrder = this.repository.read(order.getOrderID());
-        System.out.println(readOrder.getOrderID());
-        System.out.println("--------Objects In Repository:------------");
-        System.out.println(this.repository.getAll().size());
-
-        Assert.assertNotEquals(readOrder.getOrderID(),order1.getOrderID());
+        Order createOrder= this.repository.create(order);
+        Order readOrder = this.repository.read(createOrder);
+        Assert.assertNotNull(readOrder);
 
     }
 

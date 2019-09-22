@@ -1,5 +1,7 @@
 package ac.za.cput.domains.catalog;
 
+import java.util.Objects;
+
 public class Catalog {
 
     private String itemID;
@@ -83,5 +85,20 @@ public class Catalog {
                 "ItemID='" + itemID + "\n" +
                 "supID='" + supID + "\n" +
                 "Description = " + description+ "\n" ;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Catalog catalog = (Catalog) o;
+        return Objects.equals(itemID, catalog.itemID) &&
+                Objects.equals(supID, catalog.supID) &&
+                Objects.equals(description, catalog.description);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(itemID, supID);
     }
 }

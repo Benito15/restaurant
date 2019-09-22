@@ -2,6 +2,7 @@ package ac.za.cput.servicetest.table;
 
 import ac.za.cput.domains.table.Table;
 import ac.za.cput.factory.tablefactory.TableFactory;
+import ac.za.cput.repositories.tablerepository.impl.TableRepositoryImpl;
 import ac.za.cput.service.table.impl.TableServiceImpl;
 import org.junit.Assert;
 import org.junit.Before;
@@ -10,6 +11,8 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.Set;
 
 import static org.junit.Assert.*;
 
@@ -20,52 +23,85 @@ public class TableServiceImplTest {
  @Autowired
  private TableServiceImpl service;
 
+    @Before
+    public void setUp() throws Exception {
+        this.service = TableServiceImpl.getService();
 
+    }
 
+    @Test
+    public void getAll() {
+        Set<Table> getAllTables = this.service.getAll();
+        System.out.println("In getAll Tables, all = " + ((Set) getAllTables).size());
+        Assert.assertNotNull(service.getAll());
+
+    }
 
 
     @Test
     public void create() {
-        Table table = TableFactory.getGuest(2,true);
+        Table table = TableFactory.getTable(4,true);
         this.service.create(table);
-        System.out.println(service.getAll());
-        Assert.assertTrue(this.service.getAll().size()>0);
+        int size = this.service.getAll().size();
+        System.out.println(size);
+        Assert.assertTrue("this repository is not 0", this.service.getAll().size()>0);
 
     }
 
     @Test
     public void update() {
-        int newCapacity = 4;
-        Table table = TableFactory.getGuest(2,true);
-        Table table2 = TableFactory.getGuest(3,true);
-        this.service.create(table);
-        this.service.create(table2);
-        Table updatedTable = TableFactory.getGuest(newCapacity,table.isIsavailable());
-        this.service.update(updatedTable);
-        Assert.assertTrue(updatedTable.getCapacity()> table2.getCapacity());
+        boolean updateTable = true;
+        Table table = TableFactory.getTable(4,false);
+        Table table2 = TableFactory.getTable(2,true);
+
+        service.create(table);
+        service.create(table2);
+        table.setIsavailable(updateTable);
+
+        this.service.update(table);
+
+        Table readUpdatedTable = this.service.read(table.getTableID());
+        //System.out.println(readUpdatedTable);
+        System.out.println(this.service.getAll());
+        Assert.assertEquals(table, readUpdatedTable);
 
 
     }
 
     @Test
     public void delete() {
-        Table table = TableFactory.getGuest(2,true);
-        Table table2 = TableFactory.getGuest(3,true);
-        this.service.create(table);
-        this.service.create(table2);
-        this.service.delete(table2.getTableID());
-        Assert.assertTrue(this.service.getAll().size()>=1);
+        System.out.println(this.service.getAll().size());
+        System.out.println("------------------------------------");
+        Table table = TableFactory.getTable(4,false);
+        Table table2 = TableFactory.getTable(2,true);
+        service.create(table);
+        service.create(table2);
+        System.out.println(this.service.getAll().size());
+
+        service.delete(table2.getTableID());
+        System.out.println("After Delete");
+        System.out.println(this.service.getAll().size());
+        //System.out.println(this.tablerepository.getAll());
+        Assert.assertNotNull(this.service);
 
     }
 
     @Test
     public void read() {
-        Table table = TableFactory.getGuest(2,true);
-        Table table2 = TableFactory.getGuest(3,true);
+        Table table = TableFactory.getTable(4,false);
+        Table table2 = TableFactory.getTable(4,true);
         this.service.create(table);
         this.service.create(table2);
-        Table readTable = this.service.read(table.getTableID());
-        Assert.assertNotEquals(readTable.getTableID(), table2.getTableID());
+        Table readtable = this.service.read(table.getTableID());
+
+        System.out.println("---------------");
+        System.out.println(readtable.getTableID());
+
+        //  this.tablerepository.create(readtable2);
+        System.out.println("----Object in the repository-----");
+        System.out.println(this.service.getAll().size());
+
+        Assert.assertNotEquals(readtable.getTableID(),table2.getTableID());
 
     }
 }

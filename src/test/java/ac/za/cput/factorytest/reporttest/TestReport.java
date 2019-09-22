@@ -16,7 +16,7 @@ public class TestReport {
         String description;
         Report report = ReportFactory.getReport(dte,"Wazzzup",null);
         System.out.println(report);
-        Assert.assertNotNull(report.getEmpID());
+        Assert.assertNotNull(report);
 
     }
 

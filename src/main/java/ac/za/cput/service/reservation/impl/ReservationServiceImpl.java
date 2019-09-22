@@ -41,13 +41,13 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public void delete(Reservation reservation) {
-        this.repository.delete(reservation);
+    public void delete(String tableID, String guestID ) {
+        this.repository.delete(tableID, guestID);
 
     }
 
     @Override
-    public Reservation read(Reservation reservation) {
-        return this.repository.read(reservation);
+    public Reservation read(String tableID, String guestID) {
+        return this.repository.read(tableID, guestID);
     }
 }

@@ -11,7 +11,7 @@ import java.util.Set;
 @Service("FeedbackService")
 public class FeedbackServiceImpl implements FeedbackService {
 
-    private FeedbackServiceImpl service = null;
+    private static FeedbackServiceImpl service = null;
     private FeedbackRepository repository;
 
     private FeedbackServiceImpl()
@@ -19,7 +19,7 @@ public class FeedbackServiceImpl implements FeedbackService {
         repository = FeedbackRepositoryImpl.getRepository();
     }
 
-    public  FeedbackServiceImpl getService()
+    public static FeedbackServiceImpl getService()
     {
         if(service ==null )
             return new FeedbackServiceImpl();

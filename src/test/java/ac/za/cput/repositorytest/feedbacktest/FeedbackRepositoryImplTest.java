@@ -1,7 +1,9 @@
 package ac.za.cput.repositorytest.feedbacktest;
 
 import ac.za.cput.domains.feedback.Feedback;
+import ac.za.cput.domains.guest.Guest;
 import ac.za.cput.factory.feedbackfactory.FeedbackFactory;
+import ac.za.cput.factory.guestfactory.GuestFactory;
 import ac.za.cput.repositories.feedback.FeedbackRepository;
 import ac.za.cput.repositories.feedback.impl.FeedbackRepositoryImpl;
 import org.junit.Assert;
@@ -27,14 +29,16 @@ public class FeedbackRepositoryImplTest {
     Feedback feedback;
     Date nowDate;
     LocalDate instantDate;
+    Guest guest;
 
     @Before
     public void setUp() throws Exception {
 
         this.feedbackRepository = FeedbackRepositoryImpl.getRepository();
         nowDate = new Date();
-        feedback = FeedbackFactory.getFeedback("This Restaurant is awesome", nowDate);
+        guest = GuestFactory.getGuest("zola", "Kriel", 20);
         instantDate = LocalDate.of(2019,06,1);
+        feedback = FeedbackFactory.getFeedback("This is awesome", null,guest.getGuestId());
     }
 
     @Test
@@ -46,64 +50,41 @@ public class FeedbackRepositoryImplTest {
 
     @Test
     public void create() {
-       feedbackRepository.create(feedback);
+       Feedback createFeedback= feedbackRepository.create(feedback);
       //  System.out.println(feedback);
         System.out.println(feedbackRepository.getAll().size());
-        Assert.assertEquals(1,feedbackRepository.getAll().size());
+        Assert.assertNotNull(createFeedback);
 
     }
 
 @Test
 public void update() {
 
-    Instant instant = Instant.from(instantDate.atStartOfDay(ZoneId.of("GMT")));
-    Date pastDate = Date.from(instant);
+    Feedback createFeedback= feedbackRepository.create(feedback);
+    Feedback readFeedback = feedbackRepository.read(createFeedback);
+    Feedback updateFeedback = new Feedback.Builder().copy(readFeedback).desc("This is NOT nice").build();
+    this.feedbackRepository.update(updateFeedback);
+    Assert.assertNotNull(updateFeedback);
 
-    Feedback feedback = FeedbackFactory.getFeedback("This is some Feedback to Update", nowDate);
-    Feedback feedback2 = FeedbackFactory.getFeedback("Feedback 2", pastDate);
 
-    feedbackRepository.create(feedback);
-    //feedbackRepository.create(feedbackk);
-    feedback.setGuestID("12");
-    feedbackRepository.update(feedback);
-
-    int repoSize = feedbackRepository.getAll().size();
-    System.out.println(repoSize);
-    Assert.assertTrue("Repository > 1 = ", feedbackRepository.getAll().size() > 1);
 
 }
 
     @Test
     public void delete() {
-        Feedback feedback = FeedbackFactory.getFeedback("Feedback", nowDate);
-        Feedback feedback2 = FeedbackFactory.getFeedback("Feedback 2 ", nowDate);
-        System.out.println("//////////");
-        System.out.println(feedback);
-
-        feedbackRepository.create(feedback);
-        feedbackRepository.create(feedback2);
-
-         feedback.setGuestID( "15");
-        feedbackRepository.update(feedback);
-
-
-        System.out.println(feedback);
-        feedbackRepository.delete(feedback.getGuestID());
-
-        int size = feedbackRepository.getAll().size();
-
-        System.out.println(feedbackRepository.getAll());
+        Feedback createFeedback= feedbackRepository.create(feedback);
+        this.feedbackRepository.delete(createFeedback);
+        Feedback deleteFeedback = this.feedbackRepository.read(createFeedback);
+        Assert.assertNull(deleteFeedback);
     }
 
     @Test
     public void read() {
-        Instant instant = Instant.from(instantDate.atStartOfDay(ZoneId.of("GMT")));
-        Date pastDate = Date.from(instant);
 
-        Feedback feedback = FeedbackFactory.getFeedback("This is some Feedback to Update", nowDate);
 
-        feedbackRepository.create(feedback);
-        Feedback readFeedback = this.feedbackRepository.read(feedback.getGuestID());
+        Feedback createFeedback= feedbackRepository.create(feedback);
+        Feedback readFeedback = feedbackRepository.read(createFeedback);
+        Assert.assertNotNull(readFeedback.getGuestID());
 
       //  System.out.println(readFeedback);
     }

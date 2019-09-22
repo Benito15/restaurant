@@ -1,7 +1,13 @@
 package ac.za.cput.repositorytest.paymenttest;
 
-import ac.za.cput.domains.proofofpayment.payment.Credit;
+import ac.za.cput.domains.employee.Employee;
+import ac.za.cput.domains.guest.Guest;
+import ac.za.cput.domains.payment.Credit;
+import ac.za.cput.domains.purchase.order.Order;
+import ac.za.cput.factory.employeefactory.WaiterFactory;
+import ac.za.cput.factory.guestfactory.GuestFactory;
 import ac.za.cput.factory.proofofpayment.paymentfactory.CreditFactory;
+import ac.za.cput.factory.purchasefactory.orderfactory.OrderFactory;
 import ac.za.cput.repositories.paymentrepositories.CreditRepository;
 import ac.za.cput.repositories.paymentrepositories.impl.CreditRepositoryImpl;
 import org.junit.Assert;
@@ -20,10 +26,20 @@ import static org.junit.Assert.*;
 public class CreditRepositoryImplTest {
 
     private CreditRepository repository;
+    Credit credit;
+    Order order;
+    Guest guest;
+    Employee waiter;
 
     @Before
     public void setUp() throws Exception {
         this.repository = CreditRepositoryImpl.getRepository();
+        String cardID="34623789562795";
+        String bankName="Capitec";
+        guest = GuestFactory.getGuest("Hi","Bye", 25);
+        waiter = WaiterFactory.getWaiter("Waiter", "employee", 0);
+        order = OrderFactory.getOrder(guest.getGuestId(),waiter.getEmpid(), null, 250);
+        credit = CreditFactory.getCredit(order.getOrderID(), order.getTotal(),cardID,bankName);
 
     }
 
@@ -32,16 +48,15 @@ public class CreditRepositoryImplTest {
 
     @Test
     public void getAll() {
-        Set<Credit> getAllCredit= this.repository.getAll();
-        System.out.println("GetAll Credit: \n"+repository.getAll().size());
-        Assert.assertNotNull(getAllCredit);
+        Set<Credit> credits = this.repository.getAll();
+        Assert.assertNotNull(credits);
 
     }
 
     @Test
     public void create() {
-        Credit credit = CreditFactory.getCredit("this is the Credit","2011585456");
-        this.repository.create(credit);
+        Credit createCredit = this.repository.create(credit);
+        this.repository.create(createCredit);
         int size = this.repository.getAll().size();
         System.out.println(size);
         assertTrue("This repository is not 0: ", this.repository.getAll().size()>0);
@@ -49,55 +64,30 @@ public class CreditRepositoryImplTest {
 
     @Test
     public void update() {
-        String updateID= "256153311";
-        Credit credit = CreditFactory.getCredit("this is the Credit","2011585456");
-        Credit credit2 = CreditFactory.getCredit("this is the Credit2","2011585456");
+        Credit createCredit = this.repository.create(credit);
+        Credit readCredit = this.repository.read(createCredit.getCardID());
+        Credit updateCredit= new Credit(readCredit.getCardID(), readCredit.getAmount(),readCredit.getOrderID(),"absa");
+        this.repository.update(updateCredit);
+        Assert.assertNotNull(updateCredit);
 
-        this.repository.create(credit);
-        this.repository.create(credit2);
-        System.out.println("Objects in repository");
-        System.out.println("---------------------");
-        System.out.println(this.repository.getAll());
-        credit.setCardID(updateID);
-        this.repository.update(credit);
-        System.out.println("Updated Repository");
-        System.out.println("---------------------");
-        System.out.println(this.repository.getAll());
-        System.out.println("Updated to: " + credit.getCardID());
-        Assert.assertNotNull(credit.getCardID());
     }
 
     @Test
     public void delete() {
-        Credit credit = CreditFactory.getCredit("this is the Credit","2011585456");
-        Credit credit2 = CreditFactory.getCredit("this is the Credit2","2011585456");
 
-        this.repository.create(credit);
-        this.repository.create(credit2);
-        System.out.println(this.repository.getAll().size());
-        this.repository.delete(credit2.getCardID());
-        System.out.println(this.repository.getAll().size());
-        Assert.assertNotNull(this.repository.getAll().size());
-
+        Credit createCredit = this.repository.create(credit);
+        Credit readCredit = this.repository.read(createCredit.getCardID());
+        Assert.assertNotNull(readCredit);
 
     }
 
     @Test
     public void read() {
 
-        Credit credit = CreditFactory.getCredit("this is the Credit","2011585456");
-        Credit credit2 = CreditFactory.getCredit("this is the Credit2","2011585456");
 
-        this.repository.create(credit);
-        this.repository.create(credit2);
-
-        Credit readCredit = this.repository.read(credit.getCardID());
-        System.out.println(readCredit.getCardID());
-        System.out.println("Objects in Repository");
-        System.out.println(this.repository.getAll().size());
-        Assert.assertNotEquals(readCredit.getCardID(), credit2.getCardID());
-
-
+        Credit createCredit = this.repository.create(credit);
+        Credit readCredit = this.repository.read(createCredit.getCardID());
+        Assert.assertNotNull(readCredit);
 
     }
 

@@ -1,17 +1,15 @@
 package ac.za.cput.factory.proofofpayment.paymentfactory;
 
-import ac.za.cput.domains.proofofpayment.payment.Credit;
+import ac.za.cput.domains.payment.Credit;
 
 public class CreditFactory {
 
 
 
-public static Credit getCredit(String orderID, String description, double amount,String name, String cardID)
+public static Credit getCredit(String orderID, double amount,String cardID,String name)
     {
-        return new Credit.Builder()
-                .name(name)
-                .cardID(cardID)
-                .build();
+
+        return  new Credit(orderID, amount, cardID, name);
 
 
     }
