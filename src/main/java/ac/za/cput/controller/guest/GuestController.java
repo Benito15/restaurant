@@ -16,7 +16,6 @@ public class GuestController {
 
    //crud methods, annotated with appropriate mappings
    @Autowired
- //  @Qualifier("GuestServiceImpl")
     private GuestServiceImpl guestService;
 
    @PostMapping("/new")
@@ -26,8 +25,7 @@ public class GuestController {
 
     @GetMapping (path = "/find/{id}")
     public Guest findID(@PathVariable String id){
-       Guest guest = guestService.read(id);
-       return guest;
+       return guestService.read(id);
     }
 
     @PutMapping("/update")
