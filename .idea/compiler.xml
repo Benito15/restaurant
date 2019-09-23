@@ -6,11 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Assignment-9" />
-        <module name="Ass6a" />
-        <module name="DDDUpdate" />
+        <module name="RestaurantApplication" />
         <module name="ass7" />
         <module name="Restaurant" />
+        <module name="DDDUpdate" />
+        <module name="Assignment-9" />
+        <module name="Ass6a" />
       </profile>
     </annotationProcessing>
   </component>
@@ -18,6 +19,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Assignment-9" options="-parameters" />
       <module name="DDDUpdate" options="-parameters" />
+      <module name="RestaurantApplication" options="-parameters" />
       <module name="ass7" options="-parameters" />
     </option>
   </component>

@@ -5,12 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f8204e90-461b-4699-9ac3-10189cd60403" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ac/za/cput/security/RestaurantSecurity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/ac/za/cput/securitytest/RestaurantSecurityTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ac/za/cput/controller/guest/GuestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ac/za/cput/controller/guest/GuestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ac/za/cput/RestaurantApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ac/za/cput/RestaurantApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ac/za/cput/security/RestaurantSecurity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ac/za/cput/security/RestaurantSecurity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ac/za/cput/securitytest/RestaurantSecurityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ac/za/cput/securitytest/RestaurantSecurityTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -50,36 +51,38 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/resources/application.properties">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ac/za/cput/RestaurantApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="4" selection-start-line="4" selection-end-line="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/ac/za/cput/securitytest/RestaurantSecurityTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="48" column="5" lean-forward="true" selection-start-line="48" selection-start-column="5" selection-end-line="48" selection-end-column="5" />
+            <state relative-caret-position="288">
+              <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#354#355#0" expanded="true" />
+                <element signature="e#426#427#0" expanded="true" />
+                <element signature="e#479#480#0" expanded="true" />
+                <element signature="e#520#521#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ac/za/cput/RestaurantApplication.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="20" selection-start-line="20" selection-end-line="20" />
+            <state relative-caret-position="281">
+              <caret line="58" column="21" selection-start-line="56" selection-start-column="4" selection-end-line="60" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/ac/za/cput/securitytest/RestaurantSecurityTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="19" selection-start-line="19" selection-start-column="2" selection-end-line="28" selection-end-column="7" />
               <folding>
-                <element signature="e#355#356#0" expanded="true" />
-                <element signature="e#427#428#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -88,13 +91,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ac/za/cput/security/RestaurantSecurity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="742">
-              <caret line="43" column="13" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1710#1711#0" expanded="true" />
-                <element signature="e#1768#1769#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="252">
+              <caret line="14" column="33" selection-end-line="49" />
             </state>
           </provider>
         </entry>
@@ -111,6 +109,7 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="UPDATE_TYPE" value="REBASE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
@@ -148,7 +147,6 @@
         <option value="$PROJECT_DIR$/src/test/java/ac/za/cput/servicetest/catalog/CatalogServiceImplTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/ac/za/cput/repositorytest/billtest/BillRepositoryImplTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/ac/za/cput/controller/IndexController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ac/za/cput/RestaurantApplication.java" />
         <option value="$PROJECT_DIR$/src/main/java/ac/za/cput/controller/order/OrderController.java" />
         <option value="$PROJECT_DIR$/src/main/java/ac/za/cput/controller/catalog/CatalogController.java" />
         <option value="$PROJECT_DIR$/src/main/java/ac/za/cput/controller/orderline/OrderLineController.java" />
@@ -162,9 +160,10 @@
         <option value="$PROJECT_DIR$/src/test/java/ac/za/cput/controller/guest/GuestControllerTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/ac/za/cput/controller/orderline/OrderLineControllerTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/ac/za/cput/controller/table/TableControllerTest.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/java/ac/za/cput/controller/guest/GuestController.java" />
+        <option value="$PROJECT_DIR$/src/resources/application.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/ac/za/cput/RestaurantApplication.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/ac/za/cput/security/RestaurantSecurity.java" />
         <option value="$PROJECT_DIR$/src/test/java/ac/za/cput/securitytest/RestaurantSecurityTest.java" />
       </list>
@@ -199,9 +198,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-11" />
-    <option name="width" value="980" />
-    <option name="height" value="1031" />
+    <option name="x" value="-1928" />
+    <option name="y" value="4" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -212,61 +212,43 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="restaurantdomain" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DDDUpdate" type="462c0819:PsiDirectoryNode" />
+              <item name="RestaurantApplication" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="restaurantdomain" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DDDUpdate" type="462c0819:PsiDirectoryNode" />
+              <item name="RestaurantApplication" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="restaurantdomain" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DDDUpdate" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="restaurantdomain" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DDDUpdate" type="462c0819:PsiDirectoryNode" />
+              <item name="RestaurantApplication" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="restaurantdomain" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DDDUpdate" type="462c0819:PsiDirectoryNode" />
+              <item name="RestaurantApplication" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cput" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="restaurantdomain" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DDDUpdate" type="462c0819:PsiDirectoryNode" />
+              <item name="RestaurantApplication" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="cput" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="restaurantdomain" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DDDUpdate" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cput" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="guest" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="restaurantdomain" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DDDUpdate" type="462c0819:PsiDirectoryNode" />
+              <item name="RestaurantApplication" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -275,26 +257,20 @@
             </path>
             <path>
               <item name="restaurantdomain" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DDDUpdate" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="restaurantdomain" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DDDUpdate" type="462c0819:PsiDirectoryNode" />
+              <item name="RestaurantApplication" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="restaurantdomain" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DDDUpdate" type="462c0819:PsiDirectoryNode" />
+              <item name="RestaurantApplication" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="restaurantdomain" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DDDUpdate" type="462c0819:PsiDirectoryNode" />
+              <item name="RestaurantApplication" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -302,7 +278,7 @@
             </path>
             <path>
               <item name="restaurantdomain" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DDDUpdate" type="462c0819:PsiDirectoryNode" />
+              <item name="RestaurantApplication" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -313,7 +289,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -332,12 +307,12 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/ac/za/cput" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Personal" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="http.proxy" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -382,6 +357,11 @@
     </option>
   </component>
   <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
     <option name="ruleStates">
       <list>
         <RuleState>
@@ -393,54 +373,9 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.RestaurantApplication">
-    <configuration name="BurgerControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="DDDUpdate" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ac.za.cput.controller.burger.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ac.za.cput.controller.burger" />
-      <option name="MAIN_CLASS_NAME" value="ac.za.cput.controller.burger.BurgerControllerTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GuestControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="DDDUpdate" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ac.za.cput.controller.guest.guest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ac.za.cput.controller.guest.guest" />
-      <option name="MAIN_CLASS_NAME" value="ac.za.cput.controller.guest.guest.GuestControllerTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="OrderControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="DDDUpdate" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ac.za.cput.controller.guest.order.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ac.za.cput.controller.guest.order" />
-      <option name="MAIN_CLASS_NAME" value="ac.za.cput.controller.guest.order.OrderControllerTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RestaurantSecurityTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="DDDUpdate" />
+  <component name="RunManager" selected="JUnit.RestaurantSecurityTest.whenCorrectCredentialsWillBe200">
+    <configuration name="RestaurantSecurityTest.whenCorrectCredentialsWillBe200" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="RestaurantApplication" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ac.za.cput.securitytest.*" />
@@ -449,13 +384,14 @@
       </extension>
       <option name="PACKAGE_NAME" value="ac.za.cput.securitytest" />
       <option name="MAIN_CLASS_NAME" value="ac.za.cput.securitytest.RestaurantSecurityTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="METHOD_NAME" value="whenCorrectCredentialsWillBe200" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="RestaurantApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="DDDUpdate" />
+      <module name="RestaurantApplication" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ac.za.cput.*" />
@@ -469,11 +405,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.RestaurantSecurityTest.whenCorrectCredentialsWillBe200" />
         <item itemvalue="Spring Boot.RestaurantApplication" />
-        <item itemvalue="JUnit.RestaurantSecurityTest" />
-        <item itemvalue="JUnit.GuestControllerTest" />
-        <item itemvalue="JUnit.BurgerControllerTest" />
-        <item itemvalue="JUnit.OrderControllerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -512,7 +445,13 @@
       <workItem from="1568649634868" duration="15103000" />
       <workItem from="1568735332344" duration="10618000" />
       <workItem from="1568799234930" duration="20856000" />
-      <workItem from="1568905116075" duration="47737000" />
+      <workItem from="1568905116075" duration="48657000" />
+      <workItem from="1569213971149" duration="285000" />
+      <workItem from="1569214301990" duration="832000" />
+      <workItem from="1569216047517" duration="235000" />
+      <workItem from="1569216300961" duration="34000" />
+      <workItem from="1569216365727" duration="371000" />
+      <workItem from="1569216811940" duration="738000" />
     </task>
     <task id="LOCAL-00001" summary="Implementation of repositoriesI">
       <created>1557701412183</created>
@@ -556,22 +495,24 @@
       <option name="project" value="LOCAL" />
       <updated>1569163423448</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Implemented Security">
+      <created>1569182307157</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1569182307157</updated>
+    </task>
+    <task id="LOCAL-00008" summary="refactored incorrect spelling on class diagram">
+      <created>1569182560158</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1569182560158</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="OrderControllerTest_findByID - 2019.09.22 at 15h 56m 11s.xml">
-      <configuration name="OrderControllerTest.findByID" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="OrderControllerTest_findByID - 2019.09.22 at 15h 56m 49s.xml">
-      <configuration name="OrderControllerTest.findByID" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="OrderControllerTest_findByID - 2019.09.22 at 15h 57m 57s.xml">
-      <configuration name="OrderControllerTest.findByID" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="OrderControllerTest - 2019.09.22 at 15h 59m 25s.xml">
-      <configuration name="OrderControllerTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="BurgerControllerTest - 2019.09.22 at 16h 11m 31s.xml">
       <configuration name="BurgerControllerTest" configurationId="JUnit" />
     </history-entry>
@@ -590,9 +531,21 @@
     <history-entry file="RestaurantSecurityTest - 2019.09.22 at 21h 39m 56s.xml">
       <configuration name="RestaurantSecurityTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="RestaurantSecurityTest_whenCorrectCredentialsWillBe200 - 2019.09.23 at 07h 36m 20s.xml">
+      <configuration name="RestaurantSecurityTest.whenCorrectCredentialsWillBe200" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="RestaurantSecurityTest_whenCorrectCredentialsWillBe200 - 2019.09.23 at 07h 44m 18s.xml">
+      <configuration name="RestaurantSecurityTest.whenCorrectCredentialsWillBe200" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="RestaurantSecurityTest_whenCorrectCredentialsWillBe200 - 2019.09.23 at 07h 45m 01s.xml">
+      <configuration name="RestaurantSecurityTest.whenCorrectCredentialsWillBe200" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="RestaurantSecurityTest_whenCorrectCredentialsWillBe200 - 2019.09.23 at 07h 45m 26s.xml">
+      <configuration name="RestaurantSecurityTest.whenCorrectCredentialsWillBe200" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="485161000" />
+    <option name="totallyTimeSpent" value="488576000" />
   </component>
   <component name="TodoView" selected-index="2">
     <todo-panel id="selected-file">
@@ -604,7 +557,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <frame x="-1928" y="4" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
@@ -613,12 +566,13 @@
       <window_info id="UI Designer" order="3" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="Favorites" order="5" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="6" weight="0.87015176" />
+      <window_info active="true" content_ui="combo" id="Project" order="6" visible="true" weight="0.26279318" />
       <window_info id="Web" order="7" side_tool="true" weight="0.32980332" />
+      <window_info anchor="bottom" id="Run Dashboard" weight="0.55146265" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32993197" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.66263235" weight="0.92362344" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3877551" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.66263235" weight="0.4723727" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.38678223" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3268206" />
@@ -738,20 +692,15 @@
     <MESSAGE value="Refactored Domains, factories, repositories, services" />
     <MESSAGE value="Changed class diagram" />
     <MESSAGE value="refactored controllers" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactored controllers" />
+    <MESSAGE value="Implemented Security" />
+    <MESSAGE value="refactored incorrect spelling on class diagram" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactored incorrect spelling on class diagram" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/java/ac/za/cput/repositorytest/feedbacktest/FeedbackRepositoryImplTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1062">
-          <caret line="77" column="21" selection-start-line="77" selection-start-column="21" selection-end-line="77" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/ac/za/cput/factorytest/reporttest/TestReport.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
@@ -1137,28 +1086,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="37" column="10" selection-start-line="37" selection-start-column="10" selection-end-line="37" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ac/za/cput/controller/guest/GuestController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="576">
@@ -1172,36 +1099,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ac/za/cput/RestaurantApplication.java">
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="234">
+            <caret line="13" selection-start-line="13" selection-end-line="13" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/restaurantUML.jpeg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        <state>
+          <caret selection-end-line="1" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ac/za/cput/securitytest/RestaurantSecurityTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="19" selection-start-line="19" selection-start-column="2" selection-end-line="28" selection-end-column="7" />
           <folding>
-            <element signature="e#355#356#0" expanded="true" />
-            <element signature="e#427#428#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ac/za/cput/security/RestaurantSecurity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="742">
-          <caret line="43" column="13" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="13" />
+        <state relative-caret-position="252">
+          <caret line="14" column="33" selection-end-line="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ac/za/cput/RestaurantApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1710#1711#0" expanded="true" />
-            <element signature="e#1768#1769#0" expanded="true" />
+            <element signature="e#354#355#0" expanded="true" />
+            <element signature="e#426#427#0" expanded="true" />
+            <element signature="e#479#480#0" expanded="true" />
+            <element signature="e#520#521#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ac/za/cput/securitytest/RestaurantSecurityTest.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="48" column="5" lean-forward="true" selection-start-line="48" selection-start-column="5" selection-end-line="48" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="281">
+          <caret line="58" column="21" selection-start-line="56" selection-start-column="4" selection-end-line="60" selection-end-column="17" />
         </state>
       </provider>
     </entry>

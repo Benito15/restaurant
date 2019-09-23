@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
 
-
 @SpringBootApplication
 public class RestaurantApplication {
 
@@ -18,6 +17,10 @@ public class RestaurantApplication {
     }
 
 
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
+    }
 
 
 
