@@ -12,7 +12,7 @@ public class OrderRepositoryImpl implements OrderRepository {
     private static OrderRepositoryImpl repository = null;
     private Set<Order> orders;
 
-    private OrderRepositoryImpl()
+    public OrderRepositoryImpl()
     {
         this.orders = new HashSet<>();
     }
@@ -32,7 +32,7 @@ public class OrderRepositoryImpl implements OrderRepository {
     @Override
     public Order update(Order order)
     {
-        Order readOrder= repository.read(order);
+        Order readOrder= repository.read(order.getOrderID());
         if (this.orders.contains(readOrder)){
             this.orders.remove(readOrder);
             this.orders.add(order);
@@ -44,15 +44,15 @@ public class OrderRepositoryImpl implements OrderRepository {
 
 
     @Override
-    public void delete(Order order) {
+    public void delete(String order) {
         Order deleteOrder= read(order);
         this.orders.remove(deleteOrder);
     }
 
     @Override
-    public Order read(Order order) {
+    public Order read(String order) {
         return this.orders.stream()
-                .filter(thisOrder -> thisOrder.getOrderID().equalsIgnoreCase(order.getOrderID()))
+                .filter(thisOrder -> thisOrder.getOrderID().equalsIgnoreCase(order))
                         .findAny().orElse(null);
     }
 

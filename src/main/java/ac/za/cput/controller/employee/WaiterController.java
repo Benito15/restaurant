@@ -3,6 +3,7 @@ package ac.za.cput.controller.employee;
 import ac.za.cput.domains.employee.Waiter;
 import ac.za.cput.service.employee.impl.WaiterServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Set;
@@ -15,7 +16,7 @@ public class WaiterController {
     //  @Qualifier("GuestServiceImpl")
     private WaiterServiceImpl waiterService;
 
-    @PostMapping("/new")
+    @PostMapping(value = "/new", consumes = MediaType.APPLICATION_JSON_VALUE)
     public Waiter create(@RequestBody Waiter waiter){
         return waiterService.create(waiter);
     }

@@ -1,9 +1,14 @@
 package ac.za.cput.domains.employee;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Waiter extends Employee{
 
 
-    private Waiter(Builder builder){
+    public Waiter(){}
+
+    protected Waiter(Builder builder){
        super(builder);
 
     }

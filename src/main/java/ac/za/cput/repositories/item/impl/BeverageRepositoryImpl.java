@@ -12,7 +12,7 @@ public class BeverageRepositoryImpl implements BeverageRepository {
     private static BeverageRepositoryImpl repository = null;
     private Set<Beverage> beverages;
 
-    private BeverageRepositoryImpl()
+    public BeverageRepositoryImpl()
     {
             this.beverages = new HashSet<>();
 

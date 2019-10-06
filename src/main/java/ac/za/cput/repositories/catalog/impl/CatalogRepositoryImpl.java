@@ -12,7 +12,7 @@ public class CatalogRepositoryImpl implements CatalogRepository {
     private static CatalogRepository repository = null;
     private Set<Catalog> catalogs;
 
-    private CatalogRepositoryImpl() {
+    public CatalogRepositoryImpl() {
         this.catalogs = new HashSet<>();
     }
 

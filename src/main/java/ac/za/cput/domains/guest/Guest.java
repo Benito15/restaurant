@@ -1,16 +1,28 @@
 package ac.za.cput.domains.guest;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.Objects;
 
-
+@Entity
 public class Guest {
-
-    private String guestId, guestName, guestSurname;
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid")
+    @Id
+    private String guestId;
+    @Column(name = "Name" )
+    private String guestName;
+    @Column(name = "Surname")
+    private String guestSurname;
+    @Column(name = "age")
     private int age;
 
-    private Guest(){}
+    public Guest(){}
 
 
 

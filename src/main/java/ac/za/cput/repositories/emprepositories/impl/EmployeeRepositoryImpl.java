@@ -11,7 +11,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository
     private static EmployeeRepositoryImpl repository = null;
     private Map<String,Employee> employees;
 
-    private EmployeeRepositoryImpl()
+    public EmployeeRepositoryImpl()
     {
         this.employees = new HashMap<>();
     }

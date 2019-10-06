@@ -13,7 +13,7 @@ public class WaiterRepositoryImpl implements WaiterRepository {
     private Set<Waiter> waiters;
 
 
-    private WaiterRepositoryImpl()
+    public WaiterRepositoryImpl()
     {
         this.waiters = new HashSet<>();
 

@@ -12,7 +12,7 @@ public class ReservationRepositoryImpl implements ReservationRepository {
     private Set<Reservation> reservations;
     private static ReservationRepository repository = null;
 
-    private ReservationRepositoryImpl()
+    public ReservationRepositoryImpl()
     {
         this.reservations = new HashSet<>();
     }

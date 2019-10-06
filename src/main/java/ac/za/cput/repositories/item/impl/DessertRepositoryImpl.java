@@ -12,7 +12,7 @@ public class DessertRepositoryImpl  implements DessertRepository {
     private static DessertRepositoryImpl repository = null;
     private Set<Dessert> desserts;
 
-    private DessertRepositoryImpl()
+    public DessertRepositoryImpl()
     {
         this.desserts = new HashSet<>();
 

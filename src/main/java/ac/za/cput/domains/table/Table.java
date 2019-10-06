@@ -1,14 +1,25 @@
 package ac.za.cput.domains.table;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.Objects;
 
+@Entity
 public class Table {
-
+    @Id
     private String tableID;
+    @Column(name = "Capacity")
     private int capacity;
+    @Column(name = "Available")
+    @JsonProperty
     private boolean isavailable;
 
-    private Table(){}
+    public Table(){}
 
     public Table(Builder builder)
     {

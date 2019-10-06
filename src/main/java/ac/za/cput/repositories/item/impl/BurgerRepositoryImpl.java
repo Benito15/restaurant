@@ -12,7 +12,7 @@ public class BurgerRepositoryImpl implements BurgerRepository {
     private static BurgerRepositoryImpl repository = null;
     private Set<Burger> burgers;
 
-    private BurgerRepositoryImpl()
+    public BurgerRepositoryImpl()
     {
         this.burgers = new HashSet<>();
 

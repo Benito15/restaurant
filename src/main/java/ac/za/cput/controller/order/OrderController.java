@@ -3,6 +3,7 @@ package ac.za.cput.controller.order;
 import ac.za.cput.domains.purchase.order.Order;
 import ac.za.cput.service.order.impl.OrderServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Set;
@@ -11,16 +12,15 @@ import java.util.Set;
 @RequestMapping("/order")
 public class OrderController {
     @Autowired
-    //  @Qualifier("GuestServiceImpl")
     private OrderServiceImpl orderService;
 
-    @PostMapping("/new")
+    @PostMapping(value = "/new", consumes = MediaType.APPLICATION_JSON_VALUE)
     public Order create(@RequestBody Order order){
         return orderService.create(order);
     }
 
     @GetMapping (path = "/find/{id}")
-    public Order findID(@PathVariable Order id){
+    public Order findID(@PathVariable String id){
         Order order= orderService.read(id);
         return order;
     }
@@ -32,7 +32,7 @@ public class OrderController {
     }
 
     @DeleteMapping(path = "/delete/{id}")
-    public void delete(@PathVariable Order id){
+    public void delete(@PathVariable String id){
         orderService.delete(id);
     }
 

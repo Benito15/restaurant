@@ -2,21 +2,26 @@ package ac.za.cput.service.guest.impl;
 
 import ac.za.cput.domains.guest.Guest;
 import ac.za.cput.repositories.guestrepository.GuestRepository;
+import ac.za.cput.repositories.guestrepository.GuestRepositoryHibernate;
 import ac.za.cput.repositories.guestrepository.impl.GuestRepositoryImpl;
 import ac.za.cput.service.guest.GuestService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service("GuestService")
 public class GuestServiceImpl implements GuestService {
 
     private static GuestServiceImpl service = null;
-    private GuestRepository repository;
+    @Autowired
+    private GuestRepositoryHibernate repository;
 
     private  GuestServiceImpl()
     {
-        repository = GuestRepositoryImpl.getRepository();
+
     }
 
     public  GuestServiceImpl getService()
@@ -27,26 +32,27 @@ public class GuestServiceImpl implements GuestService {
 
     @Override
     public Set<Guest> getAll() {
-        return repository.getAll();
+
+        return new HashSet<Guest>((List<Guest>)repository.findAll());
     }
 
     @Override
     public Guest create(Guest type) {
-        return repository.create(type);
+        return repository.save(type);
     }
 
     @Override
     public Guest update(Guest type) {
-        return this.repository.update(type);
+        return this.repository.save(type);
     }
 
     @Override
     public void delete(String s) {
-        this.repository.delete(s);
+        this.repository.deleteById(s);
     }
 
     @Override
     public Guest read(String s) {
-        return this.repository.read(s);
+        return this.repository.findById(s).orElse(null);
     }
 }

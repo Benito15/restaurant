@@ -12,7 +12,7 @@ public class BillRepositoryImpl implements BillRepository {
     private static BillRepositoryImpl repository = null;
     private Set<Bill> bills;
 
-    private BillRepositoryImpl()
+    public BillRepositoryImpl()
     {
         this.bills = new HashSet<>();
 

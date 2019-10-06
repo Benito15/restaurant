@@ -13,7 +13,7 @@ public class RestaurantRepositoryImpl implements RestaurantRepository {
     private static RestaurantRepositoryImpl repository = null;
     private Set<Restaurant> restaurants;
 
-    private RestaurantRepositoryImpl()
+    public RestaurantRepositoryImpl()
     {
         this.restaurants = new HashSet<>();
     }

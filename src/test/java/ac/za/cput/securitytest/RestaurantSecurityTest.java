@@ -17,35 +17,35 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class RestaurantSecurityTest {
 
-//    @Autowired
-//    private TestRestTemplate restTemplate;
-//    private String url = "http://localhost:8080/guest";
-//
-//    @Before
-//    public void addBeforeData(){
-//        Guest guest = GuestFactory.getGuest("Bennie", "Kriel", 25);
-//        ResponseEntity<Guest> postResponse = restTemplate.postForEntity(url + "/new", guest, Guest.class);
-//
-//    }
+    @Autowired
+    private TestRestTemplate restTemplate;
+    private String url = "http://localhost:8080/guest";
 
-//    @Test
-//    public void correctCredentials200Ok() throws Exception{
-//        ResponseEntity<String> response = restTemplate.withBasicAuth("admin","admin").getForEntity(url + "/getall", String.class);
-//        System.out.println(response.getStatusCode());
-//        System.out.println(response.getBody());
-//        System.out.println("fdnkfn");
-//        Assert.assertEquals(HttpStatus.OK, response.getStatusCode());
-//    }
-//
-//    @Test
-//    public void innCorrectCredentials401() throws Exception{
-//        ResponseEntity<String> response = restTemplate.withBasicAuth("administrator","admins").getForEntity(url + "/getall",String.class);
-//
-//        System.out.println(response.getStatusCode());
-//        System.out.println(response.getBody());
-//
-//        Assert.assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
-//
-//    }
+    @Before
+    public void addBeforeData(){
+        Guest guest = GuestFactory.getGuest("Bennie", "Kriel", 25);
+        ResponseEntity<Guest> postResponse = restTemplate.postForEntity(url + "/new", guest, Guest.class);
+
+    }
+
+    @Test
+    public void correctCredentials200Ok() throws Exception{
+        ResponseEntity<String> response = restTemplate.withBasicAuth("user","user").getForEntity(url + "/getall", String.class);
+        System.out.println(response.getStatusCode());
+        System.out.println(response.getBody());
+        System.out.println("fdnkfn");
+        Assert.assertEquals(HttpStatus.OK, response.getStatusCode());
+    }
+
+    @Test
+    public void inCorrectCredentials401() throws Exception{
+        ResponseEntity<String> response = restTemplate.withBasicAuth("administrator","admins").getForEntity(url + "/getall",String.class);
+
+        System.out.println(response.getStatusCode());
+        System.out.println(response.getBody());
+
+        Assert.assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
+
+    }
 
 }

@@ -14,7 +14,7 @@ public class FeedbackRepositoryImpl implements FeedbackRepository {
     private static FeedbackRepositoryImpl repository = null;
     private Set<Feedback> feedbacks;
 
-    private FeedbackRepositoryImpl()
+    public FeedbackRepositoryImpl()
     {
         this.feedbacks = new HashSet<>();
 

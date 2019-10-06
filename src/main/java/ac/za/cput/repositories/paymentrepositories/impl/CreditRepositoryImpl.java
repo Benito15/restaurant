@@ -12,7 +12,7 @@ public class CreditRepositoryImpl implements CreditRepository {
     private static CreditRepository repository = null;
     private Set<Credit> credits;
 
-    private CreditRepositoryImpl()
+    public CreditRepositoryImpl()
     {
         credits = new HashSet();
     }

@@ -12,7 +12,7 @@ public class OrderLineRepositoryImpl implements  OrderLineRepository {
     private static OrderLineRepositoryImpl repository = null;
     private Set<OrderLine> orderLines;
 
-    private OrderLineRepositoryImpl()
+    public OrderLineRepositoryImpl()
     {
         this.orderLines = new HashSet<>();
     }

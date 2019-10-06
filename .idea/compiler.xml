@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="RestaurantApplication" />
         <module name="ass7" />
+        <module name="restaurant" />
         <module name="Restaurant" />
         <module name="DDDUpdate" />
         <module name="Assignment-9" />
@@ -21,6 +22,7 @@
       <module name="DDDUpdate" options="-parameters" />
       <module name="RestaurantApplication" options="-parameters" />
       <module name="ass7" options="-parameters" />
+      <module name="restaurant" options="-parameters" />
     </option>
   </component>
 </project>

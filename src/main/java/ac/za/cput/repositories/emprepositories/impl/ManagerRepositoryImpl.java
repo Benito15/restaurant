@@ -12,7 +12,7 @@ public class ManagerRepositoryImpl implements ManagerRepository {
    private static ManagerRepositoryImpl repository = null;
    private Set<Manager> managers;
 
-   private ManagerRepositoryImpl()
+    public ManagerRepositoryImpl()
    {
        this.managers = new HashSet<>();
 

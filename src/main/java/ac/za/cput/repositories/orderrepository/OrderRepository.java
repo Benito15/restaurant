@@ -5,12 +5,12 @@ import ac.za.cput.repositories.IRepository;
 
 import java.util.Set;
 
-public interface OrderRepository  {
+public interface OrderRepository extends IRepository<Order,String> {
 
-    Order create(Order order);
-    Order read(Order order);
-    Order update(Order order);
-    void delete(Order order);
+//    Order create(Order order);
+//    Order read(Order order);
+//    Order update(Order order);
+//    void delete(Order order);
     Set<Order> getAll();
 
 }

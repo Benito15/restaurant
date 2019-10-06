@@ -12,7 +12,7 @@ public class GuestRepositoryImpl implements GuestRepository {
     private static GuestRepositoryImpl repository = null;
     private Set<Guest> guests;
 
-    private GuestRepositoryImpl() {
+    public GuestRepositoryImpl() {
         this.guests = new HashSet<>();
 
     }

@@ -12,7 +12,7 @@ public class CheckRepositoryImpl implements CheckRepository {
     private Set<Check> checks;
     private static CheckRepositoryImpl repository = null;
 
-    private CheckRepositoryImpl()
+    public CheckRepositoryImpl()
     {
         this.checks = new HashSet<>();
 

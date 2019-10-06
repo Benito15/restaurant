@@ -3,6 +3,7 @@ package ac.za.cput.controller.table;
 import ac.za.cput.domains.table.Table;
 import ac.za.cput.service.table.impl.TableServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -15,7 +16,7 @@ public class TableController {
     //  @Qualifier("GuestServiceImpl")
     private TableServiceImpl tableService;
 
-    @PostMapping("/new")
+    @PostMapping(value = "/new", consumes = MediaType.APPLICATION_JSON_VALUE)
     public Table create(@RequestBody Table table){
         return tableService.create(table);
     }

@@ -1,13 +1,22 @@
 package ac.za.cput.domains.employee;
 
-import java.util.Objects;
+import org.hibernate.annotations.GenericGenerator;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+import java.util.Objects;
+@MappedSuperclass
 public abstract class Employee {
 
-    protected String empid, name, surname;
+    @Id
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
+    protected String empid;
+    protected String name, surname;
     protected double salary;
 
-    private Employee(){}
+    public Employee(){}
 
     protected Employee(Builder builder)
     {

@@ -5,11 +5,11 @@ import ac.za.cput.service.IService;
 
 import java.util.Set;
 
-public interface OrderService   {
-    Order create(Order  order);
-    Order read(Order order);
-    Order update(Order order);
-    void delete(Order order);
+public interface OrderService  extends IService<Order, String> {
+//    Order create(Order  order);
+//    Order read(Order order);
+//    Order update(Order order);
+//    void delete(Order order);
 
     Set<Order> getAll();
 }

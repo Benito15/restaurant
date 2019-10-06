@@ -12,7 +12,7 @@ public class CheffRepositoryImpl implements CheffRepository {
     private static CheffRepositoryImpl repository = null;
     private Set<Cheff> cheffs;
 
-    private CheffRepositoryImpl()
+    public CheffRepositoryImpl()
     {
         this.cheffs = new HashSet<>();
     }

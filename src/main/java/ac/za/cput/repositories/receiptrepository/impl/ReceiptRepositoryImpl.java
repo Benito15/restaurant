@@ -12,7 +12,7 @@ public class ReceiptRepositoryImpl implements ReceiptRepository {
     private static ReceiptRepositoryImpl repository = null;
     private Set<Receipt> receipts;
 
-    private ReceiptRepositoryImpl()
+    public ReceiptRepositoryImpl()
     {
         this.receipts = new HashSet<>();
     }

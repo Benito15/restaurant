@@ -1,17 +1,28 @@
 package ac.za.cput.domains.purchase.order;
 
-import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Objects;
 
+@Entity
+@Table(name = "Order", schema = "restaurant")
 public class Order {
 ///empi
+    @Id
     private String orderID;
+    @Column(name = "guestID" )
     private String guestID;
+    @Column(name = "employeeID" )
     private String empID;
-    private Date dte;
+    @Column(name = "date" )
+    private String dte;
+    @Column(name = "Total" )
     private double total;
 
-    private Order(){}
+    public Order(){}
 
     public Order(Builder builder)
     {
@@ -38,7 +49,7 @@ public class Order {
         return guestID;
     }
 
-    public Date getDte() {
+    public String getDte() {
         return dte;
     }
 
@@ -54,7 +65,7 @@ public class Order {
         this.guestID = guestID;
     }
 
-    public void setDte(Date dte) {
+    public void setDte(String dte) {
         this.dte = dte;
     }
 
@@ -65,7 +76,7 @@ public class Order {
     public static class Builder
     {
         private String orderID,guestID, empID;
-        private Date dte;
+        private String dte;
         private double total;
 
         public Builder empID(String empID){
@@ -88,7 +99,7 @@ public class Order {
 
         }
 
-        public Builder dte(Date dte)
+        public Builder dte(String dte)
         {
             this.dte = dte;
              return this;

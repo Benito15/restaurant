@@ -14,7 +14,7 @@ public class ReportRepositoryImpl implements ReportRepository {
     private Set<Report> reports;
 
 
-    private ReportRepositoryImpl()
+    public ReportRepositoryImpl()
     {
         this.reports = new HashSet<>();
 

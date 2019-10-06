@@ -2,8 +2,10 @@ package ac.za.cput.controller.guest;
 
 import ac.za.cput.domains.guest.Guest;
 import ac.za.cput.service.guest.impl.GuestServiceImpl;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Set;
@@ -18,7 +20,7 @@ public class GuestController {
    @Autowired
     private GuestServiceImpl guestService;
 
-   @PostMapping("/new")
+   @PostMapping(value = "/new", consumes = MediaType.APPLICATION_JSON_VALUE)
     public Guest create(@RequestBody Guest guest){
        return guestService.create(guest);
    }
@@ -46,3 +48,5 @@ public class GuestController {
 
 
 }
+
+
