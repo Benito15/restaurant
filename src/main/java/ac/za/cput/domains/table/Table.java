@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import java.util.Objects;
 
 @Entity
+@javax.persistence.Table(name = "Tables", schema = "restaurant")
 public class Table {
     @Id
     private String tableID;

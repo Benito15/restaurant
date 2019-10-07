@@ -1,5 +1,9 @@
 package ac.za.cput.domains.purchase.item;
 
+
+import javax.persistence.Entity;
+
+@Entity
 public class Burger extends Item {
 
    private String type;
@@ -9,7 +13,7 @@ public class Burger extends Item {
 
     public Burger(Builder builder) {
        super(builder);
-        type = "";
+        type = builder.type;
     }
 
     public String getType() {
@@ -37,7 +41,7 @@ public class Burger extends Item {
     public String toString() {
         return "Burger{" +
                 "ItemID='" + itemID + "\n" +
-                "Desc='" + desc + "\n" +
+                "Desc='" + description + "\n" +
                 "qty=" + qty + "\n"+
                 "type='" + type + "\n" +
                 "price=" + price + "\n";

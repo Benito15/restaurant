@@ -5,9 +5,9 @@ import ac.za.cput.util.Misc;
 
 public class BurgerFactory {
 
-    public static Burger getBurger(String desc,int qty, double price)
+    public static Burger getBurger(String description,int qty, double price)
     {
-        return (Burger) new Burger.Builder().desc(desc)
+        return (Burger) new Burger.Builder().description(description)
                 .qty(qty)
                 .price(price)
                 .itemID(Misc.generateId())

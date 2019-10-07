@@ -6,13 +6,13 @@ import ac.za.cput.repositories.IRepository;
 
 import java.util.Set;
 
-public interface FeedbackRepository  {
+public interface FeedbackRepository  extends IRepository<Feedback,String>{
 
 
-        Feedback create(Feedback feedback);
-        Feedback read(Feedback feedback);
-        Feedback update(Feedback feedback);
-        void delete(Feedback feedback);
+//        Feedback create(Feedback feedback);
+//        Feedback read(Feedback feedback);
+//        Feedback update(Feedback feedback);
+//        void delete(Feedback feedback);
 
         Set<Feedback> getAll();
 

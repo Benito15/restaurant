@@ -1,16 +1,27 @@
 package ac.za.cput.domains.purchase.orderline;
 
 
+import org.hibernate.annotations.GenericGenerator;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class OrderLine {
 //////////
-    private String orderID, itemID, desc;
+    @Id
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid")
+    private String orderID;
+    private String itemID;
+    private String description;
     private int qty;
 
-    public OrderLine(String orderID, String itemID, String desc, int qty){
+    public OrderLine(String orderID, String itemID, String description, int qty){
         this.orderID = orderID;
         this.itemID = itemID;
-        this.desc = desc;
+        this.description = description;
         this.qty = qty;
     }
 
@@ -23,7 +34,7 @@ public class OrderLine {
     }
 
     public String getDesc() {
-        return desc;
+        return description;
     }
 
     public void setOrderID(String orderID) {
@@ -39,7 +50,7 @@ public class OrderLine {
     }
 
     public void setDesc(String desc) {
-        this.desc = desc;
+        this.description = desc;
     }
 
     public void setQty(int qty) {
@@ -86,6 +97,6 @@ public class OrderLine {
                 "orderID= " + orderID + "\n" +
                 "itemID= " + itemID + "\n" +
                 "Quantity= " + this.qty + "\n" +
-                "Description= " + desc + "\n" ;
+                "Description= " + description + "\n" ;
     }
 }

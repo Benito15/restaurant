@@ -8,7 +8,7 @@ import javax.persistence.Table;
 import java.util.Objects;
 
 @Entity
-@Table(name = "Order", schema = "restaurant")
+@Table(name = "Orders", schema = "restaurant")
 public class Order {
 ///empi
     @Id

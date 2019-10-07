@@ -11,9 +11,10 @@ import java.util.Objects;
 
 @Entity
 public class Guest {
+
+    @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid")
-    @Id
     private String guestId;
     @Column(name = "Name" )
     private String guestName;

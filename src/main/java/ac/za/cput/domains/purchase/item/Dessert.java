@@ -1,5 +1,8 @@
 package ac.za.cput.domains.purchase.item;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Dessert extends Item {
 
     private String type;
@@ -9,7 +12,7 @@ public class Dessert extends Item {
     private Dessert(Builder builder)
     {
         super(builder);
-        type="";
+        this.type = builder.type;
     }
 
     public String getType() {
@@ -37,7 +40,7 @@ public class Dessert extends Item {
     @Override
     public String toString() {
         return "\n Dessert{" +
-                "Desc='" + desc + "\n"+
+                "Desc='" + description + "\n"+
                 "qty=" + qty + "\n" +
                 "Price=" + price + "\n";
     }

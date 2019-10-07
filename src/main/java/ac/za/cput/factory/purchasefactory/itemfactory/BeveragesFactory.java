@@ -5,9 +5,9 @@ import ac.za.cput.util.Misc;
 
 public class BeveragesFactory {
 
-    public static Beverage getBeverage(String desc, int qty, double price)
+    public static Beverage getBeverage(String description, int qty, double price)
     {
-        return (Beverage) new Beverage.Builder().desc(desc)
+        return (Beverage) new Beverage.Builder().description(description)
                 .qty(qty)
                 .price(price)
                 .itemID(Misc.generateId())

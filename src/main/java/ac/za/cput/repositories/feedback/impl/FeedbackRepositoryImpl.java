@@ -41,7 +41,7 @@ public class FeedbackRepositoryImpl implements FeedbackRepository {
 
     @Override
     public Feedback update(Feedback feedback) {
-        Feedback readFeadback = repository.read(feedback);
+        Feedback readFeadback = repository.read(feedback.getFeedbackID());
         if(this.feedbacks.contains(readFeadback)){
             this.feedbacks.remove(readFeadback);
             this.feedbacks.add(feedback);
@@ -51,17 +51,17 @@ public class FeedbackRepositoryImpl implements FeedbackRepository {
     }
 
     @Override
-    public void delete(Feedback feedback) {
+    public void delete(String feedback) {
         Feedback deleteFeedback = read(feedback);
         this.feedbacks.remove(deleteFeedback);
 
     }
 
     @Override
-    public Feedback read(Feedback feedback) {
+    public Feedback read(String feedback) {
         return this.feedbacks.stream()
-                .filter(thisFeedback -> thisFeedback.getFeedbackID().equalsIgnoreCase(feedback.getFeedbackID())
-                && thisFeedback.getGuestID().equalsIgnoreCase(feedback.getGuestID())).findAny().orElse(null);
+                .filter(thisFeedback -> thisFeedback.getFeedbackID().equalsIgnoreCase(feedback)
+                && thisFeedback.getGuestID().equalsIgnoreCase(feedback)).findAny().orElse(null);
 
     }
 

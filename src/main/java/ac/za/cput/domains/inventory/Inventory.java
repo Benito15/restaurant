@@ -1,18 +1,22 @@
 package ac.za.cput.domains.inventory;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Objects;
 
+@Entity
 public class Inventory {
 
+    @Id
     private String invID;
-    private String desc;
+    private String description;
     private int qty;
 
     private Inventory(){}
 
     public Inventory(Builder builder){
         this.invID = builder.invID;
-        this.desc = builder.desc;
+        this.description = builder.description;
         this.qty = builder.qty;
     }
 
@@ -21,7 +25,7 @@ public class Inventory {
     }
 
     public String getDesc() {
-        return desc;
+        return description;
     }
 
     public int getQty() {
@@ -33,7 +37,7 @@ public class Inventory {
     }
 
     public void setDesc(String desc) {
-        this.desc = desc;
+        this.description = desc;
     }
 
     public void setQty(int qty) {
@@ -43,7 +47,7 @@ public class Inventory {
     public static class Builder
    {
        private String invID;
-       private String desc;
+       private String description;
        private int qty;
 
        public Builder invID(String invID)
@@ -53,9 +57,9 @@ public class Inventory {
 
        }
 
-       public Builder desc(String desc)
+       public Builder desc(String description)
        {
-           this.desc = desc;
+           this.description = description;
            return this;
 
        }
@@ -69,7 +73,7 @@ public class Inventory {
 
        public Builder copy(Inventory inventory) {
            this.invID = inventory.invID;
-           this.desc= inventory.desc;
+           this.description= inventory.description;
            this.qty= inventory.qty;
            return this;
        }
@@ -87,7 +91,7 @@ public class Inventory {
     public String toString() {
         return "Inventory{" +
                 "invID='" + invID + "\n" +
-                ", desc='" + desc + "\n" +
+                ", desc='" + description + "\n" +
                 ", qty=" + qty +
                 '}';
     }

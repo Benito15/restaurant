@@ -2,22 +2,27 @@ package ac.za.cput.service.orderline.impl;
 
 import ac.za.cput.domains.purchase.orderline.OrderLine;
 import ac.za.cput.repositories.orderline.OrderLineRepository;
+import ac.za.cput.repositories.orderline.OrderLineRepositoryHibernate;
 import ac.za.cput.repositories.orderline.impl.OrderLineRepositoryImpl;
 import ac.za.cput.service.orderline.OrderLineService;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service("OrderLineService")
 public class OrderLineServiceImpl implements OrderLineService {
 
     private static OrderLineServiceImpl service = null;
-    private OrderLineRepository repository;
+    @Autowired
+    private OrderLineRepositoryHibernate repository;
 
-    private OrderLineServiceImpl()
+    public OrderLineServiceImpl()
     {
-        repository = OrderLineRepositoryImpl.getRepository();
+
     }
 
     public static OrderLineServiceImpl getService()
@@ -29,29 +34,36 @@ public class OrderLineServiceImpl implements OrderLineService {
 
     @Override
     public Set<OrderLine> getAll() {
-        return repository.getAll();
+        return new HashSet<OrderLine>((List<OrderLine>)repository.findAll());
 
     }
 
     @Override
     public OrderLine create(OrderLine type) {
-        return repository.create(type);
+        return repository.save(type);
 
     }
 
     @Override
     public OrderLine update(OrderLine type) {
-        return this.repository.update(type);
+        return this.repository.save(type);
     }
 
     @Override
     public void delete(String orderID, String itemID) {
-        this.repository.delete(orderID, itemID);
 
+        OrderLine deleteOrderLine = read(orderID, itemID);
+        this.repository.delete(deleteOrderLine);
     }
+
 
     @Override
     public OrderLine read(String orderID, String itemID) {
-        return this.repository.read(orderID, itemID);
+        return getAll().stream()
+                .filter(thisOrderLines-> thisOrderLines.getOrderID().equalsIgnoreCase(orderID)
+                        && thisOrderLines.getItemID().equalsIgnoreCase(itemID))
+                .findAny().orElse(null);
+
     }
+
 }

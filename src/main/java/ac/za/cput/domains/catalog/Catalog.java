@@ -1,9 +1,12 @@
 package ac.za.cput.domains.catalog;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Objects;
-
+@Entity
 public class Catalog {
 
+    @Id
     private String itemID;
     private String supID;
     private String description;

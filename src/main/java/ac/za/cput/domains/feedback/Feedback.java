@@ -1,22 +1,29 @@
 package ac.za.cput.domains.feedback;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 import java.util.Objects;
 
+@Entity
+@Table(name = "feedbacks", schema = "restaurant")
 public class Feedback {
 
+        @Id
+        private String feedbackID;
+        private String guestID;
+        private String description;
+        private String dte;
 
-        private String feedbackID,guestID, desc;
-        private Date dte;
-
-        private Feedback(){}
+        public Feedback(){}
 
         public Feedback(Builder builder)
         {
             this.feedbackID = builder.feedbackID;
             this.guestID = builder.guestID;
             this.dte = builder.dte;
-            this.desc = builder.desc;
+            this.description = builder.description;
 
         }
 
@@ -33,10 +40,10 @@ public class Feedback {
         }
 
         public String getDesc() {
-            return desc;
+            return description;
         }
 
-        public Date getDte() {
+        public String getDte() {
             return dte;
         }
 
@@ -44,18 +51,18 @@ public class Feedback {
             this.guestID = guestID;
         }
 
-        public void setDesc(String desc) {
-            this.desc = desc;
+        public void setDesc(String description) {
+            this.description = description;
         }
 
-        public void setDte(Date dte) {
+        public void setDte(String dte) {
             this.dte = dte;
         }
 
     public static class Builder
     {
-        private String feedbackID,guestID,desc;
-        private Date dte;
+        private String feedbackID,guestID,description;
+        private String dte;
 
         public Builder guestID(String guestID)
         {
@@ -70,13 +77,13 @@ public class Feedback {
         }
 
 
-        public Builder desc(String desc)
+        public Builder desc(String description)
         {
-            this.desc=desc;
+            this.description=description;
             return this;
         }
 
-        public Builder dte(Date dte)
+        public Builder dte(String dte)
         {
             this.dte = dte;
             return this;
@@ -85,7 +92,7 @@ public class Feedback {
         public Builder copy(Feedback feedback) {
             this.feedbackID = feedback.feedbackID;
             this.guestID = feedback.guestID;
-            this.desc = feedback.desc;
+            this.description = feedback.description;
             this.dte = feedback.dte;
             return this;
         }
@@ -97,7 +104,7 @@ public class Feedback {
         public String toString() {
             return "Feedback{" +"\n" +
                     "GuestID= " + guestID + "\n"  +
-                    "Desciption = " + desc + "\n" +
+                    "Desciption = " + description + "\n" +
                     "Date= " + dte +"\n"  +
                     '}';
         }

@@ -5,10 +5,10 @@ import ac.za.cput.domains.purchase.orderline.OrderLine;
 public class OrderLineFactory {
 
 
-    public static OrderLine getOrderLine(String orderID, String itemID, String desc, int qty)
+    public static OrderLine getOrderLine(String orderID, String itemID, String description, int qty)
     {
 
-        return new OrderLine(orderID, itemID, desc, qty);
+        return new OrderLine(orderID, itemID, description, qty);
 
     }
 
