@@ -1,5 +1,8 @@
 package ac.za.cput.domains.payment;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Credit extends Payment {
 
     private String cardID;

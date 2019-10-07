@@ -1,12 +1,13 @@
 package ac.za.cput.domains.employee;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Manager extends Employee{
 
+    public Manager(){}
 
-
-
-
-    private Manager(Builder builder)
+    protected Manager(Builder builder)
     {
       super(builder);
 

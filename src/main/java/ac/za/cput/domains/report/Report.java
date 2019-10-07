@@ -1,13 +1,18 @@
 package ac.za.cput.domains.report;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Date;
 
+@Entity
 public class Report {
 
-    private String repID, empID,description;
-    private Date dte;
+    @Id
+    private String repID;
+    private String empID,description;
+    private String dte;
 
-    private Report(){}
+    public Report(){}
 
     public Report(Builder builder)
     {
@@ -22,7 +27,7 @@ public class Report {
         return repID;
     }
 
-    public Date getDte() {
+    public String getDte() {
         return dte;
     }
 
@@ -46,14 +51,14 @@ public class Report {
         this.empID = empID;
     }
 
-    public void setDte(Date dte) {
+    public void setDte(String dte) {
         this.dte = dte;
     }
 
     public static class Builder
     {
         private String repID, empID,description;
-        private Date dte;
+        private String dte;
 
         public Builder repID(String repID)
         {
@@ -69,7 +74,7 @@ public class Report {
 
         }
 
-        public Builder dte(Date dte)
+        public Builder dte(String dte)
         {
             this.dte = dte;
             return this;

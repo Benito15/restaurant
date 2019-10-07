@@ -9,7 +9,7 @@ public class ReportFactory {
 
 
 
-    public static Report getReport(Date dte,String description, String empID)
+    public static Report getReport(String dte,String description, String empID)
     {
         return new Report.Builder().dte(dte)
                 .description(description)

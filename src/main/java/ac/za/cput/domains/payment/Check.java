@@ -1,7 +1,9 @@
 package ac.za.cput.domains.payment;
 
+import javax.persistence.Entity;
 import java.util.Objects;
 
+@Entity
 public class Check extends Payment {
 
  private String bankID, name;

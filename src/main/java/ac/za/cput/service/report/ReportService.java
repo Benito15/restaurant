@@ -5,10 +5,10 @@ import ac.za.cput.service.IService;
 
 import java.util.Set;
 
-public interface ReportService  {
-    Report create(Report report);
-    Report read(Report report);
-    Report update(Report report);
-    void delete(Report report);
+public interface ReportService  extends IService<Report, String>{
+//    Report create(Report report);
+//    Report read(Report report);
+//    Report update(Report report);
+//    void delete(Report report);
     Set<Report> getAll();
 }

@@ -12,7 +12,7 @@ public class TestReport {
     @Test
     public void reportTest()
     {
-        Date dte = new Date();
+        String dte = "7 January 2019";
         String description;
         Report report = ReportFactory.getReport(dte,"Wazzzup",null);
         System.out.println(report);

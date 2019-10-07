@@ -1,10 +1,15 @@
 package ac.za.cput.domains.employee;
 
+
+import javax.persistence.Entity;
+
+@Entity
 public class Cheff extends Employee {
 
 
+    public Cheff(){}
 
-    private Cheff(Builder builder){
+    protected Cheff(Builder builder){
        super(builder);
     }
 

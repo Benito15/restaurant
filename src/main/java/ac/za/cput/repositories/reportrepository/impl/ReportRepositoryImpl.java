@@ -44,7 +44,7 @@ public class ReportRepositoryImpl implements ReportRepository {
     //// implementation still needs to be done!!
     @Override
     public Report update(Report report) {
-        Report readReport = repository.read(report);
+        Report readReport = repository.read(report.getRepID());
         if (this.reports.contains(readReport)){
             this.reports.remove(readReport);
             this.reports.add(report);
@@ -55,16 +55,16 @@ public class ReportRepositoryImpl implements ReportRepository {
     }
 
     @Override
-    public void delete(Report report) {
+    public void delete(String report) {
         Report deleteReport = read(report);
         this.reports.remove(deleteReport);
     }
 
     @Override
-    public Report read(Report report) {
+    public Report read(String report) {
         return this.reports.stream()
-                .filter(thisReport-> thisReport.getRepID().equalsIgnoreCase(report.getRepID())
-                        && thisReport.getEmpID().equalsIgnoreCase(report.getEmpID()))
+                .filter(thisReport-> thisReport.getRepID().equalsIgnoreCase(report)
+                        && thisReport.getEmpID().equalsIgnoreCase(report))
                 .findAny().orElse(null);
     }
 

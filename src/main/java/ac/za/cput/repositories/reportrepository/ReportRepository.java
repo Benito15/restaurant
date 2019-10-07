@@ -5,13 +5,9 @@ import ac.za.cput.repositories.IRepository;
 
 import java.util.Set;
 
-public interface ReportRepository  {
+public interface ReportRepository extends IRepository<Report, String> {
 
 
-    Report create(Report report);
-    Report read(Report report);
-    Report update(Report report);
-    void delete(Report report);
     Set<Report> getAll();
 
 

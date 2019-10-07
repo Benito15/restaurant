@@ -1,12 +1,20 @@
 package ac.za.cput.domains.payment;
 
-public class Payment {
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 
-    protected  String orderID;
+@MappedSuperclass
+public abstract class Payment {
+
+    @Id
+    protected String orderID;
     protected double amount;
 
 
-    public Payment( String orderID, double amount){
+    public Payment() {
+    }
+
+    public Payment(String orderID, double amount) {
 
         this.orderID = orderID;
         this.amount = amount;
@@ -30,7 +38,6 @@ public class Payment {
     }
 
 
-
     public double getAmount() {
         return amount;
     }
@@ -46,45 +53,45 @@ public class Payment {
         return this;
     }
 
-//    protected static  class Builder {
-//        String paymentID, orderID, description;
-//        protected double amount;
-//
-//        public Builder paymentID(String paymentID) {
-//            this.paymentID = paymentID;
+    protected static abstract class Builder {
+        String paymentID, orderID, description;
+        private double amount;
+
+        public Builder paymentID(String paymentID) {
+            this.paymentID = paymentID;
+            return this;
+        }
+
+        public Builder orderID(String orderID) {
+            this.orderID = orderID;
+            return this;
+
+        }
+
+        public Builder description(String description) {
+            this.description = description;
+            return this;
+        }
+
+        public Builder amount(double amount) {
+            this.amount = amount;
+            return this;
+        }
+
+//        public Builder copy(Payment payment) {
+//            this.paymentID = payment.paymentID;
+//            this.orderID = payment.orderID;
+//            this.description = payment.description;
+//            this.amount = payment.amount;
 //            return this;
 //        }
-//
-//        public Builder orderID(String orderID) {
-//            this.orderID = orderID;
-//            return this;
-//
-//        }
-//
-//        public Builder description(String description) {
-//            this.description = description;
-//            return this;
-//        }
-//
-//        public Builder amount(double amount) {
-//            this.amount = amount;
-//            return this;
-//        }
-//
-////        public Builder copy(Payment payment) {
-////            this.paymentID = payment.paymentID;
-////            this.orderID = payment.orderID;
-////            this.description = payment.description;
-////            this.amount = payment.amount;
-////            return this;
-////        }
-//
-//        public Payment build() {
-//            return new Payment(this);
-//        }
+
+        public abstract Payment build();
 
 
     }
+
+}
 
 
 

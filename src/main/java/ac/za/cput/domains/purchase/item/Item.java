@@ -10,14 +10,13 @@ import javax.persistence.MappedSuperclass;
 import java.util.Objects;
 
 @MappedSuperclass
-
 public abstract class Item {
   /////////////////////
 
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
-   protected String itemID;
+    protected String itemID;
     protected String description;
 
     protected int qty;
