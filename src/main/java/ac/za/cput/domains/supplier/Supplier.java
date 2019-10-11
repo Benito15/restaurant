@@ -7,7 +7,7 @@ import java.util.Objects;
 @Entity
 public class Supplier {
     @Id
-    private String  supID;
+    private String supID;
     private String name;
     private String address;
 

@@ -4,15 +4,18 @@ package ac.za.cput.domains.proofofpayment.receipt;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 import java.util.Objects;
 
 @Entity
+@Table(name = "receipt", schema = "restaurant")
 public class Receipt {
 
     @Id
     private String recID;
-    private String billID,  desc;
+    private String billID;
+    private String description;
     private Date dte;
     private double total;
 
@@ -23,7 +26,7 @@ public class Receipt {
         this.recID = builder.recID;
         this.billID = builder.billID;
         this.dte = builder.dte;
-        this.desc = builder.desc;
+        this.description = builder.description;
         this.total = builder.total;
 
     }
@@ -41,7 +44,7 @@ public class Receipt {
     }
 
     public String getDesc() {
-        return desc;
+        return description;
     }
 
     public double getTotal() {
@@ -57,7 +60,7 @@ public class Receipt {
     }
 
     public void setDesc(String desc) {
-        this.desc = desc;
+        this.description = description;
     }
 
     public void setDte(Date dte) {
@@ -70,7 +73,7 @@ public class Receipt {
 
     public static class Builder
     {
-        private String recID,billID, desc;
+        private String recID,billID, description;
         private Date dte;
         private double total;
 
@@ -95,9 +98,9 @@ public class Receipt {
 
         }
 
-        public Builder desc(String desc)
+        public Builder description(String description)
         {
-            this.desc = desc;
+            this.description = description;
             return this;
 
         }
@@ -114,7 +117,7 @@ public class Receipt {
             this.billID = receipt.billID;
             this.recID = receipt.billID;
             this.dte = receipt.dte;
-            this.desc = receipt.desc;
+            this.description = receipt.description;
             this.total = receipt.total;
             return this;
         }
@@ -130,7 +133,7 @@ public class Receipt {
                 "ReceiptID='" + recID + "\n" +
                 "billID= " + billID + "\n"  +
                 ", Date='" + dte + "\n"  +
-                ", Description='" + desc + "\n"  +
+                ", Description='" + description + "\n"  +
                 ", Total=" + total+ "\n"  ;
     }
 

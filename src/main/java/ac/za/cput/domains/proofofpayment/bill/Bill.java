@@ -1,6 +1,7 @@
 package ac.za.cput.domains.proofofpayment.bill;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Date;
 import java.util.Objects;
 
@@ -8,6 +9,7 @@ import java.util.Objects;
 public class Bill {
 
 
+    @Id
     private String billID;
     private String description;
     private String orderID;

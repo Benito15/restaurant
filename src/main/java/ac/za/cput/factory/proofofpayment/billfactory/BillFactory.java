@@ -8,7 +8,7 @@ import java.util.Date;
 public class BillFactory {
 
 
-    public static Bill getBill(String orderID, Date dte, String desc, double total)
+    public static Bill getBill(String orderID, String dte, String desc, double total)
     {
         return new Bill.Builder().dte(dte)
                 .desc(desc)

@@ -8,10 +8,10 @@ import java.util.Date;
 public class ReceiptFactory {
 
 
-    public static Receipt getReceipt(String billID,Date dte, String desc, double total)
+    public static Receipt getReceipt(String billID,Date dte, String description, double total)
     {
         return new Receipt.Builder().dte(dte)
-                .desc(desc)
+                .description(description)
                 .total(total)
                 .billID(billID)
                 .recID(Misc.generateId())
