@@ -1,13 +1,18 @@
 package ac.za.cput.domains.restaurant;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Objects;
 
+@Entity
 public class Restaurant {
 
-    private String resID,name;
+    @Id
+    private String resID;
+    private String name;
     private int totEmployees;
 
-    private Restaurant(){}
+    public Restaurant(){}
 
     public Restaurant(Builder builder)
     {

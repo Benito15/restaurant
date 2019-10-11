@@ -1,9 +1,12 @@
 package ac.za.cput.domains.payment;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.Objects;
 
+
 @Entity
+@Table(name = "CheckTable", schema = "restaurant")
 public class Check extends Payment {
 
  private String bankID, name;

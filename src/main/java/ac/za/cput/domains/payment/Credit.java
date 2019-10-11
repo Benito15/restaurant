@@ -1,6 +1,7 @@
 package ac.za.cput.domains.payment;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
 public class Credit extends Payment {

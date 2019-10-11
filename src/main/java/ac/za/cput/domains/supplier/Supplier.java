@@ -1,14 +1,17 @@
 package ac.za.cput.domains.supplier;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Objects;
 
+@Entity
 public class Supplier {
-
+    @Id
     private String  supID;
     private String name;
     private String address;
 
-    private Supplier(){}
+    public Supplier(){}
 
     public Supplier(Builder builder)
     {

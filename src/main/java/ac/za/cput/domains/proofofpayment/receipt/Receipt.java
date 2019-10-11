@@ -2,12 +2,17 @@ package ac.za.cput.domains.proofofpayment.receipt;
 
 
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Date;
 import java.util.Objects;
 
+@Entity
 public class Receipt {
 
-    private String recID, billID,  desc;
+    @Id
+    private String recID;
+    private String billID,  desc;
     private Date dte;
     private double total;
 

@@ -1,10 +1,15 @@
 package ac.za.cput.domains.reservation;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Objects;
 
+@Entity
 public class Reservation {
 
-    private String guestID,tableID;
+    @Id
+    private String guestID;
+    private String tableID;
 
     private int totGuest;
 

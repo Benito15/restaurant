@@ -1,14 +1,17 @@
 package ac.za.cput.domains.proofofpayment.bill;
 
+import javax.persistence.Entity;
 import java.util.Date;
 import java.util.Objects;
 
+@Entity
 public class Bill {
 
 
-    private String billID, desc;
+    private String billID;
+    private String description;
     private String orderID;
-    private Date dte;
+    private String dte;
     private double total;
 
     private Bill(){
@@ -20,7 +23,7 @@ public class Bill {
         this.billID = builder.billID;
         this.orderID = builder.billID;
         this.dte = builder.dte;
-        this.desc = builder.desc;
+        this.description = builder.description;
         this.total = builder.total;
 
     }
@@ -37,12 +40,12 @@ public class Bill {
         return billID;
     }
 
-    public Date getDte() {
+    public String getDte() {
         return dte;
     }
 
     public String getDesc() {
-        return desc;
+        return description;
     }
 
     public double getTotal() {
@@ -52,9 +55,9 @@ public class Bill {
 
     public static class Builder
     {
-        private String billID,  desc;
+        private String billID,  description;
         private String orderID;
-        private Date dte;
+        private String dte;
         private double total;
 
 
@@ -70,16 +73,16 @@ public class Bill {
 
         }
 
-        public Builder dte(Date dte)
+        public Builder dte(String dte)
         {
             this.dte = dte;
             return this;
 
         }
 
-        public Builder desc(String desc)
+        public Builder desc(String description)
         {
-            this.desc = desc;
+            this.description = description;
             return this;
 
         }
@@ -96,7 +99,7 @@ public class Bill {
             this.billID = bill.billID;
             this.orderID = bill.billID;
             this.dte = bill.dte;
-            this.desc = bill.desc;
+            this.description = bill.description;
             this.total = bill.total;
             return this;
         }
@@ -109,7 +112,7 @@ public class Bill {
         return "Bill{" +
                 " BillID='" + billID + '\'' +
                 ", Date='" + dte + '\'' +
-                ", Description='" + desc + '\'' +
+                ", Description='" + description + '\'' +
                 ", Total=" + total +
                 '}';
     }
