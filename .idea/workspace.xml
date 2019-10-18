@@ -4,21 +4,7 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f8204e90-461b-4699-9ac3-10189cd60403" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ac/za/cput/repositories/billrepository/BillRepositoryHibernate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ac/za/cput/domains/proofofpayment/bill/Bill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ac/za/cput/domains/proofofpayment/bill/Bill.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ac/za/cput/domains/proofofpayment/receipt/Receipt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ac/za/cput/domains/proofofpayment/receipt/Receipt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ac/za/cput/domains/supplier/Supplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ac/za/cput/domains/supplier/Supplier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ac/za/cput/factory/proofofpayment/billfactory/BillFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ac/za/cput/factory/proofofpayment/billfactory/BillFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ac/za/cput/factory/proofofpayment/receiptfactory/ReceiptFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ac/za/cput/factory/proofofpayment/receiptfactory/ReceiptFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ac/za/cput/repositories/supplierrepository/SupplierRepositoryHibernate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ac/za/cput/repositories/supplierrepository/SupplierRepositoryHibernate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ac/za/cput/repositorytest/billtest/BillRepositoryImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ac/za/cput/repositorytest/billtest/BillRepositoryImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ac/za/cput/repositorytest/receipttest/ReceiptRepositoryImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ac/za/cput/repositorytest/receipttest/ReceiptRepositoryImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ac/za/cput/servicetest/bill/BillServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ac/za/cput/servicetest/bill/BillServiceImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ac/za/cput/servicetest/receipt/ReceiptServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ac/za/cput/servicetest/receipt/ReceiptServiceImplTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="f8204e90-461b-4699-9ac3-10189cd60403" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/.idea/httpRequests/" />
@@ -180,109 +166,7 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="PackagesPane" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="restaurantdomain" type="b2602c69:ProjectViewProjectNode" />
-              <item name="restaurant" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="restaurantdomain" type="b2602c69:ProjectViewProjectNode" />
-              <item name="restaurant" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="restaurantdomain" type="b2602c69:ProjectViewProjectNode" />
-              <item name="restaurant" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="restaurantdomain" type="b2602c69:ProjectViewProjectNode" />
-              <item name="restaurant" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="restaurantdomain" type="b2602c69:ProjectViewProjectNode" />
-              <item name="restaurant" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cput" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="restaurantdomain" type="b2602c69:ProjectViewProjectNode" />
-              <item name="restaurant" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cput" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="restaurantdomain" type="b2602c69:ProjectViewProjectNode" />
-              <item name="restaurant" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cput" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="burger" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="restaurantdomain" type="b2602c69:ProjectViewProjectNode" />
-              <item name="restaurant" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cput" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="orderline" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="restaurantdomain" type="b2602c69:ProjectViewProjectNode" />
-              <item name="restaurant" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="restaurantdomain" type="b2602c69:ProjectViewProjectNode" />
-              <item name="restaurant" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="restaurantdomain" type="b2602c69:ProjectViewProjectNode" />
-              <item name="restaurant" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="restaurantdomain" type="b2602c69:ProjectViewProjectNode" />
-              <item name="restaurant" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cput" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="restaurantdomain" type="b2602c69:ProjectViewProjectNode" />
-              <item name="restaurant" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="Downloaded.Files.Path.Enabled" value="true" />
@@ -305,7 +189,7 @@
     <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="http.proxy" />
+    <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -478,6 +362,7 @@
       <workItem from="1570453496607" duration="5814000" />
       <workItem from="1570793196538" duration="4072000" />
       <workItem from="1570813316160" duration="816000" />
+      <workItem from="1571394321550" duration="62000" />
     </task>
     <task id="LOCAL-00001" summary="Implementation of repositoriesI">
       <created>1557701412183</created>
@@ -599,7 +484,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="546614000" />
+    <option name="totallyTimeSpent" value="546676000" />
   </component>
   <component name="TodoView" selected-index="2">
     <todo-panel id="selected-file">
@@ -611,7 +496,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="633" y="0" width="653" height="687" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
