@@ -18,6 +18,10 @@ public class OrderLine {
     private String description;
     private int qty;
 
+    public OrderLine(){
+
+    }
+
     public OrderLine(String orderID, String itemID, String description, int qty){
         this.orderID = orderID;
         this.itemID = itemID;

@@ -12,6 +12,11 @@ public class Check extends Payment {
  private String bankID, name;
 
 
+
+ public Check(){
+
+ }
+
     public Check( String orderID, double amount, String bankID,String name){
         super(orderID,amount);
         this.bankID= bankID;

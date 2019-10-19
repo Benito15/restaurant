@@ -12,6 +12,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/guest")
+@CrossOrigin(origins = "http://localhost:4200")
 public class GuestController {
 
    //auto wire your service
@@ -20,7 +21,7 @@ public class GuestController {
    @Autowired
     private GuestServiceImpl guestService;
 
-   @PostMapping(value = "/new", consumes = MediaType.APPLICATION_JSON_VALUE)
+   @PostMapping(value = "/new")
     public Guest create(@RequestBody Guest guest){
        return guestService.create(guest);
    }

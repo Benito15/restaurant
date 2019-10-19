@@ -1,10 +1,9 @@
 package ac.za.cput.domains.purchase.order;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
@@ -12,14 +11,12 @@ import java.util.Objects;
 public class Order {
 ///empi
     @Id
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid")
     private String orderID;
-    @Column(name = "guestID" )
     private String guestID;
-    @Column(name = "employeeID" )
     private String empID;
-    @Column(name = "date" )
     private String dte;
-    @Column(name = "Total" )
     private double total;
 
     public Order(){}

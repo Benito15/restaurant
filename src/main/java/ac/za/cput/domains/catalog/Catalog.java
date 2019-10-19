@@ -11,6 +11,10 @@ public class Catalog {
     private String supID;
     private String description;
 
+    public Catalog(){
+
+    }
+
     public Catalog(String itemID, String supID, String description){
         this.itemID = itemID;
         this.supID = supID;

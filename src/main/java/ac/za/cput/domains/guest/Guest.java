@@ -16,11 +16,8 @@ public class Guest {
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid")
     private String guestId;
-    @Column(name = "Name" )
     private String guestName;
-    @Column(name = "Surname")
     private String guestSurname;
-    @Column(name = "age")
     private int age;
 
     public Guest(){}

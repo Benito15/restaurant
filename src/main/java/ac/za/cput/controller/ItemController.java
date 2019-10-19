@@ -1,33 +1,32 @@
-package ac.za.cput.controller.order;
+package ac.za.cput.controller;
 
-import ac.za.cput.domains.purchase.order.Order;
-import ac.za.cput.service.order.impl.OrderServiceImpl;
+import ac.za.cput.domains.Item;
+import ac.za.cput.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Set;
 
 @RestController
-@RequestMapping("/order")
+@RequestMapping("/item")
 @CrossOrigin(origins = "http://localhost:4200")
-public class OrderController {
+public class ItemController {
 
     @Autowired
-    private OrderServiceImpl orderService;
+    private ItemService orderService;
 
     @PostMapping(value = "/new")
-    public Order create(@RequestBody Order order){
+    public Item create(@RequestBody Item order){
         return orderService.create(order);
     }
 
-    @GetMapping (path = "/find/{id}")
-    public Order findID(@PathVariable String id){
+    @GetMapping(path = "/find/{id}")
+    public Item findID(@PathVariable String id){
         return orderService.read(id);
     }
 
     @PutMapping("/update")
-    public void update(@RequestBody Order order){
+    public void update(@RequestBody Item order){
         orderService.update(order);
 
     }
@@ -38,10 +37,9 @@ public class OrderController {
     }
 
     @GetMapping("/getall")
-    public Set<Order> getAll(){
+    public Set<Item> getAll(){
 
         return orderService.getAll();
     }
-
 
 }
